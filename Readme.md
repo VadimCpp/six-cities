@@ -1,7 +1,12 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Вадим Канинский](https://up.htmlacademy.ru/react/7/user/78842).
-* Наставник: `Неизвестно`.
+>
+> С 31 мая по 1 августа 2021 года я - студент HTML Академии.
+> Прохожу курс [«React. Разработка сложных клиентских приложений»](https://up.htmlacademy.ru/react/7)
+>
+
+* Студент: Вадим Канинский - [↗️ htmlacademy](https://up.htmlacademy.ru/react/7/user/78842) [↗️ vk](https://vk.com/vadimcpp) [↗️ tg](https://t.me/vadimcpp).
+* Наставник: Антон Вахрушев - [↗️ vk](https://vk.com/antoshkajs) [↗️ tg](https://t.me/antoshkajs).
 
 ---
 
