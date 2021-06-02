@@ -1,6 +1,51 @@
 import React from 'react';
+import Hotel from '../hotel/hotel';
+
+const hotels = [
+  {
+    'preview_image': 'https://7.react.pages.academy/static/hotel/19.jpg',
+    'title': 'The Pondhouse - A Magical Place',
+    'rating': 4.3,
+    'type': 'hotel',
+    'price': 448,
+    'id': 3,
+  },
+  {
+    'preview_image': 'https://7.react.pages.academy/static/hotel/1.jpg',
+    'title': 'Waterfront with extraordinary view',
+    'rating': 2,
+    'type': 'room',
+    'price': 285,
+    'id': 4,
+  },
+  {
+    'preview_image': 'https://7.react.pages.academy/static/hotel/8.jpg',
+    'title': 'Perfectly located Castro',
+    'rating': 2.8,
+    'type': 'room',
+    'price': 162,
+    'id': 5,
+  },
+  {
+    'preview_image': 'https://7.react.pages.academy/static/hotel/7.jpg',
+    'title': 'Amazing and Extremely Central Flat',
+    'rating': 2.2,
+    'type': 'room',
+    'price': 245,
+    'id': 6,
+  },
+  {
+    'preview_image': 'https://7.react.pages.academy/static/hotel/18.jpg',
+    'title': 'Waterfront with extraordinary view',
+    'rating': 3,
+    'type': 'room',
+    'price': 217,
+    'id': 7,
+  },
+];
 
 function Main() {
+
   return (
     <div>
       <div className="header">
@@ -21,45 +66,7 @@ function Main() {
       </div>
 
       <div className="hotels">
-        <div className="hotel">
-          <img className="hotel__preview" src="https://7.react.pages.academy/static/hotel/19.jpg" alt="preview" width="260" height="200"/>
-          <span className="hotel__price">448 € / night</span>
-          <span className="hotel__rating">4.3</span>
-          <span className="hotel__title">The Pondhouse - A Magical Place</span>
-          <span className="hotel__type">hotel</span>
-        </div>
-
-        <div className="hotel">
-          <img className="hotel__preview" src="https://7.react.pages.academy/static/hotel/1.jpg" alt="preview" width="260" height="200"/>
-          <span className="hotel__price"> 285 € / night</span>
-          <span className="hotel__rating">2</span>
-          <span className="hotel__title">Waterfront with extraordinary view</span>
-          <span className="hotel__type">room</span>
-        </div>
-
-        <div className="hotel">
-          <img className="hotel__preview" src="https://7.react.pages.academy/static/hotel/8.jpg" alt="preview" width="260" height="200"/>
-          <span className="hotel__price"> 162 € / night</span>
-          <span className="hotel__rating">2.8</span>
-          <span className="hotel__title">Perfectly located Castro</span>
-          <span className="hotel__type">room</span>
-        </div>
-
-        <div className="hotel">
-          <img className="hotel__preview" src="https://7.react.pages.academy/static/hotel/7.jpg" alt="preview" width="260" height="200"/>
-          <span className="hotel__price"> 245 € / night</span>
-          <span className="hotel__rating">2.2</span>
-          <span className="hotel__title">Amazing and Extremely Central Flat</span>
-          <span className="hotel__type">room</span>
-        </div>
-
-        <div className="hotel">
-          <img className="hotel__preview" src="https://7.react.pages.academy/static/hotel/18.jpg" alt="preview" width="260" height="200"/>
-          <span className="hotel__price"> 217 € / night</span>
-          <span className="hotel__rating">3</span>
-          <span className="hotel__title">Waterfront with extraordinary view</span>
-          <span className="hotel__type">room</span>
-        </div>
+        {hotels.map((hotel) => <Hotel key={hotel.id} preview={hotel.preview_image} price={hotel.price} rating={hotel.rating} title={hotel.title} type={hotel.type}/>)}
       </div>
 
       <div className="map">
