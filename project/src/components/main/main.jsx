@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Hotel from '../hotel/hotel';
 
 const hotels = [
@@ -44,7 +45,7 @@ const hotels = [
   },
 ];
 
-function Main() {
+function Main({places}) {
 
   return (
     <div>
@@ -66,6 +67,7 @@ function Main() {
       </div>
 
       <div className="hotels">
+        {places} places to stay in Paris
         {hotels.map((hotel) => <Hotel key={hotel.id} preview={hotel.preview_image} price={hotel.price} rating={hotel.rating} title={hotel.title} type={hotel.type}/>)}
       </div>
 
@@ -75,5 +77,9 @@ function Main() {
     </div>
   );
 }
+
+Main.propTypes = {
+  places: PropTypes.number.isRequired,
+};
 
 export default Main;
