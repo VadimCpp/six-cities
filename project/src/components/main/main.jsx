@@ -25,7 +25,7 @@ function Main({places, hotels}) {
 
       <div className="hotels">
         {places} places to stay in Paris
-        {hotels.map((hotel) => <Hotel key={hotel.id} preview={hotel.preview} price={hotel.price} rating={hotel.rating} title={hotel.title} type={hotel.type}/>)}
+        {hotels.map((hotel) => <Hotel key={hotel.id} {...hotel} />)}
       </div>
 
       <div className="map">
