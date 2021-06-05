@@ -14,7 +14,7 @@ function App({places, hotels}) {
         <Route path="/" exact>
           <MainScreen places={places} hotels={hotels}/>
         </Route>
-        <Route path="/login" exact components={LoginScreen} />
+        <Route path="/login" exact component={LoginScreen} />
         <Route path="/favorites" exact component={FavoritesScreen} />
         <Route path="/offer/:id" exact component={RoomScreen} />
         <Route component={NotFoundScreen} />
