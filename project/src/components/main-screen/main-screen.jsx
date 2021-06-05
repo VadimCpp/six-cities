@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Hotel from '../hotel/hotel';
 
-function Main({places, hotels}) {
+function MainScreen({places, hotels}) {
 
   return (
     <div>
@@ -35,7 +35,7 @@ function Main({places, hotels}) {
   );
 }
 
-Main.propTypes = {
+MainScreen.propTypes = {
   places: PropTypes.number.isRequired,
   hotels: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -47,4 +47,4 @@ Main.propTypes = {
   })),
 };
 
-export default Main;
+export default MainScreen;

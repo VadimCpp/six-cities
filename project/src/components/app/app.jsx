@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Main from '../main/main';
+import MainScreen from '../main-screen/main-screen';
 
 function App({places, hotels}) {
-  return <Main places={places} hotels={hotels}/>;
+  return <MainScreen places={places} hotels={hotels}/>;
 }
 
 App.propTypes = {
