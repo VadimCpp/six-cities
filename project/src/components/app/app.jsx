@@ -7,12 +7,12 @@ import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 
-function App({places, hotels}) {
+function App({offers}) {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <MainScreen places={places} hotels={hotels}/>
+          <MainScreen offers={offers}/>
         </Route>
         <Route path="/login" exact component={LoginScreen} />
         <Route path="/favorites" exact component={FavoritesScreen} />
@@ -24,8 +24,7 @@ function App({places, hotels}) {
 }
 
 App.propTypes = {
-  places: PropTypes.number.isRequired,
-  hotels: PropTypes.arrayOf(PropTypes.shape({
+  offers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     preview: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

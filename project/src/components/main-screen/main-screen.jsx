@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Hotel from '../hotel/hotel';
 
-function MainScreen({places, hotels}) {
+function MainScreen({offers}) {
 
   return (
     <div className="page page--gray page--main">
@@ -77,7 +77,7 @@ function MainScreen({places, hotels}) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{places} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -94,7 +94,7 @@ function MainScreen({places, hotels}) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {hotels.map((hotel) => <Hotel key={hotel.id} {...hotel} />)}
+                {offers.map((offer) => <Hotel key={offer.id} {...offer} />)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -108,8 +108,7 @@ function MainScreen({places, hotels}) {
 }
 
 MainScreen.propTypes = {
-  places: PropTypes.number.isRequired,
-  hotels: PropTypes.arrayOf(PropTypes.shape({
+  offers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     preview: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

@@ -5,6 +5,6 @@ import offers from './mocks/offers.json';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App places={offers.length} hotels={offers}/>
+    <App offers={offers}/>
   </React.StrictMode>,
   document.getElementById('root'));
