@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Hotel from '../hotel/hotel';
+import Offers from '../offers/offers';
 
 function MainScreen({offers}) {
 
@@ -93,9 +93,7 @@ function MainScreen({offers}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => <Hotel key={offer.id} {...offer} />)}
-              </div>
+              <Offers offers={offers}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
