@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function Hotel({preview, price, rating, title, type}) {
+function Offer({id, preview, price, rating, title, type}) {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to="/">
+        <Link to={`/offer/${id}`}>
           <img className="place-card__image" src={preview} width="260" height="200" alt="Place image" />
         </Link>
       </div>
@@ -28,12 +28,12 @@ function Hotel({preview, price, rating, title, type}) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '100%' }}></span>
+            <span style={{ width: `${rating / 5 * 100}%` }}></span>
             <span className="visually-hidden">Rating {rating}</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="/">{title}</Link>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -41,7 +41,8 @@ function Hotel({preview, price, rating, title, type}) {
   );
 }
 
-Hotel.propTypes = {
+Offer.propTypes = {
+  id: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
@@ -49,4 +50,4 @@ Hotel.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default Hotel;
+export default Offer;

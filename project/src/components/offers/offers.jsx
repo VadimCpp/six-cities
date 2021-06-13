@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hotel from '../hotel/hotel';
+import Offer from '../offer/offer';
 
 function Offers({offers}) {
   return (
     <div className="cities__places-list places__list tabs__content">
-      {offers.map((offer) => <Hotel key={offer.id} {...offer} />)}
+      {offers.map((offer) => <Offer key={offer.id} {...offer} />)}
     </div>
   );
 }
