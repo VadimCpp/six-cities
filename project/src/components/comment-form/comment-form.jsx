@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function ComponentForm() {
+  const [comment, setComment] = useState('');
+
+  function handleCommentChange(event) {
+    setComment(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    // TODO: implement
+    alert('Отправленный текст: ' + comment);
+    event.preventDefault();
+  }
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
@@ -40,7 +52,14 @@ function ComponentForm() {
           </svg>
         </label>
       </div>
-      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
+      <textarea
+        className="reviews__textarea form__textarea"
+        placeholder="Tell how was your stay, what you like and what can be improved"
+        value={comment}
+        onChange={handleCommentChange}
+      >
+
+      </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
