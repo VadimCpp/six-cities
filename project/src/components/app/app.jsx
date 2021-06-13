@@ -15,7 +15,9 @@ function App({offers}) {
           <MainScreen offers={offers}/>
         </Route>
         <Route path="/login" exact component={LoginScreen} />
-        <Route path="/favorites" exact component={FavoritesScreen} />
+        <Route path="/favorites" exact>
+          <FavoritesScreen offers={offers}/>
+        </Route>
         <Route path="/offer/:id" exact>
           <RoomScreen offers={offers}/>
         </Route>

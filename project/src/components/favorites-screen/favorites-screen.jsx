@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
+import offersProp from '../offers/offers.prop';
 
-function FavoritesScreen() {
+function FavoritesScreen({offers}) {
   return (
     <div className="page">
       <Header />
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
-          <FavoritesList />
+          <FavoritesList offers={offers}/>
         </div>
       </main>
       <footer className="footer container">
@@ -21,5 +22,9 @@ function FavoritesScreen() {
     </div>
   );
 }
+
+FavoritesScreen.propTypes = {
+  offers: offersProp,
+};
 
 export default FavoritesScreen;

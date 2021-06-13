@@ -26,7 +26,7 @@
       "https://7.react.pages.academy/static/hotel/14.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.7,
     "type": "house",
@@ -80,7 +80,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.3,
     "type": "house",
@@ -137,7 +137,7 @@
       "https://7.react.pages.academy/static/hotel/20.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.3,
     "type": "hotel",
@@ -191,7 +191,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2,
     "type": "room",
@@ -248,7 +248,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Perfectly located Castro",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.8,
     "type": "room",
@@ -307,7 +307,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.2,
     "type": "room",
@@ -362,7 +362,7 @@
       "https://7.react.pages.academy/static/hotel/19.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": false,
     "rating": 3,
     "type": "room",
@@ -419,7 +419,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "Loft Studio in the Central Area",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.1,
     "type": "house",
@@ -475,7 +475,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.7,
     "type": "apartment",
@@ -528,7 +528,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "Perfectly located Castro",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.7,
     "type": "house",
@@ -581,7 +581,7 @@
       "https://7.react.pages.academy/static/hotel/6.jpg"
     ],
     "title": "Beautiful & luxurious apartment at great location",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.1,
     "type": "room",
@@ -640,7 +640,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "Loft Studio in the Central Area",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.8,
     "type": "hotel",
@@ -699,7 +699,7 @@
       "https://7.react.pages.academy/static/hotel/6.jpg"
     ],
     "title": "Penthouse, 4-5 rooms + 5 balconies",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": false,
     "rating": 4.1,
     "type": "apartment",
@@ -756,7 +756,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.4,
     "type": "room",
@@ -809,7 +809,7 @@
       "https://7.react.pages.academy/static/hotel/8.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.2,
     "type": "house",
@@ -868,7 +868,7 @@
       "https://7.react.pages.academy/static/hotel/18.jpg"
     ],
     "title": "Nice, cozy, warm big bed apartment",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.7,
     "type": "house",
@@ -921,7 +921,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "The Joshua Tree House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.9,
     "type": "room",
@@ -972,7 +972,7 @@
       "https://7.react.pages.academy/static/hotel/17.jpg"
     ],
     "title": "Nice, cozy, warm big bed apartment",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.3,
     "type": "house",
@@ -1024,7 +1024,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.7,
     "type": "room",
@@ -1081,7 +1081,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.9,
     "type": "hotel",
@@ -1138,7 +1138,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.4,
     "type": "apartment",
@@ -1198,7 +1198,7 @@
       "https://7.react.pages.academy/static/hotel/7.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.6,
     "type": "room",
@@ -1251,7 +1251,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": false,
     "rating": 3.9,
     "type": "apartment",
@@ -1309,7 +1309,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "Beautiful & luxurious apartment at great location",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.2,
     "type": "house",
@@ -1361,7 +1361,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 3,
     "type": "house",
@@ -1422,7 +1422,7 @@
       "https://7.react.pages.academy/static/hotel/10.jpg"
     ],
     "title": "Wood and stone place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.8,
     "type": "apartment",
@@ -1482,7 +1482,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.8,
     "type": "apartment",
@@ -1536,7 +1536,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Perfectly located Castro",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.7,
     "type": "room",
@@ -1592,7 +1592,7 @@
       "https://7.react.pages.academy/static/hotel/8.jpg"
     ],
     "title": "Wood and stone place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.1,
     "type": "house",
@@ -1649,7 +1649,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4,
     "type": "room",
@@ -1706,7 +1706,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 3.3,
     "type": "house",
@@ -1764,7 +1764,7 @@
       "https://7.react.pages.academy/static/hotel/5.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.9,
     "type": "room",
@@ -1822,7 +1822,7 @@
       "https://7.react.pages.academy/static/hotel/17.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.9,
     "type": "house",
@@ -1878,7 +1878,7 @@
       "https://7.react.pages.academy/static/hotel/15.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.3,
     "type": "house",
@@ -1938,7 +1938,7 @@
       "https://7.react.pages.academy/static/hotel/14.jpg"
     ],
     "title": "Perfectly located Castro",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.6,
     "type": "room",
@@ -1990,7 +1990,7 @@
       "https://7.react.pages.academy/static/hotel/6.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.3,
     "type": "room",
@@ -2047,7 +2047,7 @@
       "https://7.react.pages.academy/static/hotel/6.jpg"
     ],
     "title": "Penthouse, 4-5 rooms + 5 balconies",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.1,
     "type": "house",
@@ -2099,7 +2099,7 @@
       "https://7.react.pages.academy/static/hotel/3.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 3,
     "type": "apartment",
@@ -2158,7 +2158,7 @@
       "https://7.react.pages.academy/static/hotel/5.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": false,
     "rating": 4.7,
     "type": "house",
@@ -2218,7 +2218,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "Wood and stone place",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": false,
     "rating": 3,
     "type": "house",
@@ -2275,7 +2275,7 @@
       "https://7.react.pages.academy/static/hotel/15.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": true,
     "rating": 3.1,
     "type": "house",
@@ -2327,7 +2327,7 @@
       "https://7.react.pages.academy/static/hotel/3.jpg"
     ],
     "title": "Loft Studio in the Central Area",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.8,
     "type": "house",
@@ -2386,7 +2386,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.9,
     "type": "apartment",
@@ -2441,7 +2441,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Tile House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.3,
     "type": "hotel",
@@ -2500,7 +2500,7 @@
       "https://7.react.pages.academy/static/hotel/7.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.7,
     "type": "house",
@@ -2561,7 +2561,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.9,
     "type": "apartment",
@@ -2622,7 +2622,7 @@
       "https://7.react.pages.academy/static/hotel/15.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4,
     "type": "house",
@@ -2676,7 +2676,7 @@
       "https://7.react.pages.academy/static/hotel/11.jpg"
     ],
     "title": "Nice, cozy, warm big bed apartment",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.9,
     "type": "room",
@@ -2734,7 +2734,7 @@
       "https://7.react.pages.academy/static/hotel/4.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.2,
     "type": "room",
@@ -2787,7 +2787,7 @@
       "https://7.react.pages.academy/static/hotel/11.jpg"
     ],
     "title": "Tile House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4,
     "type": "apartment",
@@ -2843,7 +2843,7 @@
       "https://7.react.pages.academy/static/hotel/19.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.5,
     "type": "house",
@@ -2896,7 +2896,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.2,
     "type": "house",
@@ -2951,7 +2951,7 @@
       "https://7.react.pages.academy/static/hotel/19.jpg"
     ],
     "title": "The Joshua Tree House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2,
     "type": "house",
@@ -3006,7 +3006,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Tile House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.8,
     "type": "apartment",
@@ -3057,7 +3057,7 @@
       "https://7.react.pages.academy/static/hotel/5.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.1,
     "type": "house",
@@ -3112,7 +3112,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.8,
     "type": "apartment",
@@ -3169,7 +3169,7 @@
       "https://7.react.pages.academy/static/hotel/10.jpg"
     ],
     "title": "The Joshua Tree House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.4,
     "type": "hotel",
@@ -3224,7 +3224,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.8,
     "type": "house",
@@ -3282,7 +3282,7 @@
       "https://7.react.pages.academy/static/hotel/15.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.6,
     "type": "hotel",
@@ -3337,7 +3337,7 @@
       "https://7.react.pages.academy/static/hotel/14.jpg"
     ],
     "title": "Loft Studio in the Central Area",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.2,
     "type": "house",
@@ -3393,7 +3393,7 @@
       "https://7.react.pages.academy/static/hotel/4.jpg"
     ],
     "title": "Beautiful & luxurious apartment at great location",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 3.6,
     "type": "apartment",
@@ -3453,7 +3453,7 @@
       "https://7.react.pages.academy/static/hotel/10.jpg"
     ],
     "title": "Loft Studio in the Central Area",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.1,
     "type": "room",
@@ -3505,7 +3505,7 @@
       "https://7.react.pages.academy/static/hotel/10.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.5,
     "type": "house",
@@ -3558,7 +3558,7 @@
       "https://7.react.pages.academy/static/hotel/11.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.1,
     "type": "room",
@@ -3614,7 +3614,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.6,
     "type": "house",
@@ -3675,7 +3675,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3,
     "type": "room",
@@ -3729,7 +3729,7 @@
       "https://7.react.pages.academy/static/hotel/10.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.8,
     "type": "house",
@@ -3786,7 +3786,7 @@
       "https://7.react.pages.academy/static/hotel/2.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.8,
     "type": "house",
@@ -3846,7 +3846,7 @@
       "https://7.react.pages.academy/static/hotel/20.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.1,
     "type": "house",
@@ -3898,7 +3898,7 @@
       "https://7.react.pages.academy/static/hotel/5.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.4,
     "type": "hotel",
@@ -3952,7 +3952,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.5,
     "type": "hotel",
@@ -4009,7 +4009,7 @@
       "https://7.react.pages.academy/static/hotel/13.jpg"
     ],
     "title": "House in countryside",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 4.4,
     "type": "room",
@@ -4062,7 +4062,7 @@
       "https://7.react.pages.academy/static/hotel/11.jpg"
     ],
     "title": "The Joshua Tree House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.7,
     "type": "hotel",
@@ -4122,7 +4122,7 @@
       "https://7.react.pages.academy/static/hotel/18.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.6,
     "type": "house",
@@ -4179,7 +4179,7 @@
       "https://7.react.pages.academy/static/hotel/20.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.5,
     "type": "house",
@@ -4239,7 +4239,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.2,
     "type": "room",
@@ -4295,7 +4295,7 @@
       "https://7.react.pages.academy/static/hotel/9.jpg"
     ],
     "title": "Beautiful & luxurious apartment at great location",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.1,
     "type": "house",
@@ -4350,7 +4350,7 @@
       "https://7.react.pages.academy/static/hotel/20.jpg"
     ],
     "title": "The house among olive ",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.3,
     "type": "apartment",
@@ -4402,7 +4402,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "Canal View Prinsengracht",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.9,
     "type": "room",
@@ -4461,7 +4461,7 @@
       "https://7.react.pages.academy/static/hotel/3.jpg"
     ],
     "title": "Wood and stone place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.7,
     "type": "room",
@@ -4517,7 +4517,7 @@
       "https://7.react.pages.academy/static/hotel/4.jpg"
     ],
     "title": "Waterfront with extraordinary view",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.5,
     "type": "hotel",
@@ -4578,7 +4578,7 @@
       "https://7.react.pages.academy/static/hotel/12.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": true,
+    "isFavorite": true,
     "is_premium": true,
     "rating": 4.2,
     "type": "room",
@@ -4636,7 +4636,7 @@
       "https://7.react.pages.academy/static/hotel/19.jpg"
     ],
     "title": "Perfectly located Castro",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.5,
     "type": "house",
@@ -4689,7 +4689,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Nice, cozy, warm big bed apartment",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 2.3,
     "type": "house",
@@ -4748,7 +4748,7 @@
       "https://7.react.pages.academy/static/hotel/16.jpg"
     ],
     "title": "Penthouse, 4-5 rooms + 5 balconies",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.5,
     "type": "room",
@@ -4804,7 +4804,7 @@
       "https://7.react.pages.academy/static/hotel/3.jpg"
     ],
     "title": "The Joshua Tree House",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.3,
     "type": "house",
@@ -4860,7 +4860,7 @@
       "https://7.react.pages.academy/static/hotel/8.jpg"
     ],
     "title": "Amazing and Extremely Central Flat",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 3.2,
     "type": "hotel",
@@ -4914,7 +4914,7 @@
       "https://7.react.pages.academy/static/hotel/8.jpg"
     ],
     "title": "Penthouse, 4-5 rooms + 5 balconies",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 2.5,
     "type": "room",
@@ -4969,7 +4969,7 @@
       "https://7.react.pages.academy/static/hotel/1.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": false,
     "rating": 4.9,
     "type": "house",
@@ -5028,7 +5028,7 @@
       "https://7.react.pages.academy/static/hotel/18.jpg"
     ],
     "title": "The Pondhouse - A Magical Place",
-    "is_favorite": false,
+    "isFavorite": false,
     "is_premium": true,
     "rating": 4.8,
     "type": "house",
