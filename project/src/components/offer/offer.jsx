@@ -42,7 +42,7 @@ function Offer({id, preview, price, rating, title, type}) {
 }
 
 Offer.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   preview: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
