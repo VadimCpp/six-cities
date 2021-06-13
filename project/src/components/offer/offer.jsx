@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import offerProp from './offer.prop';
 
-function Offer({ offer, handleMouseEnter, handleMouseLeave, isActive}) {
+function Offer({ offer, onMouseEnter, onMouseLeave, isActive}) {
   const {id, preview, price, rating, title, type} = offer;
 
   return (
     <article
       className="cities__place-card place-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div className="place-card__mark">
         <span>Premium</span>
@@ -50,8 +50,8 @@ function Offer({ offer, handleMouseEnter, handleMouseLeave, isActive}) {
 
 Offer.propTypes = {
   offer: offerProp,
-  handleMouseEnter: PropTypes.func.isRequired,
-  handleMouseLeave: PropTypes.func.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
 };
 
