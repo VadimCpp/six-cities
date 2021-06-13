@@ -35,12 +35,11 @@ function FavoritesList({offers}) {
     }
   });
 
-  return (
+  return cities.length ? (
     <section className="favorites">
-      {/* TODO: display something if no cities */}
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
-        {cities.length && cities.map((city) => (
+        {cities.map((city) => (
           <li className="favorites__locations-items" key={city.name}>
             <div className="favorites__locations locations locations--current">
               <div className="locations__item">
@@ -57,6 +56,14 @@ function FavoritesList({offers}) {
           </li>
         ))}
       </ul>
+    </section>
+  ) : (
+    <section className="favorites favorites--empty">
+      <h1 className="visually-hidden">Favorites (empty)</h1>
+      <div className="favorites__status-wrapper">
+        <b className="favorites__status">Nothing yet saved.</b>
+        <p className="favorites__status-description">Save properties to narrow down search or plan your future trips.</p>
+      </div>
     </section>
   );
 }
