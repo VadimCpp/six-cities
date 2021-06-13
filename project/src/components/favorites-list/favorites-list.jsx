@@ -22,7 +22,6 @@ function FavoritesList({offers}) {
   const cities = [];
   offers.forEach((o) => {
     if (o.isFavorite) {
-      // TODO: add city and name to prop types
       let city = cities.find((c) => c.name === o.city.name) ;
       if (!city) {
         city = {
