@@ -22,7 +22,7 @@ function RoomScreen({offers}) {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Link className="header__logo-link" to="main.html">
+              <Link className="header__logo-link" to="/">
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
               </Link>
             </div>
@@ -36,7 +36,7 @@ function RoomScreen({offers}) {
                   </Link>
                 </li>
                 <li className="header__nav-item">
-                  <Link className="header__nav-link" to="#">
+                  <Link className="header__nav-link" to="/">
                     <span className="header__signout">Sign out</span>
                   </Link>
                 </li>
