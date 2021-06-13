@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import offerProp from './offer.prop';
 
-function Offer({id, preview, price, rating, title, type}) {
+function Offer({ offer, handleMouseEnter, handleMouseLeave, isActive}) {
+  const {id, preview, price, rating, title, type} = offer;
+
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
@@ -33,7 +40,7 @@ function Offer({id, preview, price, rating, title, type}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`}>{title}</Link>
+          <Link to={`/offer/${id}`}>{title} {isActive && '(active)'}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -42,12 +49,10 @@ function Offer({id, preview, price, rating, title, type}) {
 }
 
 Offer.propTypes = {
-  id: PropTypes.number.isRequired,
-  preview: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  offer: offerProp,
+  handleMouseEnter: PropTypes.func.isRequired,
+  handleMouseLeave: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default Offer;
