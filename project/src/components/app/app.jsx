@@ -18,10 +18,12 @@ function App({offers}) {
         <Route path="/favorites" exact>
           <FavoritesScreen offers={offers}/>
         </Route>
-        <Route path="/offer/:id" exact>
-          {/* TODO: передать конкретный офер через render */}
-          <RoomScreen offers={offers}/>
-        </Route>
+        <Route path="/offer/:id" exact render={(routeProps) => {
+          const { id } = routeProps.match.params;
+          const offer = offers[id];
+          return offer ? <RoomScreen offer={offer}/> : <NotFoundScreen />;
+        }}
+        />
         <Route component={NotFoundScreen} />
       </Switch>
     </BrowserRouter>

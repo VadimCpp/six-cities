@@ -1,18 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import CommentForm from '../comment-form/comment-form';
-import offersProp from '../offers/offers.prop';
+import offerProp from '../offer/offer.prop';
 import getVerboseType from '../../utils/getVerboseType';
 
-function RoomScreen({offers}) {
-  const { id } = useParams();
-  const offer = offers.find((o) => o.id === Number(id));
-
-  if (!offer) {
-    // TODO: navigate Not Found screen
-  }
-
+function RoomScreen({offer}) {
   return (
     <div className="page">
       <Header />
@@ -278,7 +271,7 @@ function RoomScreen({offers}) {
 
 // TODO: display other attributes
 RoomScreen.propTypes = {
-  offers: offersProp,
+  offer: offerProp,
 };
 
 export default RoomScreen;
