@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import offerType from '../offer/offer.prop';
-import { capitalizeFirstLetter } from '../../utils/misc';
+import getVerboseType from '../../utils/getVerboseType';
 
 // TODO: попробовать объединить Offer и FavoritesCard компоненты
 function FavoritesCard({offer}) {
@@ -36,7 +36,7 @@ function FavoritesCard({offer}) {
         <h2 className="place-card__name">
           <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
+        <p className="place-card__type">{getVerboseType(type)}</p>
       </div>
     </article>
   );

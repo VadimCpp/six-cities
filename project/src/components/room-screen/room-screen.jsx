@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Header from '../header/header';
 import CommentForm from '../comment-form/comment-form';
 import offersProp from '../offers/offers.prop';
-import { capitalizeFirstLetter } from '../../utils/misc';
+import getVerboseType from '../../utils/getVerboseType';
 
 function RoomScreen({offers}) {
   const { id } = useParams();
@@ -66,7 +66,7 @@ function RoomScreen({offers}) {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {capitalizeFirstLetter(offer.type)}
+                  {getVerboseType(offer.type)}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   3 Bedrooms
