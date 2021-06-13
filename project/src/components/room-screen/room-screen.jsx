@@ -1,13 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../header/header';
-import offersProp from './../offers/offers.prop';
-
-// TODO: move to utils
-// https://stackoverflow.com/a/1026087/1775459
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import offersProp from '../offers/offers.prop';
+import { capitalizeFirstLetter } from '../../utils/misc';
 
 function RoomScreen({offers}) {
   const { id } = useParams();

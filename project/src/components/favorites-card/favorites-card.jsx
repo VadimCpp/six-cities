@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import offerType from '../offer/offer.prop';
+import { capitalizeFirstLetter } from '../../utils/misc';
 
 function FavoritesCard({offer}) {
   const { id, preview, price, rating, title, type } = offer;
@@ -34,7 +35,7 @@ function FavoritesCard({offer}) {
         <h2 className="place-card__name">
           <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );
