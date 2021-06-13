@@ -22,7 +22,7 @@ function Offers({offers}) {
 }
 
 Offers.propTypes = {
-  offers: offersProp,
+  offers: offersProp.isRequired,
 };
 
 export default Offers;

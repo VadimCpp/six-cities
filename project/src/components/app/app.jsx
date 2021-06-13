@@ -31,7 +31,7 @@ function App({offers}) {
 }
 
 App.propTypes = {
-  offers: offersProp,
+  offers: offersProp.isRequired,
 };
 
 export default App;

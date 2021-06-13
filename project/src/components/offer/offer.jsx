@@ -49,7 +49,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive}) {
 }
 
 Offer.propTypes = {
-  offer: offerProp,
+  offer: offerProp.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,

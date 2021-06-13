@@ -81,7 +81,7 @@ function MainScreen({offers}) {
 }
 
 MainScreen.propTypes = {
-  offers: offersProp,
+  offers: offersProp.isRequired,
 };
 
 export default MainScreen;

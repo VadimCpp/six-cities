@@ -24,7 +24,7 @@ function FavoritesScreen({offers}) {
 }
 
 FavoritesScreen.propTypes = {
-  offers: offersProp,
+  offers: offersProp.isRequired,
 };
 
 export default FavoritesScreen;

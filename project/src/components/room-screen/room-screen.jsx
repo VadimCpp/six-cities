@@ -271,7 +271,7 @@ function RoomScreen({offer}) {
 
 // TODO: display other attributes
 RoomScreen.propTypes = {
-  offer: offerProp,
+  offer: offerProp.isRequired,
 };
 
 export default RoomScreen;
