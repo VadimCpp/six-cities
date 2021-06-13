@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Offers from '../offers/offers';
+import offersProp from '../offers/offers.prop';
 
 function MainScreen({offers}) {
 
@@ -106,14 +106,7 @@ function MainScreen({offers}) {
 }
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  })),
+  offers: offersProp,
 };
 
 export default MainScreen;

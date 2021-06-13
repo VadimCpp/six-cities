@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Offer from '../offer/offer';
+import offersProp from './offers.prop';
 
 function Offers({offers}) {
   return (
@@ -11,14 +11,7 @@ function Offers({offers}) {
 }
 
 Offers.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  })),
+  offers: offersProp,
 };
 
 export default Offers;

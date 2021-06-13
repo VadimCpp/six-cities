@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import offersProp from './../offers/offers.prop';
 
 // TODO: move to utils
 // https://stackoverflow.com/a/1026087/1775459
@@ -352,13 +352,7 @@ function RoomScreen({offers}) {
 
 // TODO: display other attributes
 RoomScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  })),
+  offers: offersProp,
 };
 
 export default RoomScreen;
