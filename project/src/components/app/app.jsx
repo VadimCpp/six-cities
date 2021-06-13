@@ -19,6 +19,7 @@ function App({offers}) {
           <FavoritesScreen offers={offers}/>
         </Route>
         <Route path="/offer/:id" exact>
+          {/* TODO: передать конкретный офер через render */}
           <RoomScreen offers={offers}/>
         </Route>
         <Route component={NotFoundScreen} />

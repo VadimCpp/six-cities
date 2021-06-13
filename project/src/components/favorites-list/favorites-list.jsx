@@ -38,6 +38,7 @@ function FavoritesList({offers}) {
 
   return (
     <section className="favorites">
+      {/* TODO: display something if no cities */}
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
         {cities.length && cities.map((city) => (
@@ -56,7 +57,6 @@ function FavoritesList({offers}) {
             </div>
           </li>
         ))}
-        {/* TODO: display something if no cities */}
       </ul>
     </section>
   );

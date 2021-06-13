@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import offerType from '../offer/offer.prop';
 import { capitalizeFirstLetter } from '../../utils/misc';
 
+// TODO: попробовать объединить Offer и FavoritesCard компоненты
 function FavoritesCard({offer}) {
   const { id, preview, price, rating, title, type } = offer;
 

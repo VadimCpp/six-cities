@@ -12,6 +12,7 @@ function Offers({offers}) {
           <Offer
             key={offer.id}
             offer={offer}
+            // TODO: переименовать handle => on
             handleMouseEnter={() => setActiveOfferId(offer.id)}
             handleMouseLeave={() => setActiveOfferId(0)}
             isActive={activeOfferId === offer.id}
