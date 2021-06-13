@@ -16,7 +16,9 @@ function App({offers}) {
         </Route>
         <Route path="/login" exact component={LoginScreen} />
         <Route path="/favorites" exact component={FavoritesScreen} />
-        <Route path="/offer/:id" exact component={RoomScreen} />
+        <Route path="/offer/:id" exact>
+          <RoomScreen offers={offers}/>
+        </Route>
         <Route component={NotFoundScreen} />
       </Switch>
     </BrowserRouter>

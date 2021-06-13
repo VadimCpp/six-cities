@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function RoomScreen() {
+function RoomScreen({offers}) {
+  const { id } = useParams();
+  const offer = offers.find((o) => o.id === Number(id));
+
+  if (!offer) {
+    // TODO: navigate Not Found screen
+  }
+
   return (
     <div className="page">
       <header className="header">
@@ -335,5 +343,16 @@ function RoomScreen() {
 
   );
 }
+
+RoomScreen.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    preview: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  })),
+};
 
 export default RoomScreen;
