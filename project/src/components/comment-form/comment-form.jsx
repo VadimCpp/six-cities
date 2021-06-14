@@ -14,7 +14,7 @@ function ComponentForm() {
   }
 
   function handleSubmit(event) {
-    // TODO: реализовать сохранение сомментария
+    // TODO: реализовать сохранение комментария
     event.preventDefault();
   }
 
