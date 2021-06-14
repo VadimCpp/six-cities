@@ -4,12 +4,12 @@ import { AppRoute } from '../../const';
 import { Link, generatePath } from 'react-router-dom';
 import offerProp from './offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
+function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen}) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
 
   return (
     <article
-      className={`${isFavorite ? 'favorites__card' : 'cities__place-card'} place-card`}
+      className={`${fromFavoriteScreen ? 'favorites__card' : 'cities__place-card'} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -18,18 +18,18 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
           <span>Premium</span>
         </div>
       )}
-      <div className={`${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
+      <div className={`${fromFavoriteScreen ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
             src={preview}
-            width={isFavorite ? '150' : '260'}
-            height={isFavorite ? '110' : '200'}
+            width={fromFavoriteScreen ? '150' : '260'}
+            height={fromFavoriteScreen ? '110' : '200'}
             alt="Place"
           />
         </Link>
       </div>
-      <div className={`${isFavorite ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${fromFavoriteScreen ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -62,7 +62,7 @@ Offer.propTypes = {
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   isActive: PropTypes.bool,
-  isFavorite: PropTypes.bool.isRequired,
+  fromFavoriteScreen: PropTypes.bool.isRequired,
 };
 
 export default Offer;

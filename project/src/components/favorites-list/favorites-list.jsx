@@ -26,7 +26,7 @@ function FavoritesList({offers}) {
                 <Offer
                   key={offer.id}
                   offer={offer}
-                  isFavorite
+                  fromFavoriteScreen
                 />
               ))}
             </div>
