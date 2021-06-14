@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import getVerboseType from '../../utils/getVerboseType';
+import { RATING_TO_PERCENTS } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CommentForm from '../comment-form/comment-form';
@@ -42,7 +43,7 @@ function RoomScreen({offer}) {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `${offer.rating / 5 * 100}%` }}></span>
+                  <span style={{ width: `${offer.rating * RATING_TO_PERCENTS}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{offer.rating}</span>
