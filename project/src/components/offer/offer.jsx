@@ -22,7 +22,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
             src={preview}
             width={isFavorite ? '150' : '260'}
             height={isFavorite ? '110' : '200'}
-            alt="Place image"
+            alt="Place"
           />
         </Link>
       </div>
