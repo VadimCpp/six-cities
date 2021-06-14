@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FavoritesCard from '../favorites-card/favorites-card';
+import Offer from '../offer/offer';
 import offersProp from '../offers/offers.prop';
 
 function FavoritesList({offers}) {
@@ -50,7 +50,14 @@ function FavoritesList({offers}) {
             </div>
             <div className="favorites__places">
               {city.offers.map((offer) => (
-                <FavoritesCard key={offer.id} offer={offer}/>
+                <Offer
+                  key={offer.id}
+                  offer={offer}
+                  onMouseEnter={() => {}}
+                  onMouseLeave={() => {}}
+                  isActive={false}
+                  isFavorite
+                />
               ))}
             </div>
           </li>

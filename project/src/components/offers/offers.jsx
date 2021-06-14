@@ -15,6 +15,7 @@ function Offers({offers}) {
             onMouseEnter={() => setActiveOfferId(offer.id)}
             onMouseLeave={() => setActiveOfferId(0)}
             isActive={activeOfferId === offer.id}
+            isFavorite={false}
           />
         ))}
     </div>

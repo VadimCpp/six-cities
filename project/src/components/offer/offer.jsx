@@ -3,24 +3,30 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import offerProp from './offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive}) {
+function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
   const {id, preview, price, rating, title, type} = offer;
 
   return (
     <article
-      className="cities__place-card place-card"
+      className={`${isFavorite ? 'favorites__card' : 'cities__place-card'} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
         <Link to={`/offer/${id}`}>
-          <img className="place-card__image" src={preview} width="260" height="200" alt="Place image" />
+          <img
+            className="place-card__image"
+            src={preview}
+            width={isFavorite ? '150' : '260'}
+            height={isFavorite ? '110' : '200'}
+            alt="Place image"
+          />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={`${isFavorite ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -53,6 +59,7 @@ Offer.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default Offer;
