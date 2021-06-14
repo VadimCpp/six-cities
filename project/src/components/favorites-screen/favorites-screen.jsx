@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
+import Footer from '../footer/footer';
 import offersProp from '../offers/offers.prop';
 
 function FavoritesScreen({offers}) {
@@ -14,11 +14,8 @@ function FavoritesScreen({offers}) {
           <FavoritesList offers={offers}/>
         </div>
       </main>
-      <footer className="footer container">
-        <Link className="footer__logo-link" to="/">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </Link>
-      </footer>
+
+      <Footer />
     </div>
   );
 }

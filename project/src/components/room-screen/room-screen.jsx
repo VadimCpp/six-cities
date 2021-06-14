@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/header';
+import Footer from '../footer/footer';
 import CommentForm from '../comment-form/comment-form';
 import offerProp from '../offer/offer.prop';
 import getVerboseType from '../../utils/getVerboseType';
@@ -116,6 +117,7 @@ function RoomScreen({offer}) {
                     </div>
                   </li>
                 </ul>
+                {/* TODO: отображать только для авторизованных пользователей */}
                 <CommentForm />
               </section>
             </div>
@@ -226,6 +228,8 @@ function RoomScreen({offer}) {
           </section>
         </div>
       </main>
+
+      <Footer />
     </div>
 
   );
