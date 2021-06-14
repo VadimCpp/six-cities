@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import getVerboseType from '../../utils/getVerboseType';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CommentForm from '../comment-form/comment-form';
 import offerProp from '../offer/offer.prop';
-import getVerboseType from '../../utils/getVerboseType';
 
 function RoomScreen({offer}) {
   return (

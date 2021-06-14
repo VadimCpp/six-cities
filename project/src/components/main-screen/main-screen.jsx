@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import offersProp from '../offers/offers.prop';
@@ -16,32 +17,32 @@ function MainScreen({offers}) {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="/">
+                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
                   <span>Paris</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="/">
+                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
                   <span>Cologne</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="/">
+                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
                   <span>Brussels</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item tabs__item--active" to="/">
+                <Link className="locations__item-link tabs__item tabs__item--active" to={AppRoute.ROOT}>
                   <span>Amsterdam</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="/">
+                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
                   <span>Hamburg</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="/">
+                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
                   <span>Dusseldorf</span>
                 </Link>
               </li>

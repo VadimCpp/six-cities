@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import Offer from '../offer/offer';
 import offersProp from '../offers/offers.prop';
-
 function FavoritesList({offers}) {
   //
   // NOTE!
@@ -43,7 +43,7 @@ function FavoritesList({offers}) {
           <li className="favorites__locations-items" key={city.name}>
             <div className="favorites__locations locations locations--current">
               <div className="locations__item">
-                <Link className="locations__item-link" to="/">
+                <Link className="locations__item-link" to={AppRoute.ROOT}>
                   <span>{city.name}</span>
                 </Link>
               </div>

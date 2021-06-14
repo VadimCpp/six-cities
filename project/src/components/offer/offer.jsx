@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AppRoute } from '../../const';
 import { Link } from 'react-router-dom';
 import offerProp from './offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
-
-  if (offer.isPremium === true) {
-    console.log(offer);
-  }
 
   return (
     <article
@@ -22,7 +19,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
         </div>
       )}
       <div className={`${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
-        <Link to={`/offer/${id}`}>
+        <Link to={`${AppRoute.ROOM}/${id}`}>
           <img
             className="place-card__image"
             src={preview}
@@ -52,7 +49,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`}>{title} {isActive && '(active)'}</Link>
+          <Link to={`${AppRoute.ROOM}/${id}`}>{title} {isActive && '(active)'}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
