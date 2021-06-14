@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppRoute } from '../../const';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import offerProp from './offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
@@ -19,7 +19,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
         </div>
       )}
       <div className={`${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
-        <Link to={`${AppRoute.ROOM}/${id}`}>
+        <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
             src={preview}
@@ -49,7 +49,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.ROOM}/${id}`}>{title} {isActive && '(active)'}</Link>
+          <Link to={generatePath(AppRoute.ROOM, { id })}>{title} {isActive && '(active)'}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
