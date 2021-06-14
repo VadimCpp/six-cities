@@ -53,9 +53,6 @@ function FavoritesList({offers}) {
                 <Offer
                   key={offer.id}
                   offer={offer}
-                  onMouseEnter={() => {}}
-                  onMouseLeave={() => {}}
-                  isActive={false}
                   isFavorite
                 />
               ))}
