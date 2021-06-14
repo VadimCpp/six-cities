@@ -1,39 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import groupByCities from '../../utils/groupByCities';
 import Offer from '../offer/offer';
 import offersProp from '../offers/offers.prop';
+
 function FavoritesList({offers}) {
-  //
-  // NOTE!
-  // Формируем массив объектов для каждого города. Пример:
-  // const cities = [
-  //   {
-  //     name: "Hamburg",
-  //     offers: [],
-  //   },
-  //   {
-  //     name: "Cologne",
-  //     offers: [],
-  //   },
-  //   ...
-  // ];
-  //
-  const cities = [];
-  offers.forEach((o) => {
-    if (o.isFavorite) {
-      let city = cities.find((c) => c.name === o.city.name) ;
-      if (!city) {
-        city = {
-          name: o.city.name,
-          offers: [o],
-        };
-        cities.push(city);
-      } else {
-        city.offers.push(o);
-      }
-    }
-  });
+  const cities = groupByCities(offers);
 
   return cities.length ? (
     <section className="favorites">
