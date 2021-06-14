@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import offerProp from './offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
-  const {id, preview, price, rating, title, type} = offer;
+  const {id, preview, price, rating, title, type, isPremium} = offer;
+
+  if (offer.isPremium === true) {
+    console.log(offer);
+  }
 
   return (
     <article
@@ -12,9 +16,11 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, isFavorite}) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+      {isPremium && (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      )}
       <div className={`${isFavorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
         <Link to={`/offer/${id}`}>
           <img

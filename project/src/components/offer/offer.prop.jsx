@@ -21,4 +21,5 @@ export default PropTypes.shape({
   bedrooms: PropTypes.number.isRequired,
   maxAdults: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired),
+  isPremium: PropTypes.bool.isRequired,
 });
