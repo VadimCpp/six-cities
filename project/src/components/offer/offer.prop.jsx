@@ -9,6 +9,10 @@ export default PropTypes.shape({
   type: PropTypes.string.isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }),
   }),
   host: PropTypes.shape({
     avatarUrl: PropTypes.string.isRequired,
