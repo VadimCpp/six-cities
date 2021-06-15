@@ -12,6 +12,7 @@ export default PropTypes.shape({
     location: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
     }),
   }),
   host: PropTypes.shape({
@@ -26,4 +27,9 @@ export default PropTypes.shape({
   maxAdults: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired),
   isPremium: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+  }),
 });
