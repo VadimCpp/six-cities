@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import Offers from '../offers/offers';
+import CitiesMap from '../cities-map/cities-map';
 import offersProp from '../offers/offers.prop';
 
 function MainScreen({offers}) {
@@ -65,7 +66,7 @@ function MainScreen({offers}) {
               <Offers offers={sortedOffers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <CitiesMap />
             </div>
           </div>
         </div>
