@@ -33,7 +33,7 @@ function ComponentForm() {
           { stars: 3, title: 'not bad' },
           { stars: 2, title: 'badly' },
           { stars: 1, title: 'terribly' },
-        ].map(({ stars, title }) => <CommentStar key={stars} stars={stars} title={title} handleRatingChange={handleRatingChange} />)}
+        ].map(({ stars, title }) => <CommentStar key={stars} stars={stars} title={title} onRatingChange={handleRatingChange} />)}
       </div>
       <textarea
         className="reviews__textarea form__textarea"
