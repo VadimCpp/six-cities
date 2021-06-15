@@ -34,6 +34,7 @@ function MainScreen({offers}) {
                   <Link
                     className={`locations__item-link tabs__item ${cityName === city ? 'tabs__item--active' : ''}`}
                     onClick={() => setCity(cityName)}
+                    to="/"
                   >
                     <span>{cityName}</span>
                   </Link>
@@ -65,9 +66,7 @@ function MainScreen({offers}) {
               </form>
               <Offers offers={sortedOffers}/>
             </section>
-            <div className="cities__right-section">
-              <CitiesMap offers={sortedOffers} />
-            </div>
+            <CitiesMap offers={sortedOffers} />
           </div>
         </div>
       </main>

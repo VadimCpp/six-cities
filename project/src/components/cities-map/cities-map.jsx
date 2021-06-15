@@ -43,7 +43,8 @@ function CitiesMap({offers}) {
   }, []);
 
   return (
-    <section
+    <div
+      className="cities__right-section"
       id="map"
       style={{
         width: '512px',
