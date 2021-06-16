@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import offersProp from '../offers/offers.prop';
 
 function CitiesMap({offers}) {
-  const [map, setMap] = useState(null);
+  const map = useRef();
 
   //
   // NOTE!
@@ -13,28 +13,32 @@ function CitiesMap({offers}) {
   useEffect(() => {
     const city = [52.38333, 4.9];
     const zoom = 12;
-    setMap(leaflet.map('map', {
+    map.current = leaflet.map('map', {
       center: city,
       zoom: zoom,
       zoomControl: false,
       marker: true,
-    }));
+    });
+
+    return () => {
+      map.current.remove();
+    };
   }, []);
 
   useEffect(() => {
-    if (map && offers.length) {
+    if (map.current && offers.length) {
       leaflet
         .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         })
-        .addTo(map);
+        .addTo(map.current);
 
       const city = [
         offers[0].city.location.latitude,
         offers[0].city.location.longitude,
       ];
       const zoom = offers[0].city.location.zoom;
-      map.setView(city, zoom);
+      map.current.setView(city, zoom);
 
       const icon = leaflet.icon({
         iconUrl: 'img/pin.svg',
@@ -48,10 +52,10 @@ function CitiesMap({offers}) {
         ];
         leaflet
           .marker(coords, {icon})
-          .addTo(map);
+          .addTo(map.current);
       });
     }
-  }, [map, offers]);
+  }, [offers]);
 
   return (
     <div
