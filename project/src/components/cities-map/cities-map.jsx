@@ -53,16 +53,15 @@ function CitiesMap({offers, city}) {
   }, [offers ,city]);
 
   return (
-    <div
-      className="cities__right-section"
-      id="map"
-      ref={mapRef}
-      style={{
-        width: '512px',
-        height: '647px',
-        overflow: 'hidden',
-      }}
-    />
+    <section className="cities__map map">
+      <div
+        id="map"
+        ref={mapRef}
+        style={{
+          height: '100%',
+        }}
+      />
+    </section>
   );
 }
 
