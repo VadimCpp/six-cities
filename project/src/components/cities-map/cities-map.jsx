@@ -4,6 +4,11 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import offersProp from '../offers/offers.prop';
 
+const icon = leaflet.icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [27, 39],
+});
+
 function CitiesMap({offers, city}) {
   const map = useRef();
   const mapRef = useRef();
@@ -34,11 +39,6 @@ function CitiesMap({offers, city}) {
         .addTo(map.current);
 
       map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
-
-      const icon = leaflet.icon({
-        iconUrl: 'img/pin.svg',
-        iconSize: [30, 30],
-      });
 
       offers.forEach((o) => {
         const coords = [
