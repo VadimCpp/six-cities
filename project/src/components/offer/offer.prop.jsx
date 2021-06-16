@@ -9,17 +9,27 @@ export default PropTypes.shape({
   type: PropTypes.string.isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-  }),
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
   host: PropTypes.shape({
     avatarUrl: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     isPro: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   description: PropTypes.string.isRequired,
   goods: PropTypes.arrayOf(PropTypes.string.isRequired),
   bedrooms: PropTypes.number.isRequired,
   maxAdults: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired),
   isPremium: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+  }).isRequired,
 });

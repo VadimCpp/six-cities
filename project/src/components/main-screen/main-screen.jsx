@@ -1,51 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
 import Header from '../header/header';
 import Offers from '../offers/offers';
+import CitiesMap from '../cities-map/cities-map';
 import offersProp from '../offers/offers.prop';
 
 function MainScreen({offers}) {
+  const [city, setCity] = useState('Amsterdam');
+
+  const cityOffers = offers.filter((o) => o.city.name === city);
 
   return (
     <div className="page page--gray page--main">
       <Header />
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
-                  <span>Paris</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
-                  <span>Cologne</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
-                  <span>Brussels</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item tabs__item--active" to={AppRoute.ROOT}>
-                  <span>Amsterdam</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
-                  <span>Hamburg</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.ROOT}>
-                  <span>Dusseldorf</span>
-                </Link>
-              </li>
+              {/* TODO: сформировать список городлов из оферов */}
+              {[
+                'Paris',
+                'Cologne',
+                'Brussels',
+                'Amsterdam',
+                'Hamburg',
+                'Dusseldorf',
+              ].map((cityName) => (
+                <li className="locations__item" key={cityName}>
+                  <Link
+                    className={`locations__item-link tabs__item ${cityName === city ? 'tabs__item--active' : ''}`}
+                    onClick={() => setCity(cityName)}
+                    to="/"
+                  >
+                    <span>{cityName}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </section>
         </div>
@@ -53,7 +44,7 @@ function MainScreen({offers}) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{cityOffers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -62,17 +53,18 @@ function MainScreen({offers}) {
                     <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
-                <ul className="places__options places__options--custom places__options--opened">
+                {/* TODO: реализовать */}
+                {/* <ul className="places__options places__options--custom places__options--opened">
                   <li className="places__option places__option--active" tabIndex="0">Popular</li>
                   <li className="places__option" tabIndex="0">Price: low to high</li>
                   <li className="places__option" tabIndex="0">Price: high to low</li>
                   <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
+                </ul> */}
               </form>
-              <Offers offers={offers}/>
+              <Offers offers={cityOffers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <CitiesMap offers={cityOffers} city={cityOffers[0].city}/>
             </div>
           </div>
         </div>
