@@ -7,11 +7,8 @@ import offersProp from '../offers/offers.prop';
 
 function MainScreen({offers}) {
   const [city, setCity] = useState('Amsterdam');
-  const [sortedOffers, setSortedOffers] = useState([]);
 
-  useEffect(() => {
-    setSortedOffers(offers.filter((o) => o.city.name === city));
-  }, [city, offers]);
+  const cityOffers = offers.filter((o) => o.city.name === city);
 
   return (
     <div className="page page--gray page--main">
@@ -47,7 +44,7 @@ function MainScreen({offers}) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{sortedOffers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{cityOffers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -64,10 +61,10 @@ function MainScreen({offers}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <Offers offers={sortedOffers}/>
+              <Offers offers={cityOffers}/>
             </section>
             <div className="cities__right-section">
-              { sortedOffers.length && <CitiesMap offers={sortedOffers} city={sortedOffers[0].city}/> }
+              <CitiesMap offers={cityOffers} city={cityOffers[0].city}/>
             </div>
           </div>
         </div>
