@@ -16,12 +16,12 @@ function MainScreen({offers}) {
   return (
     <div className="page page--gray page--main">
       <Header />
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
+              {/* TODO: сформировать список городлов из оферов */}
               {[
                 'Paris',
                 'Cologne',
@@ -66,7 +66,7 @@ function MainScreen({offers}) {
               </form>
               <Offers offers={sortedOffers}/>
             </section>
-            <CitiesMap offers={sortedOffers} />
+            <CitiesMap offers={sortedOffers} city={sortedOffers[0].city}/>
           </div>
         </div>
       </main>

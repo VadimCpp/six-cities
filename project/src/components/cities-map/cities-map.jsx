@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import offersProp from '../offers/offers.prop';
 
-function CitiesMap({offers}) {
+function CitiesMap({offers, city}) {
   const map = useRef();
 
   //
@@ -11,11 +12,9 @@ function CitiesMap({offers}) {
   // Одноразово инициализируем карту
   //
   useEffect(() => {
-    const city = [52.38333, 4.9];
-    const zoom = 12;
     map.current = leaflet.map('map', {
-      center: city,
-      zoom: zoom,
+      center: [city.location.latitude, city.location.longitude],
+      zoom: city.location.zoom,
       zoomControl: false,
       marker: true,
     });
@@ -23,7 +22,7 @@ function CitiesMap({offers}) {
     return () => {
       map.current.remove();
     };
-  }, []);
+  }, [city]);
 
   useEffect(() => {
     if (map.current && offers.length) {
@@ -33,12 +32,7 @@ function CitiesMap({offers}) {
         })
         .addTo(map.current);
 
-      const city = [
-        offers[0].city.location.latitude,
-        offers[0].city.location.longitude,
-      ];
-      const zoom = offers[0].city.location.zoom;
-      map.current.setView(city, zoom);
+      map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
 
       const icon = leaflet.icon({
         iconUrl: 'img/pin.svg',
@@ -55,7 +49,7 @@ function CitiesMap({offers}) {
           .addTo(map.current);
       });
     }
-  }, [offers]);
+  }, [offers ,city]);
 
   return (
     <div
@@ -72,6 +66,14 @@ function CitiesMap({offers}) {
 
 CitiesMap.propTypes = {
   offers: offersProp.isRequired,
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default CitiesMap;
