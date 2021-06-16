@@ -66,7 +66,7 @@ function MainScreen({offers}) {
               </form>
               <Offers offers={sortedOffers}/>
             </section>
-            <CitiesMap offers={sortedOffers} city={sortedOffers[0].city}/>
+            { sortedOffers.length && <CitiesMap offers={sortedOffers} city={sortedOffers[0].city}/> }
           </div>
         </div>
       </main>

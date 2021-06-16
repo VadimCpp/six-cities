@@ -6,13 +6,14 @@ import offersProp from '../offers/offers.prop';
 
 function CitiesMap({offers, city}) {
   const map = useRef();
+  const mapRef = useRef();
 
   //
   // NOTE!
   // Одноразово инициализируем карту
   //
   useEffect(() => {
-    map.current = leaflet.map('map', {
+    map.current = leaflet.map(mapRef.current, {
       center: [city.location.latitude, city.location.longitude],
       zoom: city.location.zoom,
       zoomControl: false,
@@ -55,6 +56,7 @@ function CitiesMap({offers, city}) {
     <div
       className="cities__right-section"
       id="map"
+      ref={mapRef}
       style={{
         width: '512px',
         height: '647px',
