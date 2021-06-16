@@ -11,24 +11,14 @@ function CitiesMap({offers}) {
   // Одноразово инициализируем карту
   //
   useEffect(() => {
-    try {
-      const city = [52.38333, 4.9];
-      const zoom = 12;
-      setMap(leaflet.map('map', {
-        center: city,
-        zoom: zoom,
-        zoomControl: false,
-        marker: true,
-      }));
-    }
-    catch(err) {
-      //
-      // NOTE!
-      // При обновлении окна в дебаге часто появляется ошибка:
-      // "Карта уже инициализирована"
-      // Игнорируем...
-      //
-    }
+    const city = [52.38333, 4.9];
+    const zoom = 12;
+    setMap(leaflet.map('map', {
+      center: city,
+      zoom: zoom,
+      zoomControl: false,
+      marker: true,
+    }));
   }, []);
 
   useEffect(() => {
