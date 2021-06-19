@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link, generatePath } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENTS } from '../../const';
-import { Link, generatePath } from 'react-router-dom';
-import offerProp from './offer.prop';
+import offerProp from '../../types/offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen}) {
   const {id, preview, price, rating, title, type, isPremium} = offer;

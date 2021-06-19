@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import cityProp from '../../types/city.prop';
+import offersProp from '../../types/offers.prop';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import offersProp from '../offers/offers.prop';
 
 const icon = leaflet.icon({
   iconUrl: 'img/pin.svg',
@@ -66,14 +66,7 @@ function CitiesMap({city, offers}) {
 }
 
 CitiesMap.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      zoom: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  city: cityProp.isRequired,
   offers: offersProp.isRequired,
 };
 

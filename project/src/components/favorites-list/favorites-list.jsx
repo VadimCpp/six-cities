@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import groupByCities from '../../utils/groupByCities';
+import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
-import offersProp from '../offers/offers.prop';
 
 function FavoritesList({offers}) {
   const cities = groupByCities(offers);

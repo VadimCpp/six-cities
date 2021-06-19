@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import getCities from '../../utils/getCities';
+import offersProp from '../../types/offers.prop';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
-import offersProp from '../offers/offers.prop';
 
 function MainScreen({offers}) {
   const cities = getCities(offers);

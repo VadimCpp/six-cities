@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import getVerboseType from '../../utils/getVerboseType';
+import offerProp from '../../types/offer.prop';
 import { RATING_TO_PERCENTS } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CommentForm from '../comment-form/comment-form';
-import offerProp from '../offer/offer.prop';
 
 function RoomScreen({offer}) {
   return (

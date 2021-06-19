@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import cityProp from './city.prop';
+import locationProp from './location.prop';
 
 export default PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -7,14 +9,7 @@ export default PropTypes.shape({
   rating: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      zoom: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  city: cityProp.isRequired,
   host: PropTypes.shape({
     avatarUrl: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
@@ -27,9 +22,5 @@ export default PropTypes.shape({
   maxAdults: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired),
   isPremium: PropTypes.bool.isRequired,
-  location: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
-    zoom: PropTypes.number.isRequired,
-  }).isRequired,
+  location: locationProp.isRequired,
 });

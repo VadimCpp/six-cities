@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
-import offersProp from './offers.prop';
 
 function Offers({offers}) {
   const [activeOfferId, setActiveOfferId] = useState(0);
