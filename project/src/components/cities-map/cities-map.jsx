@@ -9,7 +9,7 @@ const icon = leaflet.icon({
   iconSize: [27, 39],
 });
 
-function CitiesMap({offers, city}) {
+function CitiesMap({city, offers}) {
   const map = useRef();
   const mapRef = useRef();
 
@@ -66,7 +66,6 @@ function CitiesMap({offers, city}) {
 }
 
 CitiesMap.propTypes = {
-  offers: offersProp.isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
     location: PropTypes.shape({
@@ -75,6 +74,7 @@ CitiesMap.propTypes = {
       zoom: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
+  offers: offersProp.isRequired,
 };
 
 export default CitiesMap;
