@@ -1,15 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { AppRoute, RATING_TO_PERCENTS } from '../../const';
 import { Link, generatePath } from 'react-router-dom';
-import offerProp from './offer.prop';
+import PropTypes from 'prop-types';
+import { AppRoute, RATING_TO_PERCENT } from '../../const';
+import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen}) {
+function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoomScreen }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
+  // TODO: заменить fromFavoriteScreen, fromRoomScreen параметрами классов
+  const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
+  const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
+
+  const imgWidth = fromFavoriteScreen ? '150' : '260';
+  const imgHeight = fromFavoriteScreen ? '110' : '200';
 
   return (
     <article
-      className={`${fromFavoriteScreen ? 'favorites__card' : 'cities__place-card'} place-card`}
+      className={`${cardClass} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -18,14 +24,19 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
           <span>Premium</span>
         </div>
       )}
-      <div className={`${fromFavoriteScreen ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
+      <div className={`${imageWrapClass} place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
             src={preview}
-            width={fromFavoriteScreen ? '150' : '260'}
-            height={fromFavoriteScreen ? '110' : '200'}
+            width={imgWidth}
+            height={imgHeight}
             alt="Place"
+            style={{
+              maxHeight: `${imgHeight}px`,
+              minHeight: `${imgHeight}px`,
+              objectFit: 'cover',
+            }}
           />
         </Link>
       </div>
@@ -44,12 +55,12 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating * RATING_TO_PERCENTS}%` }}></span>
+            <span style={{ width: `${rating * RATING_TO_PERCENT}%` }}></span>
             <span className="visually-hidden">Rating {rating}</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={generatePath(AppRoute.ROOM, { id })}>{title} {isActive && '(active)'}</Link>
+          <Link to={generatePath(AppRoute.ROOM, { id })}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -61,8 +72,8 @@ Offer.propTypes = {
   offer: offerProp.isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  isActive: PropTypes.bool,
-  fromFavoriteScreen: PropTypes.bool.isRequired,
+  fromFavoriteScreen: PropTypes.bool,
+  fromRoomScreen: PropTypes.bool,
 };
 
 export default Offer;

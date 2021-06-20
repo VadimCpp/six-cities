@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import cityProp from '../../types/city.prop';
+import offersProp from '../../types/offers.prop';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import offersProp from '../offers/offers.prop';
 
 const icon = leaflet.icon({
   iconUrl: 'img/pin.svg',
   iconSize: [27, 39],
 });
 
-function CitiesMap({offers, city}) {
+function CitiesMap({ city, offers, className = '' }) {
   const map = useRef();
   const mapRef = useRef();
 
@@ -53,7 +54,7 @@ function CitiesMap({offers, city}) {
   }, [offers ,city]);
 
   return (
-    <section className="cities__map map">
+    <section className={`${className} map`}>
       <div
         id="map"
         ref={mapRef}
@@ -66,15 +67,9 @@ function CitiesMap({offers, city}) {
 }
 
 CitiesMap.propTypes = {
+  city: cityProp.isRequired,
   offers: offersProp.isRequired,
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      zoom: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  className: PropTypes.string,
 };
 
 export default CitiesMap;

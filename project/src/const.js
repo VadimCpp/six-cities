@@ -5,4 +5,4 @@ export const AppRoute = {
   ROOM: '/offer/:id',
 };
 
-export const RATING_TO_PERCENTS = 20; // same as / 5 * 100
+export const RATING_TO_PERCENT = 20; // same as / 5 * 100

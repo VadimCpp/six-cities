@@ -1,8 +1,8 @@
 import React from 'react';
+import offersProp from '../../types/offers.prop';
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
-import offersProp from '../offers/offers.prop';
 
 function FavoritesScreen({offers}) {
   return (

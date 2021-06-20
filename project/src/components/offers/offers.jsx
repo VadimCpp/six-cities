@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
-import offersProp from './offers.prop';
 
-function Offers({offers}) {
+function Offers({offers, nearPlaces}) {
+  // eslint-disable-next-line no-unused-vars
   const [activeOfferId, setActiveOfferId] = useState(0);
+  // TODO: использовать activeOfferId для подсветки на карте
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    // TODO: заменить nearPlaces именем класса
+    <div className={nearPlaces ? 'near-places__list places__list' : 'cities__places-list places__list tabs__content'}>
       {offers.map((offer) =>
         (
           <Offer
@@ -14,8 +18,8 @@ function Offers({offers}) {
             offer={offer}
             onMouseEnter={() => setActiveOfferId(offer.id)}
             onMouseLeave={() => setActiveOfferId(0)}
-            isActive={activeOfferId === offer.id}
             fromFavoriteScreen={false}
+            fromRoomScreen={nearPlaces}
           />
         ))}
     </div>
@@ -24,6 +28,7 @@ function Offers({offers}) {
 
 Offers.propTypes = {
   offers: offersProp.isRequired,
+  nearPlaces: PropTypes.bool,
 };
 
 export default Offers;
