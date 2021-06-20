@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import getVerboseType from '../../utils/getVerboseType';
 import offerProp from '../../types/offer.prop';
+import commentsProp from '../../types/comments.prop';
 import { RATING_TO_PERCENTS } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Reviews from '../reviews/reviews';
 import Host from '../host/host';
 
-function RoomScreen({offer}) {
+function RoomScreen({ offer, comments }) {
   return (
     <div className="page">
       <Header />
@@ -80,7 +81,7 @@ function RoomScreen({offer}) {
                   {offer.description}
                 </p>
               </div>
-              <Reviews />
+              <Reviews comments={comments} />
             </div>
           </div>
           <section className="property__map map"></section>
@@ -198,6 +199,7 @@ function RoomScreen({offer}) {
 
 RoomScreen.propTypes = {
   offer: offerProp.isRequired,
+  comments: commentsProp.isRequired,
 };
 
 export default RoomScreen;

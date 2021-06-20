@@ -23,7 +23,7 @@ function App({offers, comments}) {
         <Route path={AppRoute.ROOM} exact render={(routeProps) => {
           const { id } = routeProps.match.params;
           const offer = offers.find((o) => Number(id) === o.id);
-          return offer ? <RoomScreen offer={offer}/> : <NotFoundScreen />;
+          return offer ? <RoomScreen offer={offer} comments={comments} /> : <NotFoundScreen />;
         }}
         />
         <Route component={NotFoundScreen} />
