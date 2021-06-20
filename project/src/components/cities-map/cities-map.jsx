@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import cityProp from '../../types/city.prop';
 import offersProp from '../../types/offers.prop';
 import leaflet from 'leaflet';
@@ -9,7 +10,7 @@ const icon = leaflet.icon({
   iconSize: [27, 39],
 });
 
-function CitiesMap({city, offers}) {
+function CitiesMap({city, offers, property}) {
   const map = useRef();
   const mapRef = useRef();
 
@@ -53,7 +54,7 @@ function CitiesMap({city, offers}) {
   }, [offers ,city]);
 
   return (
-    <section className="cities__map map">
+    <section className={`${property ? 'property__map' : 'cities__map'} map`}>
       <div
         id="map"
         ref={mapRef}
@@ -68,6 +69,7 @@ function CitiesMap({city, offers}) {
 CitiesMap.propTypes = {
   city: cityProp.isRequired,
   offers: offersProp.isRequired,
+  property: PropTypes.bool,
 };
 
 export default CitiesMap;
