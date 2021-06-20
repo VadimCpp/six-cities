@@ -1,4 +1,4 @@
 import PropTypes from 'prop-types';
-import offersProp from './offer.prop';
+import offerProp from './offer.prop';
 
-export default PropTypes.arrayOf(offersProp);
+export default PropTypes.arrayOf(offerProp);

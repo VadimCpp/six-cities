@@ -2,13 +2,14 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import offersProp from '../../types/offers.prop';
+import commentsProp from '../../types/comments.prop';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 
-function App({offers}) {
+function App({offers, comments}) {
   return (
     <BrowserRouter>
       <Switch>
@@ -33,6 +34,7 @@ function App({offers}) {
 
 App.propTypes = {
   offers: offersProp.isRequired,
+  comments: commentsProp.isRequired,
 };
 
 export default App;
