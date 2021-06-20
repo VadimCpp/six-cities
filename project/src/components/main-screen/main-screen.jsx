@@ -59,7 +59,7 @@ function MainScreen({offers}) {
               <Offers offers={offersForCity}/>
             </section>
             <div className="cities__right-section">
-              <CitiesMap city={city} offers={offersForCity} />
+              <CitiesMap city={city} offers={offersForCity} className="cities__map" />
             </div>
           </div>
         </div>

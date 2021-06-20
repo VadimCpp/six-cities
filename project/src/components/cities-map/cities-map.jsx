@@ -10,7 +10,7 @@ const icon = leaflet.icon({
   iconSize: [27, 39],
 });
 
-function CitiesMap({city, offers, property}) {
+function CitiesMap({ city, offers, className = '' }) {
   const map = useRef();
   const mapRef = useRef();
 
@@ -54,7 +54,7 @@ function CitiesMap({city, offers, property}) {
   }, [offers ,city]);
 
   return (
-    <section className={`${property ? 'property__map' : 'cities__map'} map`}>
+    <section className={`${className} map`}>
       <div
         id="map"
         ref={mapRef}
@@ -69,7 +69,7 @@ function CitiesMap({city, offers, property}) {
 CitiesMap.propTypes = {
   city: cityProp.isRequired,
   offers: offersProp.isRequired,
-  property: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default CitiesMap;

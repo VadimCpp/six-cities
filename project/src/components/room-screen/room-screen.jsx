@@ -86,7 +86,7 @@ function RoomScreen({ offer, comments, offersForMap }) {
               <Reviews comments={comments} />
             </div>
           </div>
-          <CitiesMap city={offer.city} offers={offersForMap} property />
+          <CitiesMap city={offer.city} offers={offersForMap} className="property__map" />
         </section>
         <div className="container">
           <section className="near-places places">
