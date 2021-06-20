@@ -24,12 +24,14 @@ function Review({ review }) {
         <p className="reviews__text">
           {comment}
         </p>
+        {/* TODO: вывести датут */}
         <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
       </div>
     </>
   );
 }
 
+// TODO: переименовать commentProp до reviewProp
 Review.propTypes = {
   review: commentProp.isRequired,
 };
