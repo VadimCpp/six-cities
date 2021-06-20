@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENTS } from '../../const';
 import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen}) {
+function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
 
   return (

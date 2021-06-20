@@ -6,6 +6,7 @@ import { RATING_TO_PERCENTS } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Reviews from '../reviews/reviews';
+import Host from '../host/host';
 
 function RoomScreen({offer}) {
   return (
@@ -73,26 +74,11 @@ function RoomScreen({offer}) {
                   ))}
                 </ul>
               </div>
-              <div className="property__host">
-                <h2 className="property__host-title">Meet the host</h2>
-                <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
-                  </div>
-                  <span className="property__user-name">
-                    {offer.host.name}
-                  </span>
-                  {offer.host.isPro && (
-                    <span className="property__user-status">
-                      Pro
-                    </span>
-                  )}
-                </div>
-                <div className="property__description">
-                  <p className="property__text">
-                    {offer.description}
-                  </p>
-                </div>
+              <Host user={offer.host} />
+              <div className="property__description">
+                <p className="property__text">
+                  {offer.description}
+                </p>
               </div>
               <Reviews />
             </div>
