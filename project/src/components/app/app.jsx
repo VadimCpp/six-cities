@@ -52,9 +52,9 @@ function App({offers, comments}) {
             });
 
             return <RoomScreen offer={offer} comments={comments} offersForMap={offersForMap}/>;
-          } else {
-            return <NotFoundScreen />;
           }
+
+          return <NotFoundScreen />;
         }}
         />
         <Route component={NotFoundScreen} />
