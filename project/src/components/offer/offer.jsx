@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENTS } from '../../const';
 import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen }) {
+function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen, fromRoomScreen }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
+  const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
+  const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
 
   return (
     <article
-      className={`${fromFavoriteScreen ? 'favorites__card' : 'cities__place-card'} place-card`}
+      className={`${cardClass} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -18,7 +20,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
           <span>Premium</span>
         </div>
       )}
-      <div className={`${fromFavoriteScreen ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
+      <div className={`${imageWrapClass} place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
@@ -28,6 +30,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
             alt="Place"
           />
         </Link>
+        {/* fromRoomScreen */}
       </div>
       <div className={`${fromFavoriteScreen ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">
@@ -62,7 +65,8 @@ Offer.propTypes = {
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   isActive: PropTypes.bool,
-  fromFavoriteScreen: PropTypes.bool.isRequired,
+  fromFavoriteScreen: PropTypes.bool,
+  fromRoomScreen: PropTypes.bool,
 };
 
 export default Offer;
