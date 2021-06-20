@@ -6,6 +6,7 @@ import offerProp from '../../types/offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoomScreen }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
+  // TODO: заменить fromFavoriteScreen, fromRoomScreen параметрами классов
   const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
   const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
 
