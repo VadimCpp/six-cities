@@ -9,6 +9,9 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
   const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
   const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
 
+  const imgWidth = fromFavoriteScreen ? '150' : '260';
+  const imgHeight = fromFavoriteScreen ? '110' : '200';
+
   return (
     <article
       className={`${cardClass} place-card`}
@@ -25,9 +28,14 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
           <img
             className="place-card__image"
             src={preview}
-            width={fromFavoriteScreen ? '150' : '260'}
-            height={fromFavoriteScreen ? '110' : '200'}
+            width={imgWidth}
+            height={imgHeight}
             alt="Place"
+            style={{
+              maxHeight: `${imgHeight}px`,
+              minHeight: `${imgHeight}px`,
+              objectFit: 'cover',
+            }}
           />
         </Link>
         {/* fromRoomScreen */}
