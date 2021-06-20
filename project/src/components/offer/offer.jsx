@@ -39,7 +39,6 @@ function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoom
             }}
           />
         </Link>
-        {/* fromRoomScreen */}
       </div>
       <div className={`${fromFavoriteScreen ? 'favorites__card-info' : ''} place-card__info`}>
         <div className="place-card__price-wrapper">

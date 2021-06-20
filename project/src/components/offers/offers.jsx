@@ -9,6 +9,7 @@ function Offers({offers, nearPlaces}) {
   // TODO: использовать activeOfferId для подсветки на карте
 
   return (
+    // TODO: заменить nearPlaces именем класса
     <div className={nearPlaces ? 'near-places__list places__list' : 'cities__places-list places__list tabs__content'}>
       {offers.map((offer) =>
         (
