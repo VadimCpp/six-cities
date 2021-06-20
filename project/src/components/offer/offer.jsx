@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENTS } from '../../const';
 import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen, fromRoomScreen }) {
+function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoomScreen }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
   const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
   const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
@@ -72,7 +72,6 @@ Offer.propTypes = {
   offer: offerProp.isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  isActive: PropTypes.bool,
   fromFavoriteScreen: PropTypes.bool,
   fromRoomScreen: PropTypes.bool,
 };

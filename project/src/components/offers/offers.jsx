@@ -4,7 +4,9 @@ import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
 function Offers({offers, nearPlaces}) {
+  // eslint-disable-next-line no-unused-vars
   const [activeOfferId, setActiveOfferId] = useState(0);
+  // TODO: использовать activeOfferId для подсветки на карте
 
   return (
     <div className={nearPlaces ? 'near-places__list places__list' : 'cities__places-list places__list tabs__content'}>
@@ -15,7 +17,6 @@ function Offers({offers, nearPlaces}) {
             offer={offer}
             onMouseEnter={() => setActiveOfferId(offer.id)}
             onMouseLeave={() => setActiveOfferId(0)}
-            isActive={activeOfferId === offer.id}
             fromFavoriteScreen={false}
             fromRoomScreen={nearPlaces}
           />
