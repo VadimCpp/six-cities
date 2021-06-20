@@ -52,7 +52,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, isActive, fromFavoriteScreen
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={generatePath(AppRoute.ROOM, { id })}>{title} {isActive && '(active)'}</Link>
+          <Link to={generatePath(AppRoute.ROOM, { id })}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
