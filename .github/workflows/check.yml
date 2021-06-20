@@ -27,4 +27,5 @@ jobs:
     - name: Run checks
       working-directory: ./project
       run: |
+        npm run eslint
         npm test

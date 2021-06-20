@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import getVerboseType from '../../utils/getVerboseType';
 import offerProp from '../../types/offer.prop';
 import offersProp from '../../types/offers.prop';
