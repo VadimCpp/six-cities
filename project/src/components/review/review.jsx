@@ -1,6 +1,6 @@
 import React from 'react';
 import commentProp from '../../types/comment.prop';
-import { RATING_TO_PERCENTS } from '../../const';
+import { RATING_TO_PERCENT } from '../../const';
 
 function Review({ review }) {
   const { comment, rating, user: { avatarUrl, name }} = review;
@@ -17,7 +17,7 @@ function Review({ review }) {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{ width: `${rating * RATING_TO_PERCENTS}%` }}></span>
+            <span style={{ width: `${rating * RATING_TO_PERCENT}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AppRoute, RATING_TO_PERCENTS } from '../../const';
+import { AppRoute, RATING_TO_PERCENT } from '../../const';
 import offerProp from '../../types/offer.prop';
 
 function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoomScreen }) {
@@ -55,7 +55,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoom
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating * RATING_TO_PERCENTS}%` }}></span>
+            <span style={{ width: `${rating * RATING_TO_PERCENT}%` }}></span>
             <span className="visually-hidden">Rating {rating}</span>
           </div>
         </div>

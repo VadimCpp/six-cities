@@ -3,7 +3,7 @@ import getVerboseType from '../../utils/getVerboseType';
 import offerProp from '../../types/offer.prop';
 import offersProp from '../../types/offers.prop';
 import commentsProp from '../../types/comments.prop';
-import { RATING_TO_PERCENTS } from '../../const';
+import { RATING_TO_PERCENT } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Reviews from '../reviews/reviews';
@@ -47,7 +47,7 @@ function RoomScreen({ offer, comments, offersForMap }) {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `${offer.rating * RATING_TO_PERCENTS}%` }}></span>
+                  <span style={{ width: `${offer.rating * RATING_TO_PERCENT}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{offer.rating}</span>
