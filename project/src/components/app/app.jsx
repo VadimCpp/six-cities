@@ -14,7 +14,7 @@ function App({offers, comments}) {
     <BrowserRouter>
       <Switch>
         <Route path={AppRoute.ROOT} exact>
-          <MainScreen offers={offers}/>
+          <MainScreen />
         </Route>
         <Route path={AppRoute.LOGIN} exact component={LoginScreen} />
         <Route path={AppRoute.FAVORITES} exact>

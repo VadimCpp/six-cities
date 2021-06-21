@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import getCities from '../../utils/getCities';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import offersProp from '../../types/offers.prop';
+import cityProp from '../../types/city.prop';
+import { ActionCreator } from '../../store/action';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
 
-function MainScreen({offers}) {
-  const cities = getCities(offers);
-
-  const [city, setCity] = useState(cities[0]);
-
-  const offersForCity = offers.filter((o) => o.city.name === city.name);
+function MainScreen(props) {
+  const { cities, allOffers, city, offers, setCity, setOffers } = props;
 
   return (
     <div className="page page--gray page--main">
@@ -25,7 +24,10 @@ function MainScreen({offers}) {
                 <li className="locations__item" key={c.name}>
                   <Link
                     className={`locations__item-link tabs__item ${c.name === city.name ? 'tabs__item--active' : ''}`}
-                    onClick={() => setCity(c)}
+                    onClick={() => {
+                      setCity(c);
+                      setOffers(allOffers.filter((o) => o.city.name === c.name));
+                    }}
                     to="/"
                   >
                     <span>{c.name}</span>
@@ -39,7 +41,7 @@ function MainScreen({offers}) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersForCity.length} places to stay in {city.name}</b>
+              <b className="places__found">{offers.length} places to stay in {city.name}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -56,10 +58,10 @@ function MainScreen({offers}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <Offers offers={offersForCity}/>
+              <Offers offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <CitiesMap city={city} offers={offersForCity} className="cities__map" />
+              <CitiesMap city={city} offers={offers} className="cities__map" />
             </div>
           </div>
         </div>
@@ -69,7 +71,29 @@ function MainScreen({offers}) {
 }
 
 MainScreen.propTypes = {
+  cities: PropTypes.arrayOf(cityProp).isRequired,
+  allOffers: offersProp.isRequired,
+  city: cityProp.isRequired,
   offers: offersProp.isRequired,
+  setCity: PropTypes.func.isRequired,
+  setOffers: PropTypes.func.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  cities: state.cities,
+  allOffers: state.allOffers,
+  city: state.city,
+  offers: state.offers,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCity(city) {
+    dispatch(ActionCreator.setCity(city));
+  },
+  setOffers(offers) {
+    dispatch(ActionCreator.setOffers(offers));
+  },
+});
+
+export { MainScreen };
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
