@@ -1,8 +1,14 @@
 import { ActionType } from './action';
+import offers from '../mocks/offers.json';
+import getCities from '../utils/getCities';
+
+const cities = getCities(offers);
+const initialCity = cities[0];
+const initialOffers = offers.filter((o) => o.city.name === initialCity.name);
 
 const initialState = {
-  city: null,
-  offers: [],
+  city: initialCity,
+  offers: initialOffers,
 };
 
 const reducer = (state = initialState, action) => {
