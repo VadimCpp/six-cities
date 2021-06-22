@@ -20,15 +20,15 @@ function MainScreen(props) {
             <ul className="locations__list tabs__list">
               {cities.map((c) => (
                 <li className="locations__item" key={c.name}>
-                  <Link
+                  <span
                     className={`locations__item-link tabs__item ${c.name === city.name ? 'tabs__item--active' : ''}`}
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       setCity(c);
                     }}
-                    to="/"
                   >
                     <span>{c.name}</span>
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
