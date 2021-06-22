@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import cityProp from '../../types/city.prop';
+import offers from '../../mocks/offers.json';
+import getCities from '../../utils/getCities';
 import { ActionCreator } from '../../store/action';
 import Header from '../header/header';
 import Cities from '../cities/cities';
 
 function MainScreen(props) {
-  const { cities, city, setCity } = props;
+  const { city, setCity } = props;
+  const cities = getCities(offers);
 
   return (
     <div className="page page--gray page--main">
@@ -20,7 +23,7 @@ function MainScreen(props) {
               {cities.map((c) => (
                 <li className="locations__item" key={c.name}>
                   <span
-                    className={`locations__item-link tabs__item ${c.name === city.name ? 'tabs__item--active' : ''}`}
+                    className={`locations__item-link tabs__item ${city && c.name === city.name ? 'tabs__item--active' : ''}`}
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
                       setCity(c);
@@ -33,20 +36,18 @@ function MainScreen(props) {
             </ul>
           </section>
         </div>
-        <Cities city={city} />
+        {city ? <Cities city={city} /> : <p style={{textAlign:'center'}}>Выбрите город подалуйста! Теперь в сторе город по умолчанию не выбран</p>}
       </main>
     </div>
   );
 }
 
 MainScreen.propTypes = {
-  cities: PropTypes.arrayOf(cityProp).isRequired,
-  city: cityProp.isRequired,
+  city: cityProp,
   setCity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
   city: state.city,
 });
 
