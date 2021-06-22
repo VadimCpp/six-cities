@@ -4,13 +4,10 @@ import getCities from '../utils/getCities';
 
 const initialCities = getCities(offers);
 const initialCity = initialCities[0];
-const initialOffers = offers.filter((o) => o.city.name === initialCity.name);
 
 const initialState = {
   cities: initialCities,
-  allOffers: offers,
   city: initialCity,
-  offers: initialOffers,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,12 +16,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         city: action.payload,
-      };
-    }
-    case ActionType.SET_OFFERS: {
-      return {
-        ...state,
-        offers: action.payload,
       };
     }
     default:
