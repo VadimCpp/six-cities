@@ -29,7 +29,7 @@ function Cities({ city }) {
               <li className="places__option" tabIndex="0">Top rated first</li>
             </ul> */}
           </form>
-          <Offers offers={offersForCity}/>
+          <Offers offers={offersForCity} placesListClass="cities__places-list" />
         </section>
         <div className="cities__right-section">
           <CitiesMap city={city} offers={offersForCity} className="cities__map" />
