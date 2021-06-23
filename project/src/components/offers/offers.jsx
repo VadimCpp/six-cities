@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
-function Offers({offers, nearPlaces, placesListClass}) {
+function Offers({offers, nearPlaces, placesListClass, placeCardClass = ''}) {
   // eslint-disable-next-line no-unused-vars
   const [activeOfferId, setActiveOfferId] = useState(0);
   // TODO: использовать activeOfferId для подсветки на карте
@@ -19,6 +19,7 @@ function Offers({offers, nearPlaces, placesListClass}) {
             onMouseLeave={() => setActiveOfferId(0)}
             fromFavoriteScreen={false}
             fromRoomScreen={nearPlaces}
+            placeCardClass={placeCardClass}
           />
         ))}
     </div>
@@ -29,6 +30,7 @@ Offers.propTypes = {
   offers: offersProp.isRequired,
   nearPlaces: PropTypes.bool,
   placesListClass: PropTypes.string.isRequired,
+  placeCardClass: PropTypes.string,
 };
 
 export default Offers;

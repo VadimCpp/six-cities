@@ -91,7 +91,7 @@ function RoomScreen({ offer, comments, offersForMap }) {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={offersForMap} nearPlaces placesListClass="near-places__list" />
+            <Offers offers={offersForMap} nearPlaces placesListClass="near-places__list" placeCardClass="near-places__card"/>
           </section>
         </div>
       </main>

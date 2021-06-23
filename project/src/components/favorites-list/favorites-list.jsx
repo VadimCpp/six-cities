@@ -27,6 +27,7 @@ function FavoritesList({offers}) {
                   key={offer.id}
                   offer={offer}
                   fromFavoriteScreen
+                  placeCardClass="favorites__card"
                 />
               ))}
             </div>
