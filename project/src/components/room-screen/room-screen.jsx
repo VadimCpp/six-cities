@@ -93,7 +93,6 @@ function RoomScreen({ offer, comments, offersForMap }) {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <Offers
               offers={offersForMap}
-              nearPlaces
               placesListClass="near-places__list"
               placeCardClass="near-places__card"
               imageWrapperClass="near-places__image-wrapper"
