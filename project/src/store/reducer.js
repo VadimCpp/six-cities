@@ -1,8 +1,10 @@
 import { ActionType } from './action';
 import { CITIES } from '../const';
+import offers from '../mocks/offers.json';
 
 const initialState = {
   city: CITIES['Paris'].name,
+  offers: offers,
 };
 
 const reducer = (state = initialState, action) => {
