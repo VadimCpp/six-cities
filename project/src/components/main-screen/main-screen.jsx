@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import offersProp from '../../types/offers.prop';
 import { CITIES } from '../../const';
-import { ActionCreator } from '../../store/action';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
-
-const cities = Object.values(CITIES);
+import Cities from '../cities/cities';
 
 function MainScreen(props) {
-  const { city, offers, setCity } = props;
+  const { city, offers } = props;
   const offersForCity = offers.filter((o) => o.city.name === city);
 
   return (
@@ -19,25 +17,7 @@ function MainScreen(props) {
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {cities.map((c) => (
-                <li className="locations__item" key={c.name}>
-                  <span
-                    className={`locations__item-link tabs__item ${c.name === city ? 'tabs__item--active' : ''}`}
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      setCity(c.name);
-                    }}
-                  >
-                    <span>{c.name}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        <Cities />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -79,7 +59,6 @@ function MainScreen(props) {
 MainScreen.propTypes = {
   city: PropTypes.string.isRequired,
   offers: offersProp.isRequired,
-  setCity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -87,11 +66,5 @@ const mapStateToProps = (state) => ({
   offers: state.offers,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCity(city) {
-    dispatch(ActionCreator.setCity(city));
-  },
-});
-
 export { MainScreen };
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps)(MainScreen);
