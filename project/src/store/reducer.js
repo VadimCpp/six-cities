@@ -1,7 +1,8 @@
 import { ActionType } from './action';
+import { CITIES } from '../const';
 
 const initialState = {
-  city: null,
+  city: CITIES['Paris'],
 };
 
 const reducer = (state = initialState, action) => {
