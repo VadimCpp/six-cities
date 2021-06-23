@@ -4,18 +4,21 @@ import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENT } from '../../const';
 import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoomScreen }) {
+function Offer({
+  offer,
+  onMouseEnter,
+  onMouseLeave,
+  placeCardClass = '',
+  imageWrapperClass = '',
+  placeCardInfoClass = '',
+  imgWidth = '260',
+  imgHeight = '200',
+}) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
-  // TODO: заменить fromFavoriteScreen, fromRoomScreen параметрами классов
-  const cardClass = (fromFavoriteScreen && 'favorites__card') || (fromRoomScreen && 'near-places__card') || 'cities__place-card';
-  const imageWrapClass = (fromFavoriteScreen && 'favorites__image-wrapper') || (fromRoomScreen && 'near-places__image-wrapper') || 'cities__image-wrapper';
-
-  const imgWidth = fromFavoriteScreen ? '150' : '260';
-  const imgHeight = fromFavoriteScreen ? '110' : '200';
 
   return (
     <article
-      className={`${cardClass} place-card`}
+      className={`${placeCardClass} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -24,7 +27,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoom
           <span>Premium</span>
         </div>
       )}
-      <div className={`${imageWrapClass} place-card__image-wrapper`}>
+      <div className={`${imageWrapperClass} place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
@@ -40,7 +43,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, fromRoom
           />
         </Link>
       </div>
-      <div className={`${fromFavoriteScreen ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${placeCardInfoClass} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -72,8 +75,11 @@ Offer.propTypes = {
   offer: offerProp.isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  fromFavoriteScreen: PropTypes.bool,
-  fromRoomScreen: PropTypes.bool,
+  placeCardClass: PropTypes.string,
+  imageWrapperClass: PropTypes.string,
+  placeCardInfoClass: PropTypes.string,
+  imgHeight: PropTypes.string,
+  imgWidth: PropTypes.string,
 };
 
 export default Offer;

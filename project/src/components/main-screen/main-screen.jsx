@@ -1,45 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import getCities from '../../utils/getCities';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import offersProp from '../../types/offers.prop';
+import { CITIES } from '../../const';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
+import Cities from '../cities/cities';
 
-function MainScreen({offers}) {
-  const cities = getCities(offers);
-
-  const [city, setCity] = useState(cities[0]);
-
-  const offersForCity = offers.filter((o) => o.city.name === city.name);
+function MainScreen(props) {
+  const { city, offers } = props;
+  const offersForCity = offers.filter((o) => o.city.name === city);
 
   return (
     <div className="page page--gray page--main">
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {cities.map((c) => (
-                <li className="locations__item" key={c.name}>
-                  <Link
-                    className={`locations__item-link tabs__item ${c.name === city.name ? 'tabs__item--active' : ''}`}
-                    onClick={() => setCity(c)}
-                    to="/"
-                  >
-                    <span>{c.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        <Cities />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersForCity.length} places to stay in {city.name}</b>
+              <b className="places__found">{offersForCity.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -56,10 +39,15 @@ function MainScreen({offers}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <Offers offers={offersForCity}/>
+              <Offers
+                offers={offersForCity}
+                placesListClass="cities__places-list"
+                placeCardClass="cities__place-card"
+                imageWrapperClass="cities__image-wrapper"
+              />
             </section>
             <div className="cities__right-section">
-              <CitiesMap city={city} offers={offersForCity} className="cities__map" />
+              <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" />
             </div>
           </div>
         </div>
@@ -69,7 +57,14 @@ function MainScreen({offers}) {
 }
 
 MainScreen.propTypes = {
+  city: PropTypes.string.isRequired,
   offers: offersProp.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  city: state.city,
+  offers: state.offers,
+});
+
+export { MainScreen };
+export default connect(mapStateToProps)(MainScreen);

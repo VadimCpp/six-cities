@@ -26,7 +26,11 @@ function FavoritesList({offers}) {
                 <Offer
                   key={offer.id}
                   offer={offer}
-                  fromFavoriteScreen
+                  placeCardClass="favorites__card"
+                  imageWrapperClass="favorites__image-wrapper"
+                  placeCardInfoClass="favorites__card-info"
+                  imgWidth = "150"
+                  imgHeight = "110"
                 />
               ))}
             </div>
