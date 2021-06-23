@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { SortingTypes } from '../../const';
 
 const types = Object.values(SortingTypes);
 
-function Sorting() {
+function Sorting({ initialSorting = SortingTypes.POPULAR, onSortingChange = () => {} }) {
   const [ visible, setVisible ] = useState(false);
   const [ type, setType ] = useState(SortingTypes.POPULAR);
   return (
@@ -25,6 +26,7 @@ function Sorting() {
               onClick={() => {
                 setType(aType);
                 setVisible(false);
+                onSortingChange(aType);
               }}
             >
               {aType}
@@ -35,5 +37,10 @@ function Sorting() {
     </div>
   );
 }
+
+Sorting.propTypes = {
+  initialSorting: PropTypes.string,
+  onSortingChange: PropTypes.func,
+};
 
 export default Sorting;
