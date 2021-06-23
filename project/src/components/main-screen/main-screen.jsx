@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import cityProp from '../../types/city.prop';
-import offers from '../../mocks/offers.json';
-import getCities from '../../utils/getCities';
+import { CITIES } from '../../const';
 import { ActionCreator } from '../../store/action';
 import Header from '../header/header';
 import Cities from '../cities/cities';
 
+const cities = Object.values(CITIES);
+
 function MainScreen(props) {
   const { city, setCity } = props;
-  const cities = getCities(offers);
 
   return (
     <div className="page page--gray page--main">
@@ -23,10 +22,10 @@ function MainScreen(props) {
               {cities.map((c) => (
                 <li className="locations__item" key={c.name}>
                   <span
-                    className={`locations__item-link tabs__item ${city && c.name === city.name ? 'tabs__item--active' : ''}`}
+                    className={`locations__item-link tabs__item ${c.name === city ? 'tabs__item--active' : ''}`}
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
-                      setCity(c);
+                      setCity(c.name);
                     }}
                   >
                     <span>{c.name}</span>
@@ -36,14 +35,14 @@ function MainScreen(props) {
             </ul>
           </section>
         </div>
-        {city ? <Cities city={city} /> : <p style={{textAlign:'center'}}>Выбрите город подалуйста! Теперь в сторе город по умолчанию не выбран</p>}
+        <Cities city={CITIES[city]} />
       </main>
     </div>
   );
 }
 
 MainScreen.propTypes = {
-  city: cityProp,
+  city: PropTypes.string.isRequired,
   setCity: PropTypes.func.isRequired,
 };
 
