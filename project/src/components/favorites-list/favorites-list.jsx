@@ -29,6 +29,7 @@ function FavoritesList({offers}) {
                   fromFavoriteScreen
                   placeCardClass="favorites__card"
                   imageWrapperClass="favorites__image-wrapper"
+                  placeCardInfoClass="favorites__card-info"
                 />
               ))}
             </div>

@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import { AppRoute, RATING_TO_PERCENT } from '../../const';
 import offerProp from '../../types/offer.prop';
 
-function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, placeCardClass = '', imageWrapperClass = '' }) {
+function Offer({
+  offer,
+  onMouseEnter,
+  onMouseLeave,
+  fromFavoriteScreen,
+  placeCardClass = '',
+  imageWrapperClass = '',
+  placeCardInfoClass = '',
+}) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
   // TODO: заменить fromFavoriteScreen параметрами классов
   const cardClass = `${placeCardClass} cities__place-card`;
@@ -40,7 +48,7 @@ function Offer({ offer, onMouseEnter, onMouseLeave, fromFavoriteScreen, placeCar
           />
         </Link>
       </div>
-      <div className={`${fromFavoriteScreen ? 'favorites__card-info' : ''} place-card__info`}>
+      <div className={`${placeCardInfoClass} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -75,6 +83,7 @@ Offer.propTypes = {
   fromFavoriteScreen: PropTypes.bool,
   placeCardClass: PropTypes.string,
   imageWrapperClass: PropTypes.string,
+  placeCardInfoClass: PropTypes.string,
 };
 
 export default Offer;
