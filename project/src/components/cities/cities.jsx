@@ -32,6 +32,8 @@ function Cities({ city }) {
           <Offers
             offers={offersForCity}
             placesListClass="cities__places-list"
+            placeCardClass="cities__place-card"
+            imageWrapperClass="cities__image-wrapper"
           />
         </section>
         <div className="cities__right-section">

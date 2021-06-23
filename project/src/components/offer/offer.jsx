@@ -8,22 +8,17 @@ function Offer({
   offer,
   onMouseEnter,
   onMouseLeave,
-  fromFavoriteScreen,
   placeCardClass = '',
   imageWrapperClass = '',
   placeCardInfoClass = '',
+  imgWidth = '260',
+  imgHeight = '200',
 }) {
   const {id, preview, price, rating, title, type, isPremium} = offer;
-  // TODO: заменить fromFavoriteScreen параметрами классов
-  const cardClass = `${placeCardClass} cities__place-card`;
-  const imageWrapClass = `${imageWrapperClass} cities__image-wrapper`;
-
-  const imgWidth = fromFavoriteScreen ? '150' : '260';
-  const imgHeight = fromFavoriteScreen ? '110' : '200';
 
   return (
     <article
-      className={`${cardClass} place-card`}
+      className={`${placeCardClass} place-card`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -32,7 +27,7 @@ function Offer({
           <span>Premium</span>
         </div>
       )}
-      <div className={`${imageWrapClass} place-card__image-wrapper`}>
+      <div className={`${imageWrapperClass} place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.ROOM, { id })}>
           <img
             className="place-card__image"
@@ -80,10 +75,11 @@ Offer.propTypes = {
   offer: offerProp.isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  fromFavoriteScreen: PropTypes.bool,
   placeCardClass: PropTypes.string,
   imageWrapperClass: PropTypes.string,
   placeCardInfoClass: PropTypes.string,
+  imgHeight: PropTypes.string,
+  imgWidth: PropTypes.string,
 };
 
 export default Offer;

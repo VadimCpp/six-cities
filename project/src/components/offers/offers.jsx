@@ -17,7 +17,6 @@ function Offers({offers, nearPlaces, placesListClass, placeCardClass = '', image
             offer={offer}
             onMouseEnter={() => setActiveOfferId(offer.id)}
             onMouseLeave={() => setActiveOfferId(0)}
-            fromFavoriteScreen={false}
             placeCardClass={placeCardClass}
             imageWrapperClass={imageWrapperClass}
           />
