@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
-function Offers({offers, placesListClass, placeCardClass = '', imageWrapperClass = ''}) {
-  // eslint-disable-next-line no-unused-vars
+function Offers({offers, placesListClass, placeCardClass = '', imageWrapperClass = '', onActiveOfferSet = () => {}}) {
   const [activeOfferId, setActiveOfferId] = useState(0);
-  // TODO: использовать activeOfferId для подсветки на карте
+
+  useEffect(() => onActiveOfferSet(activeOfferId), [ activeOfferId, onActiveOfferSet ]);
 
   return (
     <div className={`${placesListClass} places__list`}>
@@ -30,6 +30,7 @@ Offers.propTypes = {
   placesListClass: PropTypes.string.isRequired,
   placeCardClass: PropTypes.string,
   imageWrapperClass: PropTypes.string,
+  onActiveOfferSet: PropTypes.func,
 };
 
 export default Offers;

@@ -12,6 +12,7 @@ import Sorting from '../sorting/sorting';
 function MainScreen(props) {
   const { city, offers } = props;
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
+  const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   let offersForCity = offers.filter((o) => o.city.name === city);
   switch (sortType) {
@@ -45,10 +46,11 @@ function MainScreen(props) {
                 placesListClass="cities__places-list"
                 placeCardClass="cities__place-card"
                 imageWrapperClass="cities__image-wrapper"
+                onActiveOfferSet={setActiveOfferId}
               />
             </section>
             <div className="cities__right-section">
-              <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" />
+              <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" activeOfferId={activeOfferId} />
             </div>
           </div>
         </div>
