@@ -5,18 +5,24 @@ import offersProp from '../../types/offers.prop';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const icon = leaflet.icon({
+const ICON = leaflet.icon({
   iconUrl: 'img/pin.svg',
   iconSize: [27, 39],
 });
 
-function CitiesMap({ city, offers, className = '' }) {
+const ICON_ACTIVE = leaflet.icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [27, 39],
+});
+
+function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
   const map = useRef();
   const mapRef = useRef();
+  const markers = useRef([]);
 
   //
   // NOTE!
-  // Одноразово инициализируем карту
+  // Одноразово инициализировать карту
   //
   useEffect(() => {
     map.current = leaflet.map(mapRef.current, {
@@ -26,32 +32,39 @@ function CitiesMap({ city, offers, className = '' }) {
       marker: true,
     });
 
+    leaflet
+      .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      })
+      .addTo(map.current);
+
+    map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
+
     return () => {
       map.current.remove();
     };
   }, [city]);
 
+  //
+  // NOTE!
+  // Инициализировать и отрисовать маркеры
+  //
   useEffect(() => {
-    if (map.current && offers.length) {
-      leaflet
-        .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        })
-        .addTo(map.current);
-
-      map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
+    if (markers.current && map.current) {
+      markers.current.length = 0;
 
       offers.forEach((o) => {
         const coords = [
           o.location.latitude,
           o.location.longitude,
         ];
-        leaflet
-          .marker(coords, {icon})
-          .addTo(map.current);
+        markers.current.push({
+          markerLayer: leaflet.marker(coords, {icon: activeOfferId === o.id ? ICON_ACTIVE : ICON}).addTo(map.current),
+          offerId: o.id,
+        });
       });
     }
-  }, [offers ,city]);
+  }, [offers, activeOfferId]);
 
   return (
     <section className={`${className} map`}>
@@ -70,6 +83,7 @@ CitiesMap.propTypes = {
   city: cityProp.isRequired,
   offers: offersProp.isRequired,
   className: PropTypes.string,
+  activeOfferId: PropTypes.number,
 };
 
 export default CitiesMap;

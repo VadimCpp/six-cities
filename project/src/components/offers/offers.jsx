@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
-function Offers({offers, nearPlaces, placesListClass, placeCardClass = '', imageWrapperClass = ''}) {
-  // eslint-disable-next-line no-unused-vars
-  const [activeOfferId, setActiveOfferId] = useState(0);
-  // TODO: использовать activeOfferId для подсветки на карте
-
+function Offers({offers, placesListClass, placeCardClass = '', imageWrapperClass = '', onActiveOfferSet = () => {}}) {
   return (
     <div className={`${placesListClass} places__list`}>
       {offers.map((offer) =>
@@ -15,8 +11,8 @@ function Offers({offers, nearPlaces, placesListClass, placeCardClass = '', image
           <Offer
             key={offer.id}
             offer={offer}
-            onMouseEnter={() => setActiveOfferId(offer.id)}
-            onMouseLeave={() => setActiveOfferId(0)}
+            onMouseEnter={() => onActiveOfferSet(offer.id)}
+            onMouseLeave={() => onActiveOfferSet(0)}
             placeCardClass={placeCardClass}
             imageWrapperClass={imageWrapperClass}
           />
@@ -27,10 +23,10 @@ function Offers({offers, nearPlaces, placesListClass, placeCardClass = '', image
 
 Offers.propTypes = {
   offers: offersProp.isRequired,
-  nearPlaces: PropTypes.bool,
   placesListClass: PropTypes.string.isRequired,
   placeCardClass: PropTypes.string,
   imageWrapperClass: PropTypes.string,
+  onActiveOfferSet: PropTypes.func,
 };
 
 export default Offers;
