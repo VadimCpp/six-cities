@@ -4,9 +4,8 @@ import { SortingTypes } from '../../const';
 
 const types = Object.values(SortingTypes);
 
-function Sorting({ initialSorting = SortingTypes.POPULAR, onSortingChange = () => {} }) {
+function Sorting({ type, onSortingChange = () => {} }) {
   const [ visible, setVisible ] = useState(false);
-  const [ type, setType ] = useState(SortingTypes.POPULAR);
   return (
     <div className="places__sorting">
       <span className="places__sorting-caption">Sort by </span>
@@ -24,7 +23,6 @@ function Sorting({ initialSorting = SortingTypes.POPULAR, onSortingChange = () =
               className={`places__option ${type === aType ? 'places__option--active' : ''}`}
               tabIndex={idx}
               onClick={() => {
-                setType(aType);
                 setVisible(false);
                 onSortingChange(aType);
               }}
@@ -39,7 +37,7 @@ function Sorting({ initialSorting = SortingTypes.POPULAR, onSortingChange = () =
 }
 
 Sorting.propTypes = {
-  initialSorting: PropTypes.string,
+  type: PropTypes.string,
   onSortingChange: PropTypes.func,
 };
 

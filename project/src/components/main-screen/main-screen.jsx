@@ -40,7 +40,7 @@ function MainScreen(props) {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offersForCity.length} places to stay in {city}</b>
-              <Sorting initialSorting={sortType} onSortingChange={setSortType}/>
+              <Sorting type={sortType} onSortingChange={setSortType}/>
               <Offers
                 offers={offersForCity}
                 placesListClass="cities__places-list"
