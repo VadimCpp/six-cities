@@ -5,33 +5,12 @@ import offersProp from '../../types/offers.prop';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-//
-// NOTE!
-// FIX leaflet's default icon path problems with webpack
-// https://github.com/Leaflet/Leaflet/issues/4968#issuecomment-483044484
-//
-leaflet.Icon.Default.prototype._getIconUrl = function (name) {
-  if (!leaflet.Icon.Default.imagePath) {    // Deprecated, backwards-compatibility only
-    leaflet.Icon.Default.imagePath = this._detectIconPath();
-  }
-
-  // @option imagePath: String
-  // `L.Icon.Default` will try to auto-detect the absolute location of the
-  // blue icon images. If you are placing these images in a non-standard
-  // way, set this option to point to the right absolute path.
-  const url = (this.options.imagePath || leaflet.Icon.Default.imagePath);
-
-  return url.slice(0, - 2);
-};
-
-// eslint-disable-next-line no-unused-vars
-const icon = leaflet.icon({
+const ICON = leaflet.icon({
   iconUrl: 'img/pin.svg',
   iconSize: [27, 39],
 });
 
-// eslint-disable-next-line no-unused-vars
-const activeIcon = leaflet.icon({
+const ICON_ACTIVE = leaflet.icon({
   iconUrl: 'img/pin-active.svg',
   iconSize: [27, 39],
 });
@@ -39,10 +18,11 @@ const activeIcon = leaflet.icon({
 function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
   const map = useRef();
   const mapRef = useRef();
+  const markers = useRef([]);
 
   //
   // NOTE!
-  // Одноразово инициализируем карту
+  // Одноразово инициализировать карту
   //
   useEffect(() => {
     map.current = leaflet.map(mapRef.current, {
@@ -52,39 +32,39 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
       marker: true,
     });
 
+    leaflet
+      .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      })
+      .addTo(map.current);
+
+    map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
+
     return () => {
       map.current.remove();
     };
   }, [city]);
 
+  //
+  // NOTE!
+  // Инициализировать и отрисовать маркеры
+  //
   useEffect(() => {
-    if (map.current) {
-      leaflet
-        .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        })
-        .addTo(map.current);
+    if (markers.current && map.current) {
+      markers.current.length = 0;
 
-      map.current.setView([ city.location.latitude, city.location.longitude ], city.location.zoom);
-
-      offers.forEach((o, idx) => {
+      offers.forEach((o) => {
         const coords = [
           o.location.latitude,
           o.location.longitude,
         ];
-        if (activeOfferId === o.id) {
-          leaflet
-            .marker(coords, {icon: activeIcon})
-            .addTo(map.current);
-        } else {
-          leaflet
-            .marker(coords, {icon})
-            .addTo(map.current);
-        }
-
+        markers.current.push({
+          markerLayer: leaflet.marker(coords, {icon: activeOfferId === o.id ? ICON_ACTIVE : ICON}).addTo(map.current),
+          offerId: o.id,
+        });
       });
     }
-  }, [city, offers, activeOfferId]);
+  }, [offers, activeOfferId]);
 
   return (
     <section className={`${className} map`}>
