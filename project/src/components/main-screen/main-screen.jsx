@@ -14,16 +14,16 @@ function MainScreen(props) {
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
-  let offersForCity = offers.filter((o) => o.city.name === city);
+  const offersForCity = offers.filter((o) => o.city.name === city);
   switch (sortType) {
     case SortingTypes.LOW_TO_HIGH:
-      offersForCity = offersForCity.sort((a, b) => a.price - b.price);
+      offersForCity.sort((a, b) => a.price - b.price);
       break;
     case SortingTypes.HIGH_TO_LOW:
-      offersForCity = offersForCity.sort((a, b) => b.price - a.price);
+      offersForCity.sort((a, b) => b.price - a.price);
       break;
     case SortingTypes.TOP_RATED:
-      offersForCity = offersForCity.sort((a, b) => b.rating - a.rating);
+      offersForCity.sort((a, b) => b.rating - a.rating);
       break;
     default:
       break;
