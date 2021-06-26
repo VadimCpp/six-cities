@@ -74,7 +74,7 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
         ];
         if (activeOfferId === o.id) {
           leaflet
-            .marker(coords, {activeIcon})
+            .marker(coords, {icon: activeIcon})
             .addTo(map.current);
         } else {
           leaflet
