@@ -4,7 +4,7 @@ import { SortingTypes } from '../../const';
 
 const types = Object.values(SortingTypes);
 
-function Sorting({ type, onSortingChange = () => {} }) {
+function Sorting({ type, onSortingChange }) {
   const [ visible, setVisible ] = useState(false);
   return (
     <div className="places__sorting">
@@ -37,8 +37,8 @@ function Sorting({ type, onSortingChange = () => {} }) {
 }
 
 Sorting.propTypes = {
-  type: PropTypes.string,
-  onSortingChange: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  onSortingChange: PropTypes.func.isRequired,
 };
 
 export default Sorting;
