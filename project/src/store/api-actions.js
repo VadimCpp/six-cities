@@ -1,0 +1,30 @@
+import {ActionCreator} from './action';
+import {AuthorizationStatus, APIRoute} from '../const';
+
+export const fetchOfferList = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.OFFERS)
+    .then(({data}) => {
+      //
+      // NOTE!
+      // С бэка приходят переменные в формате snake_case
+      // Поэтому происходить преобразование к camelCase
+      //
+      // * Вместо паттерна Адаптер
+      //
+      data.forEach((offer) => {
+        offer.preview = offer['preview_image'];
+        offer.maxAdults = offer['max_adults'];
+        offer.isPremium = offer['is_premium'];
+        offer.host.avatarUrl = offer['host']['avatar_url'];
+        offer.host.isPro = offer['host']['is_pro'];
+      });
+
+      dispatch(ActionCreator.loadOffers(data));
+    })
+);
+
+export const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.LOGIN)
+    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch(() => {})
+);

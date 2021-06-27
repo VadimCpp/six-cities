@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { AppRoute } from '../../const';
 import offersProp from '../../types/offers.prop';
 import commentsProp from '../../types/comments.prop';
@@ -68,4 +69,10 @@ App.propTypes = {
   comments: commentsProp.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  comments: state.comments,
+});
+
+export { App };
+export default connect(mapStateToProps)(App);

@@ -20,7 +20,7 @@
 //   ...
 // ];
 //
-function groupByCities(offers) {
+function groupByCities(offers = []) {
   const cities = [];
 
   offers.forEach((o) => {
