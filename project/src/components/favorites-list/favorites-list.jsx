@@ -6,6 +6,11 @@ import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
 function FavoritesList({offers}) {
+  //
+  // TODO: реализовать
+  // GET /favorite
+  // Получение списка избранных предложений.
+  //
   const cities = groupByCities(offers);
 
   return cities.length ? (
