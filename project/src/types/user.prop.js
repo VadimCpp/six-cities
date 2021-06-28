@@ -5,4 +5,5 @@ export default PropTypes.shape({
   id: PropTypes.number.isRequired,
   isPro: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 });

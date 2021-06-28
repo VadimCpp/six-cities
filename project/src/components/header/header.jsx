@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import userProp from '../../types/user.prop';
 
 function Header(props) {
-  const { authorizationStatus } = props;
+  const { authorizationStatus, user } = props;
 
   return (
     <header className="header">
@@ -18,13 +19,15 @@ function Header(props) {
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
-              { authorizationStatus === AuthorizationStatus.AUTH ? (
+              { authorizationStatus === AuthorizationStatus.AUTH && user ? (
                 <>
                   <li className="header__nav-item user">
                     <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITES}>
                       <div className="header__avatar-wrapper user__avatar-wrapper">
+                        <img className="header__avatar user__avatar" src={user.avatarUrl} width="54" height="54" alt={user.name} />
+
                       </div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__user-name user__name">{user.email}</span>
                     </Link>
                   </li>
                   <li className="header__nav-item">
@@ -52,10 +55,12 @@ function Header(props) {
 
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  user: userProp,
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: state.authorizationStatus,
+  user: state.user,
 });
 
 export { Header };
