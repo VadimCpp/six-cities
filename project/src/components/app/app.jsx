@@ -9,19 +9,13 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import AuthScreen from '../auth-screen/auth-screen';
 // import PrivateRoute from '../private-route/private-route';
 
 function App({offers, comments}) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={AppRoute.ROOT} exact>
-          <MainScreen />
-        </Route>
-        <Route exact path={AppRoute.LOGIN}>
-          <AuthScreen />
-        </Route>
+        <Route path={AppRoute.ROOT} exact component={MainScreen} />
         <Route path={AppRoute.LOGIN} exact component={LoginScreen} />
         <Route path={AppRoute.FAVORITES} exact>
           <FavoritesScreen offers={offers}/>
