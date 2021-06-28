@@ -22,10 +22,10 @@ jobs:
     - name: Install dependencies
       working-directory: ./project
       run: |
-        npm install
+        yarn install
 
     - name: Run checks
       working-directory: ./project
       run: |
-        npm run eslint
-        npm test
+        yarn run eslint
+        yarn test
