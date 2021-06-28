@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import offersProp from '../../types/offers.prop';
@@ -15,20 +15,23 @@ function MainScreen(props) {
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
-  const offersForCity = offers.filter((o) => o.city.name === city);
-  switch (sortType) {
-    case SortingTypes.LOW_TO_HIGH:
-      offersForCity.sort((a, b) => a.price - b.price);
-      break;
-    case SortingTypes.HIGH_TO_LOW:
-      offersForCity.sort((a, b) => b.price - a.price);
-      break;
-    case SortingTypes.TOP_RATED:
-      offersForCity.sort((a, b) => b.rating - a.rating);
-      break;
-    default:
-      break;
-  }
+  const offersForCity = useMemo(() => {
+    const anOffersForCity = offers.filter((o) => o.city.name === city);
+    switch (sortType) {
+      case SortingTypes.LOW_TO_HIGH:
+        anOffersForCity.sort((a, b) => a.price - b.price);
+        break;
+      case SortingTypes.HIGH_TO_LOW:
+        anOffersForCity.sort((a, b) => b.price - a.price);
+        break;
+      case SortingTypes.TOP_RATED:
+        anOffersForCity.sort((a, b) => b.rating - a.rating);
+        break;
+      default:
+        break;
+    }
+    return anOffersForCity;
+  }, [city, offers, sortType]);
 
   return (
     <div className="page page--gray page--main">

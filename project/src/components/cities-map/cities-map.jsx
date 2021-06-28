@@ -52,21 +52,36 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
   // Инициализировать и отрисовать маркеры
   //
   useEffect(() => {
-    if (markers.current && map.current) {
-      markers.current.length = 0;
-
+    if (map.current) {
       offers.forEach((o) => {
         const coords = [
           o.location.latitude,
           o.location.longitude,
         ];
         markers.current.push({
-          markerLayer: leaflet.marker(coords, {icon: activeOfferId === o.id ? ICON_ACTIVE : ICON}).addTo(map.current),
+          markerLayer: leaflet.marker(coords, {icon: ICON}).addTo(map.current),
           offerId: o.id,
         });
       });
     }
-  }, [offers, activeOfferId]);
+
+    return () => {
+      markers.current.forEach((marker) => {
+        marker.markerLayer.remove();
+      });
+      markers.current = [];
+    };
+  }, [offers]);
+
+  //
+  // NOTE!
+  // Обновить маркеры
+  //
+  useEffect(() => {
+    markers.current.forEach((marker) => {
+      marker.markerLayer.setIcon(marker.offerId === activeOfferId ? ICON_ACTIVE : ICON);
+    });
+  }, [activeOfferId]);
 
   return (
     <section className={`${className} map`}>
