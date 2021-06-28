@@ -64,3 +64,14 @@ export const SortingTypes = {
   HIGH_TO_LOW: 'Price: high to low',
   TOP_RATED: 'Top rated first',
 };
+
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
+};
+
+export const APIRoute = {
+  OFFERS: '/hotels',
+  LOGIN: '/login',
+};

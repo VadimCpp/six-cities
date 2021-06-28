@@ -8,9 +8,10 @@ import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
 import Cities from '../cities/cities';
 import Sorting from '../sorting/sorting';
+import Spinner from '../spinner/spinner';
 
 function MainScreen(props) {
-  const { city, offers } = props;
+  const { city, offers, isDataLoaded } = props;
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
@@ -32,29 +33,35 @@ function MainScreen(props) {
   return (
     <div className="page page--gray page--main">
       <Header />
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <Cities />
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersForCity.length} places to stay in {city}</b>
-              <Sorting type={sortType} onSortingChange={setSortType}/>
-              <Offers
-                offers={offersForCity}
-                placesListClass="cities__places-list"
-                placeCardClass="cities__place-card"
-                imageWrapperClass="cities__image-wrapper"
-                onActiveOfferSet={setActiveOfferId}
-              />
-            </section>
-            <div className="cities__right-section">
-              <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" activeOfferId={activeOfferId} />
+      {
+        isDataLoaded ? (
+          <main className="page__main page__main--index">
+            <h1 className="visually-hidden">Cities</h1>
+            <Cities />
+            <div className="cities">
+              <div className="cities__places-container container">
+                <section className="cities__places places">
+                  <h2 className="visually-hidden">Places</h2>
+                  <b className="places__found">{offersForCity.length} places to stay in {city}</b>
+                  <Sorting type={sortType} onSortingChange={setSortType}/>
+                  <Offers
+                    offers={offersForCity}
+                    placesListClass="cities__places-list"
+                    placeCardClass="cities__place-card"
+                    imageWrapperClass="cities__image-wrapper"
+                    onActiveOfferSet={setActiveOfferId}
+                  />
+                </section>
+                <div className="cities__right-section">
+                  <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" activeOfferId={activeOfferId} />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </main>
+          </main>
+        ) : (
+          <Spinner />
+        )
+      }
     </div>
   );
 }
@@ -62,11 +69,13 @@ function MainScreen(props) {
 MainScreen.propTypes = {
   city: PropTypes.string.isRequired,
   offers: offersProp.isRequired,
+  isDataLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   city: state.city,
   offers: state.offers,
+  isDataLoaded: state.isDataLoaded,
 });
 
 export { MainScreen };

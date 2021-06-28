@@ -12,6 +12,12 @@ import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
 function RoomScreen({ offer, comments, offersForMap }) {
+  //
+  // TODO: реализовать
+  // GET /hotels/: id
+  // Получение предложения с идентификатором id.
+  //
+
   return (
     <div className="page">
       <Header />
@@ -88,6 +94,11 @@ function RoomScreen({ offer, comments, offersForMap }) {
           </div>
           <CitiesMap city={offer.city} offers={offersForMap} className="property__map" />
         </section>
+        {/*
+          TODO: реализовать
+          GET /comments/: hotel_id
+          Получить список комментариев для конкретного предложения по его id.
+         */}
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
