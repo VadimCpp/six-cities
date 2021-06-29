@@ -10,7 +10,7 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-// import PrivateRoute from '../private-route/private-route';
+import PrivateRoute from '../private-route/private-route';
 
 function App({offers, comments}) {
   return (
@@ -18,9 +18,10 @@ function App({offers, comments}) {
       <Switch>
         <Route path={AppRoute.ROOT} exact component={MainScreen} />
         <Route path={AppRoute.LOGIN} exact component={LoginScreen} />
-        <Route path={AppRoute.FAVORITES} exact>
+        <PrivateRoute path={AppRoute.FAVORITES} exact render={() => (
           <FavoritesScreen offers={offers}/>
-        </Route>
+        )}
+        />
         <Route path={AppRoute.ROOM} exact render={(routeProps) => {
           const { id } = routeProps.match.params;
           const offer = offers.find((o) => Number(id) === o.id);
