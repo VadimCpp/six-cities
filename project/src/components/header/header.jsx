@@ -4,9 +4,10 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import userProp from '../../types/user.prop';
+import { logout } from '../../store/api-actions';
 
 function Header(props) {
-  const { authorizationStatus, user } = props;
+  const { authorizationStatus, user, logoutUser } = props;
 
   return (
     <header className="header">
@@ -25,20 +26,29 @@ function Header(props) {
                     <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITES}>
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                         <img className="header__avatar user__avatar" src={user.avatarUrl} width="54" height="54" alt={user.name} />
-
                       </div>
                       <span className="header__user-name user__name">{user.email}</span>
                     </Link>
                   </li>
                   <li className="header__nav-item">
-                    <Link className="header__nav-link" to={AppRoute.ROOT}>
+                    <span
+                      className="header__nav-link"
+                      style={{ cursor: 'pointer' }}
+                      onClick={(evt) => {
+                        evt.preventDefault();
+                        logoutUser();
+                      }}
+                    >
                       <span className="header__signout">Sign out</span>
-                    </Link>
+                    </span>
                   </li>
                 </>
               ) : (
                 <li className="header__nav-item user">
-                  <Link to={AppRoute.LOGIN} className="header__nav-link header__nav-link--profile">
+                  <Link
+                    className="header__nav-link header__nav-link--profile"
+                    to={AppRoute.LOGIN}
+                  >
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__login">Sign in</span>
@@ -56,6 +66,7 @@ function Header(props) {
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   user: userProp,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -63,5 +74,11 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  logoutUser() {
+    dispatch(logout());
+  },
+});
+
 export { Header };
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
