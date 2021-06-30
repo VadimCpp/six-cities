@@ -46,6 +46,7 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
         offer: data,
       }));
     })
+    .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.NOT_FOUND)))
 );
 
 

@@ -4,7 +4,7 @@ import offersProp from './offers.prop';
 import commentsProp from './comments.prop';
 
 export default PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   offer: offerProp,
   nearby: offersProp,
   comments: commentsProp,

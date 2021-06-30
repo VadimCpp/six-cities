@@ -3,6 +3,7 @@ export const AppRoute = {
   LOGIN: '/login',
   FAVORITES: '/favorites',
   ROOM: '/offer/:id',
+  NOT_FOUND: '/404',
 };
 
 export const RATING_TO_PERCENT = 20; // same as / 5 * 100
@@ -63,7 +64,7 @@ export const CITIES = {
 // Структура данных объединяет все данные, которые отображаются на странице предложения.
 //
 export const EMPTY_OFFER_DATA = {
-  id: 0,
+  id: null,
   offer: null,
   nearby: null,
   comments: null,
