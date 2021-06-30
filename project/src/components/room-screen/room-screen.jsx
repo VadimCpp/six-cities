@@ -15,7 +15,7 @@ import Offers from '../offers/offers';
 
 function RoomScreen(props) {
   const { offerData, doFetchOfferData } = props;
-  const { offer } = offerData;
+  const { offer, nearby, comments } = offerData;
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,32 +24,6 @@ function RoomScreen(props) {
       doFetchOfferData(id);
     }
   }, [doFetchOfferData, id, offerData]);
-
-  //
-  // TODO:
-  // Если в сторе есть информация о текущем офере, то ее необходимо отобразить.
-  // Если в сторе нет информации о текущем офере, то ее необходимо загрузить с сервера.
-  //
-
-  //
-  // TODO: реализовать
-  // GET /hotels/: id
-  // Получение предложения с идентификатором id.
-  //
-
-  //
-  // TODO: реализовать
-  // GET /hotels/: hotel_id/nearby
-  // Получение предложения с идентификатором id.
-  //
-  const nearby = [];
-
-  //
-  // TODO: реализовать
-  // GET /comments/: hotel_id
-  // Получить список комментариев для конкретного предложения по его id.
-  //
-  const comments = [];
 
   return offerData.id === Number(id) ? (
     <div className="page">
