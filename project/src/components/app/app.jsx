@@ -21,17 +21,7 @@ function App({offers}) {
           <FavoritesScreen offers={offers}/>
         )}
         />
-        <Route path={AppRoute.ROOM} exact render={(routeProps) => {
-          const { id } = routeProps.match.params;
-          const offer = offers.find((o) => Number(id) === o.id);
-
-          if (offer) {
-            return <RoomScreen offer={offer} />;
-          }
-
-          return <NotFoundScreen />;
-        }}
-        />
+        <Route path={AppRoute.ROOM} exact component={RoomScreen} />
         <Route component={NotFoundScreen} />
       </Switch>
     </BrowserRouter>
