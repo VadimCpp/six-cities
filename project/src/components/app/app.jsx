@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import browserHistory from '../../browser-history';
 import { AppRoute } from '../../const';
 import offersProp from '../../types/offers.prop';
-import commentsProp from '../../types/comments.prop';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
@@ -12,7 +11,7 @@ import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 
-function App({offers, comments}) {
+function App({offers}) {
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
@@ -53,7 +52,7 @@ function App({offers, comments}) {
               return result;
             });
 
-            return <RoomScreen offer={offer} comments={comments} offersForMap={offersForMap}/>;
+            return <RoomScreen offer={offer} offersForMap={offersForMap}/>;
           }
 
           return <NotFoundScreen />;
@@ -67,12 +66,10 @@ function App({offers, comments}) {
 
 App.propTypes = {
   offers: offersProp.isRequired,
-  comments: commentsProp.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   offers: state.offers,
-  comments: state.comments,
 });
 
 export { App };

@@ -2,7 +2,6 @@ import React from 'react';
 import getVerboseType from '../../utils/getVerboseType';
 import offerProp from '../../types/offer.prop';
 import offersProp from '../../types/offers.prop';
-import commentsProp from '../../types/comments.prop';
 import { RATING_TO_PERCENT } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -11,12 +10,19 @@ import Host from '../host/host';
 import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
-function RoomScreen({ offer, comments, offersForMap }) {
+function RoomScreen({ offer, offersForMap }) {
   //
   // TODO: реализовать
   // GET /hotels/: id
   // Получение предложения с идентификатором id.
   //
+
+  //
+  // TODO: реализовать
+  // GET /comments/: hotel_id
+  // Получить список комментариев для конкретного предложения по его id.
+  //
+  const comments = [];
 
   return (
     <div className="page">
@@ -94,11 +100,6 @@ function RoomScreen({ offer, comments, offersForMap }) {
           </div>
           <CitiesMap city={offer.city} offers={offersForMap} className="property__map" />
         </section>
-        {/*
-          TODO: реализовать
-          GET /comments/: hotel_id
-          Получить список комментариев для конкретного предложения по его id.
-         */}
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
@@ -120,7 +121,6 @@ function RoomScreen({ offer, comments, offersForMap }) {
 
 RoomScreen.propTypes = {
   offer: offerProp.isRequired,
-  comments: commentsProp.isRequired,
   offersForMap: offersProp.isRequired,
 };
 
