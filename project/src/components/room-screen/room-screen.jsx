@@ -10,8 +10,15 @@ import Host from '../host/host';
 import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
-function RoomScreen({ offer }) {
+function RoomScreen(props) {
   const { id } = useParams();
+
+  //
+  // TODO:
+  // Если в сторе есть информация о текущем офере, то ее необходимо отобразить.
+  // Если в сторе нет информации о текущем офере, то ее необходимо загрузить с сервера.
+  //
+
   //
   // TODO: реализовать
   // GET /hotels/: id
@@ -126,9 +133,5 @@ function RoomScreen({ offer }) {
 
   );
 }
-
-RoomScreen.propTypes = {
-  offer: offerProp.isRequired,
-};
 
 export default RoomScreen;
