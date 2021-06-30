@@ -1,3 +1,4 @@
+import { generatePath } from 'react-router-dom';
 import {ActionCreator} from './action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
 
@@ -22,6 +23,31 @@ export const fetchOfferList = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.loadOffers(data));
     })
 );
+
+export const fetchOfferData = (id) => (dispatch, _getState, api) => (
+  api.get(generatePath(APIRoute.OFFER, { id }))
+    .then(({data}) => {
+
+      //
+      // NOTE!
+      // С бэка приходят переменные в формате snake_case
+      // Поэтому происходить преобразование к camelCase
+      //
+      // * Вместо паттерна Адаптер
+      //
+      data.preview = data['preview_image'];
+      data.maxAdults = data['max_adults'];
+      data.isPremium = data['is_premium'];
+      data.host.avatarUrl = data['host']['avatar_url'];
+      data.host.isPro = data['host']['is_pro'];
+
+      dispatch(ActionCreator.setOfferData({
+        id: data.id,
+        offer: data,
+      }));
+    })
+);
+
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)

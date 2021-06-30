@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import offerDataProp from '../../types/offerData.prop';
 import getVerboseType from '../../utils/getVerboseType';
-import offerProp from '../../types/offer.prop';
+import { fetchOfferData } from '../../store/api-actions';
 import { RATING_TO_PERCENT } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -11,7 +14,16 @@ import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
 function RoomScreen(props) {
+  const { offerData, doFetchOfferData } = props;
+  const { offer } = offerData;
   const { id } = useParams();
+
+  useEffect(() => {
+    if (offerData.id !== Number(id))
+    {
+      doFetchOfferData(id);
+    }
+  }, [doFetchOfferData, id, offerData]);
 
   //
   // TODO:
@@ -39,7 +51,7 @@ function RoomScreen(props) {
   //
   const comments = [];
 
-  return (
+  return offerData.id === Number(id) ? (
     <div className="page">
       <Header />
 
@@ -130,8 +142,25 @@ function RoomScreen(props) {
 
       <Footer />
     </div>
-
+  ) : (
+    <span>Загружаем предложение...</span>
   );
 }
 
-export default RoomScreen;
+RoomScreen.propTypes = {
+  offerData: offerDataProp,
+  doFetchOfferData: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  offerData: state.offerData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  doFetchOfferData(id) {
+    dispatch(fetchOfferData(id));
+  },
+});
+
+export { RoomScreen };
+export default connect(mapStateToProps, mapDispatchToProps)(RoomScreen);

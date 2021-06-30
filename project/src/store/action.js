@@ -5,6 +5,7 @@ export const ActionType = {
   LOAD_OFFERS: 'data/loadOffers',
   SET_USER: 'user/setUser',
   LOGOUT: 'user/logout',
+  SET_OFFER_DATA: 'data/setOfferData',
 };
 
 export const ActionCreator = {
@@ -30,5 +31,9 @@ export const ActionCreator = {
   }),
   logout: () => ({
     type: ActionType.LOGOUT,
+  }),
+  setOfferData: (offerData) => ({
+    type: ActionType.SET_OFFER_DATA,
+    payload: offerData,
   }),
 };

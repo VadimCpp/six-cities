@@ -58,6 +58,17 @@ export const CITIES = {
   },
 };
 
+//
+// NOTE!
+// Структура данных объединяет все данные, которые отображаются на странице предложения.
+//
+export const EMPTY_OFFER_DATA = {
+  id: 0,
+  offer: null,
+  nearby: null,
+  comments: null,
+};
+
 export const SortingTypes = {
   POPULAR: 'Popular',
   LOW_TO_HIGH: 'Price: low to high',
@@ -73,6 +84,7 @@ export const AuthorizationStatus = {
 
 export const APIRoute = {
   OFFERS: '/hotels',
+  OFFER: '/hotels/:id',
   LOGIN: '/login',
   LOGOUT: '/logout',
 };
