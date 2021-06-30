@@ -26,33 +26,7 @@ function App({offers}) {
           const offer = offers.find((o) => Number(id) === o.id);
 
           if (offer) {
-            //
-            // NOTE!
-            // Я вкрячил сюда эту функцию несмотря на:
-            // expect
-            // "Функцию поиска объявлений неподалеку реализовывать не нужно.
-            //  Используйте тестовые данные. В будущем данные об объявлениях
-            //  неподалёку будут приходить с сервера."
-            //
-            // TODO: удалить после синхронизации с сервером, а пока пусть будет
-            //
-            const offersForMap = offers.reduce((accumulator, currentValue) => {
-              let result = [];
-              if (accumulator && accumulator.length) {
-                if (offer.city.name === currentValue.city.name && accumulator.length < 3) {
-                  result = [ ...accumulator, currentValue];
-                }
-                else
-                {
-                  result = [ ...accumulator ];
-                }
-              } else if (offer.city.name === currentValue.city.name) {
-                result = [ currentValue ];
-              }
-              return result;
-            });
-
-            return <RoomScreen offer={offer} offersForMap={offersForMap}/>;
+            return <RoomScreen offer={offer} />;
           }
 
           return <NotFoundScreen />;

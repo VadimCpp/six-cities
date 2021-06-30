@@ -11,7 +11,7 @@ import Host from '../host/host';
 import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
-function RoomScreen({ offer, offersForMap }) {
+function RoomScreen({ offer }) {
   const { id } = useParams();
   //
   // TODO: реализовать
@@ -129,7 +129,6 @@ function RoomScreen({ offer, offersForMap }) {
 
 RoomScreen.propTypes = {
   offer: offerProp.isRequired,
-  offersForMap: offersProp.isRequired,
 };
 
 export default RoomScreen;
