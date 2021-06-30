@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import getVerboseType from '../../utils/getVerboseType';
 import offerProp from '../../types/offer.prop';
 import offersProp from '../../types/offers.prop';
@@ -11,9 +12,16 @@ import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
 function RoomScreen({ offer, offersForMap }) {
+  const { id } = useParams();
   //
   // TODO: реализовать
   // GET /hotels/: id
+  // Получение предложения с идентификатором id.
+  //
+
+  //
+  // TODO: реализовать
+  // GET /hotels/: hotel_id/nearby
   // Получение предложения с идентификатором id.
   //
 
