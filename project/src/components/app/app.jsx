@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import browserHistory from '../../browser-history';
 import { AppRoute } from '../../const';
 import offersProp from '../../types/offers.prop';
 import commentsProp from '../../types/comments.prop';
@@ -9,18 +10,18 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import RoomScreen from '../room-screen/room-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
+import PrivateRoute from '../private-route/private-route';
 
 function App({offers, comments}) {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route path={AppRoute.ROOT} exact>
-          <MainScreen />
-        </Route>
+        <Route path={AppRoute.ROOT} exact component={MainScreen} />
         <Route path={AppRoute.LOGIN} exact component={LoginScreen} />
-        <Route path={AppRoute.FAVORITES} exact>
+        <PrivateRoute path={AppRoute.FAVORITES} exact render={() => (
           <FavoritesScreen offers={offers}/>
-        </Route>
+        )}
+        />
         <Route path={AppRoute.ROOM} exact render={(routeProps) => {
           const { id } = routeProps.match.params;
           const offer = offers.find((o) => Number(id) === o.id);
