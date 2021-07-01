@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import CommentStar from '../comment-star/comment-start';
+import { AuthorizationStatus } from '../../const';
 
-function ComponentForm() {
+function CommentForm(props) {
+  const { authorizationStatus } = props;
+
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
   const [isSubmitAvailable, setIsSubmitAvailable] = useState(false);
@@ -9,6 +14,10 @@ function ComponentForm() {
   useEffect(() => {
     setIsSubmitAvailable(['1', '2', '3', '4', '5'].indexOf(rating) !== -1 && comment.length >= 50 && comment.length <= 300);
   }, [comment, rating]);
+
+  if (authorizationStatus !== AuthorizationStatus.AUTH) {
+    return null;
+  }
 
   function handleCommentChange(event) {
     setComment(event.target.value);
@@ -51,4 +60,13 @@ function ComponentForm() {
   );
 }
 
-export default ComponentForm;
+CommentForm.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+export { CommentForm };
+export default connect(mapStateToProps)(CommentForm);
