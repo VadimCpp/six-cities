@@ -96,7 +96,7 @@ function RoomScreen(props) {
                   {offer.description}
                 </p>
               </div>
-              <Reviews comments={comments} />
+              <Reviews comments={comments} offerId={offer.id} />
             </div>
           </div>
           <CitiesMap city={offer.city} offers={nearby} className="property__map" />

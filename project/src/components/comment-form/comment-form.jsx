@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CommentStar from '../comment-star/comment-start';
 import { AuthorizationStatus } from '../../const';
-
+import { postComment } from '../../store/api-actions';
+import CommentStar from '../comment-star/comment-start';
 function CommentForm(props) {
-  const { authorizationStatus } = props;
+  const { authorizationStatus, offerId, doPostComment } = props;
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('');
@@ -24,8 +24,8 @@ function CommentForm(props) {
   }
 
   function handleSubmit(event) {
-    // TODO: реализовать сохранение комментария
     event.preventDefault();
+    doPostComment({id:offerId, rating: Number(rating), comment});
   }
 
   function handleRatingChange(event) {
@@ -62,11 +62,19 @@ function CommentForm(props) {
 
 CommentForm.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  offerId: PropTypes.number.isRequired,
+  doPostComment: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: state.authorizationStatus,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  doPostComment(id) {
+    dispatch(postComment(id));
+  },
+});
+
 export { CommentForm };
-export default connect(mapStateToProps)(CommentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

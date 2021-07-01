@@ -50,3 +50,11 @@ export const logout = () => (dispatch, _getState, api) => {
     .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(ActionCreator.logout()));
 };
+
+export const postComment = ({ id, comment, rating }) => (dispatch, _getState, api) => (
+  api.post(generatePath(APIRoute.COMMENTS, { id }), {comment, rating})
+    .then(({data}) =>
+      dispatch(ActionCreator.setOfferData({
+        comments: CommentAdapter.getComments(data),
+      })))
+);
