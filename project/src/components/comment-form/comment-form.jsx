@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AuthorizationStatus } from '../../const';
 import { postComment } from '../../store/api-actions';
-import CommentStar from '../comment-star/comment-start';
+import Rating from '../rating/rating';
+
 function CommentForm(props) {
   const { authorizationStatus, offerId, doPostComment } = props;
 
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState(0);
   const [isSubmitAvailable, setIsSubmitAvailable] = useState(false);
 
   useEffect(() => {
-    setIsSubmitAvailable(['1', '2', '3', '4', '5'].indexOf(rating) !== -1 && comment.length >= 50 && comment.length <= 300);
+    setIsSubmitAvailable((rating >= 1 && rating <= 5) && comment.length >= 50 && comment.length <= 300);
   }, [comment, rating]);
 
   if (authorizationStatus !== AuthorizationStatus.AUTH) {
@@ -25,25 +26,19 @@ function CommentForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    doPostComment({id:offerId, rating: Number(rating), comment});
+    doPostComment({id:offerId, rating: rating, comment});
+    setComment('');
+    setRating(0);
   }
 
   function handleRatingChange(event) {
-    setRating(event.currentTarget.value);
+    setRating(Number(event.currentTarget.value));
   }
 
   return (
     <form className="reviews__form form" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating">
-        {[
-          { stars: 5, title: 'perfect' },
-          { stars: 4, title: 'good' },
-          { stars: 3, title: 'not bad' },
-          { stars: 2, title: 'badly' },
-          { stars: 1, title: 'terribly' },
-        ].map(({ stars, title }) => <CommentStar key={stars} stars={stars} title={title} onRatingChange={handleRatingChange} />)}
-      </div>
+      <Rating onRatingChange={handleRatingChange} rating={rating} />
       <textarea
         className="reviews__textarea form__textarea"
         placeholder="Tell how was your stay, what you like and what can be improved"
