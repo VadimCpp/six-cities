@@ -17,11 +17,11 @@ function App({offers}) {
       <Switch>
         <Route path={AppRoute.ROOT} exact component={MainScreen} />
         <Route path={AppRoute.LOGIN} exact component={LoginScreen} />
+        <Route path={AppRoute.ROOM} exact component={RoomScreen} />
         <PrivateRoute path={AppRoute.FAVORITES} exact render={() => (
           <FavoritesScreen offers={offers}/>
         )}
         />
-        <Route path={AppRoute.ROOM} exact component={RoomScreen} />
         <Route component={NotFoundScreen} />
       </Switch>
     </BrowserRouter>
