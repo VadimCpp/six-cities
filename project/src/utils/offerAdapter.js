@@ -4,6 +4,7 @@ const OfferAdapter = {
     preview: offer['preview_image'],
     maxAdults: offer['max_adults'],
     isPremium: offer['is_premium'],
+    isFavorite: offer['is_favorite'],
     host: {
       ...offer.host,
       avatarUrl: offer['host']['avatar_url'],

@@ -26,7 +26,7 @@ function CommentForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    doPostComment({id:offerId, rating: rating, comment});
+    doPostComment({id: offerId, rating: rating, comment});
     setComment('');
     setRating(0);
   }

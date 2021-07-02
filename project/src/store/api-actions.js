@@ -59,3 +59,13 @@ export const postComment = ({ id, comment, rating }) => (dispatch, _getState, ap
         comments: CommentAdapter.getComments(data),
       })))
 );
+
+export const updateFavoriteStatus = ({ id, status }) => (dispatch, _getState, api) => (
+  api.post(generatePath(APIRoute.FAVORITE_STATUS, { id, status }))
+    .then(({data}) =>
+      dispatch(ActionCreator.updateOffer({
+        offer: OfferAdapter.getOffer(data),
+      })))
+    .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.LOGIN)))
+);
+

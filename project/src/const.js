@@ -90,4 +90,6 @@ export const APIRoute = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   COMMENTS: '/comments/:id',
+  FAVORITE: '/favorite',
+  FAVORITE_STATUS: '/favorite/:id/:status',
 };
