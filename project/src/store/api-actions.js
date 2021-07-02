@@ -31,8 +31,9 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
+    .then(({data}) => dispatch(ActionCreator.setUser(UserAdapter.getUser(data))))
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
+    .catch(() => dispatch(ActionCreator.setUser(null)))
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
