@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function CommentStar({stars, title, onRatingChange, rating }) {
+function CommentStar({stars, title, onRatingChange, isChecked }) {
   return (
     <>
       <input
@@ -10,7 +10,7 @@ function CommentStar({stars, title, onRatingChange, rating }) {
         value={stars}
         id={`${stars}-stars`}
         type="radio"
-        checked={rating === stars}
+        checked={isChecked}
         onChange={onRatingChange}
       />
       <label htmlFor={`${stars}-stars`} className="reviews__rating-label form__rating-label" title={title}>
@@ -26,7 +26,7 @@ CommentStar.propTypes = {
   stars: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   onRatingChange: PropTypes.func.isRequired,
-  rating: PropTypes.number.isRequired,
+  isChecked: PropTypes.bool.isRequired,
 };
 
 export default CommentStar;

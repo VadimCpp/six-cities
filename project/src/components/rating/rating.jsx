@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CommentStar from '../comment-star/comment-start';
+import CommentStar from '../comment-star/comment-star';
 
 function Rating({ onRatingChange, rating }) {
   return (
@@ -11,7 +11,15 @@ function Rating({ onRatingChange, rating }) {
         { stars: 3, title: 'not bad' },
         { stars: 2, title: 'badly' },
         { stars: 1, title: 'terribly' },
-      ].map(({ stars, title }) => <CommentStar key={stars} stars={stars} title={title} onRatingChange={onRatingChange} rating={rating} />)}
+      ].map(({ stars, title }) => (
+        <CommentStar
+          key={stars}
+          stars={stars}
+          title={title}
+          onRatingChange={onRatingChange}
+          isChecked={stars === rating}
+        />
+      ))}
     </div>
   );
 }
