@@ -23,9 +23,10 @@ function CommentForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    doPostComment({id: offerId, rating: rating, comment});
-    setComment('');
-    setRating(0);
+    doPostComment({id: offerId, rating: rating, comment}).then(() => {
+      setComment('');
+      setRating(0);
+    });
   }
 
   function handleRatingChange(event) {
@@ -76,7 +77,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   doPostComment(id) {
-    dispatch(postComment(id));
+    return dispatch(postComment(id));
   },
 });
 
