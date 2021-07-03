@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AuthorizationStatus } from '../../const';
@@ -10,15 +10,12 @@ function CommentForm(props) {
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
-  const [isSubmitAvailable, setIsSubmitAvailable] = useState(false);
-
-  useEffect(() => {
-    setIsSubmitAvailable((rating >= 1 && rating <= 5) && comment.length >= 50 && comment.length <= 300);
-  }, [comment, rating]);
 
   if (authorizationStatus !== AuthorizationStatus.AUTH) {
     return null;
   }
+
+  const isSubmitAvailable = rating >= 1 && rating <= 5 && comment.length >= 50 && comment.length <= 300;
 
   function handleCommentChange(event) {
     setComment(event.target.value);
@@ -47,9 +44,21 @@ function CommentForm(props) {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set
+          <span className="reviews__star">rating</span>
+          and describe your stay with at least
+          <b className="reviews__text-amount"> 50 </b>
+          characters and less than
+          <b className="reviews__text-amount"> 300 </b>
+          characters.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitAvailable ? '' : 'disabled'}>Submit</button>
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled={isSubmitAvailable ? '' : 'disabled'}
+        >
+          Submit
+        </button>
       </div>
     </form>
   );
