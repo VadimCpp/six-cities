@@ -49,14 +49,7 @@ const reducer = (state = initialState, action) => {
         },
       };
     case ActionType.UPDATE_OFFER: {
-      const updatedOffers = [];
-      state.offers.forEach((offer) => {
-        if (offer.id === action.payload.offer.id) {
-          updatedOffers.push(action.payload.offer);
-        } else {
-          updatedOffers.push(offer);
-        }
-      });
+      const updatedOffers = state.offers.map((offer) => offer.id === action.payload.offer.id ? action.payload.offer : offer);
       return {
         ...state,
         offers: updatedOffers,
