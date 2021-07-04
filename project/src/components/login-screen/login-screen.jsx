@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { ActionCreator } from '../../store/action';
 import { login } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 function LoginScreen(props) {
-  const { onSubmit, authorizationStatus } = props;
+  const { onSubmit, authorizationStatus, redirectToRoute } = props;
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -15,9 +16,8 @@ function LoginScreen(props) {
   // Если пользователь авторизован, то при переходе на страницу LoginScreen
   // выполняется перенаправление на главную страницу.
   //
-  const history = useHistory();
   if (authorizationStatus === AuthorizationStatus.AUTH) {
-    history.push(AppRoute.ROOT);
+    redirectToRoute(AppRoute.ROOT);
   }
 
   const handleSubmit = (evt) => {
@@ -104,6 +104,7 @@ function LoginScreen(props) {
 LoginScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  redirectToRoute: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -113,6 +114,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
     dispatch(login(authData));
+  },
+  redirectToRoute(route) {
+    dispatch(ActionCreator.redirectToRoute(route));
   },
 });
 
