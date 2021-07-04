@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,6 +17,7 @@ function RoomScreen(props) {
   const { offerData, doFetchOfferData } = props;
   const { offer, nearby, comments } = offerData;
   const { id } = useParams();
+  const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   useEffect(() => {
     if (offerData.id !== Number(id))
@@ -99,7 +100,7 @@ function RoomScreen(props) {
               <Reviews comments={comments} offerId={offer.id} />
             </div>
           </div>
-          <CitiesMap city={offer.city} offers={nearby} className="property__map" />
+          <CitiesMap city={offer.city} offers={nearby} className="property__map" activeOfferId={activeOfferId}/>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -109,6 +110,7 @@ function RoomScreen(props) {
               placesListClass="near-places__list"
               placeCardClass="near-places__card"
               imageWrapperClass="near-places__image-wrapper"
+              onActiveOfferSet={setActiveOfferId}
             />
           </section>
         </div>
