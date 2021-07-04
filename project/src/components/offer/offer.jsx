@@ -20,8 +20,8 @@ function Offer(props) {
   } = props;
   const {id, preview, price, rating, title, type, isPremium} = offer;
 
-  function handleFavoriteClick(status) {
-    doUpdateFavoriteStatus({ id, status });
+  function handleFavoriteClick() {
+    doUpdateFavoriteStatus({ id, status: offer.isFavorite ? 0 : 1 });
   }
 
   return (
@@ -60,7 +60,7 @@ function Offer(props) {
           <button
             className={`place-card__bookmark-button ${offer.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
             type="button"
-            onClick={() => handleFavoriteClick(offer.isFavorite ? 0 : 1)}
+            onClick={handleFavoriteClick}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
