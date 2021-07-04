@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import CommentStar from '../comment-star/comment-start';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { AuthorizationStatus } from '../../const';
+import { postComment } from '../../store/api-actions';
+import Rating from '../rating/rating';
 
-function ComponentForm() {
+function CommentForm(props) {
+  const { authorizationStatus, offerId, doPostComment } = props;
+
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState('');
-  const [isSubmitAvailable, setIsSubmitAvailable] = useState(false);
+  const [rating, setRating] = useState(0);
 
-  useEffect(() => {
-    setIsSubmitAvailable(['1', '2', '3', '4', '5'].indexOf(rating) !== -1 && comment.length >= 50 && comment.length <= 300);
-  }, [comment, rating]);
+  if (authorizationStatus !== AuthorizationStatus.AUTH) {
+    return null;
+  }
+
+  const isSubmitAvailable = rating >= 1 && rating <= 5 && comment.length >= 50 && comment.length <= 300;
 
   function handleCommentChange(event) {
     setComment(event.target.value);
   }
 
   function handleSubmit(event) {
-    // TODO: реализовать сохранение комментария
     event.preventDefault();
+    doPostComment({id: offerId, rating: rating, comment}).then(() => {
+      setComment('');
+      setRating(0);
+    });
   }
 
   function handleRatingChange(event) {
-    setRating(event.currentTarget.value);
+    setRating(Number(event.currentTarget.value));
   }
 
   return (
     <form className="reviews__form form" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating">
-        {[
-          { stars: 5, title: 'perfect' },
-          { stars: 4, title: 'good' },
-          { stars: 3, title: 'not bad' },
-          { stars: 2, title: 'badly' },
-          { stars: 1, title: 'terribly' },
-        ].map(({ stars, title }) => <CommentStar key={stars} stars={stars} title={title} onRatingChange={handleRatingChange} />)}
-      </div>
+      <Rating onRatingChange={handleRatingChange} rating={rating} />
       <textarea
         className="reviews__textarea form__textarea"
         placeholder="Tell how was your stay, what you like and what can be improved"
@@ -43,12 +45,41 @@ function ComponentForm() {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set
+          <span className="reviews__star">rating</span>
+          and describe your stay with at least
+          <b className="reviews__text-amount"> 50 </b>
+          characters and less than
+          <b className="reviews__text-amount"> 300 </b>
+          characters.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={isSubmitAvailable ? '' : 'disabled'}>Submit</button>
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled={isSubmitAvailable ? '' : 'disabled'}
+        >
+          Submit
+        </button>
       </div>
     </form>
   );
 }
 
-export default ComponentForm;
+CommentForm.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  offerId: PropTypes.number.isRequired,
+  doPostComment: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  doPostComment(id) {
+    return dispatch(postComment(id));
+  },
+});
+
+export { CommentForm };
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

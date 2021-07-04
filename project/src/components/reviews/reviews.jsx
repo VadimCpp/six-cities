@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import commentsProp from '../../types/comments.prop';
 import Review from '../review/review';
 import CommentForm from '../comment-form/comment-form';
 
-function Reviews({ comments }) {
+function Reviews({ comments, offerId }) {
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{comments.length}</span></h2>
@@ -14,14 +15,14 @@ function Reviews({ comments }) {
           </li>
         ))}
       </ul>
-      {/* TODO: отображать только для авторизованных пользователей */}
-      <CommentForm />
+      <CommentForm offerId={offerId} />
     </section>
   );
 }
 
 Reviews.propTypes = {
   comments: commentsProp.isRequired,
+  offerId: PropTypes.number.isRequired,
 };
 
 export default Reviews;

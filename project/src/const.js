@@ -3,6 +3,7 @@ export const AppRoute = {
   LOGIN: '/login',
   FAVORITES: '/favorites',
   ROOM: '/offer/:id',
+  NOT_FOUND: '/404',
 };
 
 export const RATING_TO_PERCENT = 20; // same as / 5 * 100
@@ -58,6 +59,17 @@ export const CITIES = {
   },
 };
 
+//
+// NOTE!
+// Структура данных объединяет все данные, которые отображаются на странице предложения.
+//
+export const EMPTY_OFFER_DATA = {
+  id: null,
+  offer: null,
+  nearby: null,
+  comments: null,
+};
+
 export const SortingTypes = {
   POPULAR: 'Popular',
   LOW_TO_HIGH: 'Price: low to high',
@@ -73,6 +85,11 @@ export const AuthorizationStatus = {
 
 export const APIRoute = {
   OFFERS: '/hotels',
+  OFFER: '/hotels/:id',
+  NEARBY: '/hotels/:id/nearby',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  COMMENTS: '/comments/:id',
+  FAVORITE: '/favorite',
+  FAVORITE_STATUS: '/favorite/:id/:status',
 };

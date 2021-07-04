@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import offerDataProp from '../../types/offerData.prop';
 import getVerboseType from '../../utils/getVerboseType';
-import offerProp from '../../types/offer.prop';
-import offersProp from '../../types/offers.prop';
-import commentsProp from '../../types/comments.prop';
+import { fetchOfferData } from '../../store/api-actions';
 import { RATING_TO_PERCENT } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -11,14 +13,19 @@ import Host from '../host/host';
 import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 
-function RoomScreen({ offer, comments, offersForMap }) {
-  //
-  // TODO: реализовать
-  // GET /hotels/: id
-  // Получение предложения с идентификатором id.
-  //
+function RoomScreen(props) {
+  const { offerData, doFetchOfferData } = props;
+  const { offer, nearby, comments } = offerData;
+  const { id } = useParams();
 
-  return (
+  useEffect(() => {
+    if (offerData.id !== Number(id))
+    {
+      doFetchOfferData(id);
+    }
+  }, [doFetchOfferData, id, offerData]);
+
+  return offerData.id === Number(id) ? (
     <div className="page">
       <Header />
 
@@ -89,21 +96,16 @@ function RoomScreen({ offer, comments, offersForMap }) {
                   {offer.description}
                 </p>
               </div>
-              <Reviews comments={comments} />
+              <Reviews comments={comments} offerId={offer.id} />
             </div>
           </div>
-          <CitiesMap city={offer.city} offers={offersForMap} className="property__map" />
+          <CitiesMap city={offer.city} offers={nearby} className="property__map" />
         </section>
-        {/*
-          TODO: реализовать
-          GET /comments/: hotel_id
-          Получить список комментариев для конкретного предложения по его id.
-         */}
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <Offers
-              offers={offersForMap}
+              offers={nearby}
               placesListClass="near-places__list"
               placeCardClass="near-places__card"
               imageWrapperClass="near-places__image-wrapper"
@@ -114,14 +116,25 @@ function RoomScreen({ offer, comments, offersForMap }) {
 
       <Footer />
     </div>
-
+  ) : (
+    <span>Загружаем предложение...</span>
   );
 }
 
 RoomScreen.propTypes = {
-  offer: offerProp.isRequired,
-  comments: commentsProp.isRequired,
-  offersForMap: offersProp.isRequired,
+  offerData: offerDataProp,
+  doFetchOfferData: PropTypes.func.isRequired,
 };
 
-export default RoomScreen;
+const mapStateToProps = (state) => ({
+  offerData: state.offerData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  doFetchOfferData(id) {
+    dispatch(fetchOfferData(id));
+  },
+});
+
+export { RoomScreen };
+export default connect(mapStateToProps, mapDispatchToProps)(RoomScreen);
