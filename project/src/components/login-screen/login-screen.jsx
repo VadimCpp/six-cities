@@ -7,7 +7,7 @@ import { login } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 function LoginScreen(props) {
-  const { onSubmit, authorizationStatus, redirectToRoute } = props;
+  const { onSubmit, authorizationStatus, redirectToRoute, setCity } = props;
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -90,9 +90,17 @@ function LoginScreen(props) {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to={AppRoute.ROOT} className="locations__item-link">
-                <span>Amsterdam</span>
-              </Link>
+              <span
+                className="locations__item-link"
+                style={{ cursor: 'pointer' }}
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  setCity('Amsterdam');
+                  redirectToRoute(AppRoute.ROOT);
+                }}
+              >
+                Amsterdam
+              </span>
             </div>
           </section>
         </div>
@@ -105,6 +113,7 @@ LoginScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   redirectToRoute: PropTypes.func.isRequired,
+  setCity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -117,6 +126,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   redirectToRoute(route) {
     dispatch(ActionCreator.redirectToRoute(route));
+  },
+  setCity(city) {
+    dispatch(ActionCreator.setCity(city));
   },
 });
 
