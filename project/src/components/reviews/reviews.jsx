@@ -25,4 +25,5 @@ Reviews.propTypes = {
   offerId: PropTypes.number.isRequired,
 };
 
-export default Reviews;
+export { Reviews };
+export default React.memo(Reviews);

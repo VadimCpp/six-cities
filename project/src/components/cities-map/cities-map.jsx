@@ -103,4 +103,5 @@ CitiesMap.propTypes = {
   activeOfferId: PropTypes.number,
 };
 
-export default CitiesMap;
+export { CitiesMap };
+export default React.memo(CitiesMap);

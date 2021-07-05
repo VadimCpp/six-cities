@@ -29,4 +29,5 @@ Offers.propTypes = {
   onActiveOfferSet: PropTypes.func,
 };
 
-export default Offers;
+export { Offers };
+export default React.memo(Offers);
