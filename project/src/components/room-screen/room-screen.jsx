@@ -58,8 +58,8 @@ RoomScreen.propTypes = {
   doFetchOfferData: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers,
+const mapStateToProps = ({ OFFERS }) => ({
+  offers: OFFERS.offers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

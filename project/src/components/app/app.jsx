@@ -32,8 +32,8 @@ App.propTypes = {
   offers: offersProp.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers,
+const mapStateToProps = ({ OFFERS }) => ({
+  offers: OFFERS.offers,
 });
 
 export { App };

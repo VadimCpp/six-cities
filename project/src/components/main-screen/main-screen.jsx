@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import offersProp from '../../types/offers.prop';
-import { CITIES, SortingTypes } from '../../const';
+import { CITIES as CITIES_ARRAY, SortingTypes } from '../../const';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
@@ -56,7 +56,7 @@ function MainScreen(props) {
                   />
                 </section>
                 <div className="cities__right-section">
-                  <CitiesMap city={CITIES[city]} offers={offersForCity} className="cities__map" activeOfferId={activeOfferId} />
+                  <CitiesMap city={CITIES_ARRAY[city]} offers={offersForCity} className="cities__map" activeOfferId={activeOfferId} />
                 </div>
               </div>
             </div>
@@ -75,10 +75,10 @@ MainScreen.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  city: state.city,
-  offers: state.offers,
-  isDataLoaded: state.isDataLoaded,
+const mapStateToProps = ({ CITIES, OFFERS }) => ({
+  city: CITIES.city,
+  offers: OFFERS.offers,
+  isDataLoaded: OFFERS.isDataLoaded,
 });
 
 export { MainScreen };
