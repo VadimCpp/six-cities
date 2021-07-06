@@ -16,10 +16,10 @@ function RoomScreen(props) {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offer = offers[Number(id)];
-  const nearby = offers?.nearby || [];
+  const nearby = offer?.nearby || [];
 
   useEffect(() => {
-    if (!offer?.nearby && !offer?.comments)
+    if (!offer?.nearby || !offer?.comments)
     {
       doFetchOfferData(id);
     }

@@ -6,8 +6,6 @@ import Reviews from '../reviews/reviews';
 import Host from '../host/host';
 
 function Room({ offer }) {
-  const comments = offer.comments || [];
-
   return (
     <>
       <div className="property__gallery-container container">
@@ -75,7 +73,7 @@ function Room({ offer }) {
               {offer.description}
             </p>
           </div>
-          <Reviews comments={comments} offerId={offer.id} />
+          <Reviews comments={offer.comments || []} offerId={offer.id} />
         </div>
       </div>
     </>
