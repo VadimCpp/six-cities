@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ActionCreator } from '../../store/action';
+import { redirectToRoute, setCity } from '../../store/action';
 import { login } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 function LoginScreen(props) {
-  const { onSubmit, authorizationStatus, redirectToRoute, setCity } = props;
+  const { onSubmit, authorizationStatus, doRedirectToRoute, doSetCity } = props;
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -17,7 +17,7 @@ function LoginScreen(props) {
   // выполняется перенаправление на главную страницу.
   //
   if (authorizationStatus === AuthorizationStatus.AUTH) {
-    redirectToRoute(AppRoute.ROOT);
+    doRedirectToRoute(AppRoute.ROOT);
   }
 
   const handleSubmit = (evt) => {
@@ -95,8 +95,8 @@ function LoginScreen(props) {
                 style={{ cursor: 'pointer' }}
                 onClick={(evt) => {
                   evt.preventDefault();
-                  setCity('Amsterdam');
-                  redirectToRoute(AppRoute.ROOT);
+                  doSetCity('Amsterdam');
+                  doRedirectToRoute(AppRoute.ROOT);
                 }}
               >
                 Amsterdam
@@ -112,8 +112,8 @@ function LoginScreen(props) {
 LoginScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  redirectToRoute: PropTypes.func.isRequired,
-  setCity: PropTypes.func.isRequired,
+  doRedirectToRoute: PropTypes.func.isRequired,
+  doSetCity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ USER }) => ({
@@ -124,11 +124,11 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
     dispatch(login(authData));
   },
-  redirectToRoute(route) {
-    dispatch(ActionCreator.redirectToRoute(route));
+  doRedirectToRoute(route) {
+    dispatch(redirectToRoute(route));
   },
-  setCity(city) {
-    dispatch(ActionCreator.setCity(city));
+  doSetCity(city) {
+    dispatch(setCity(city));
   },
 });
 

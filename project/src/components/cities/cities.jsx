@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CITIES as CITIES_ARRAY } from '../../const';
-import { ActionCreator } from '../../store/action';
+import { setCity } from '../../store/action';
 
 const cities = Object.values(CITIES_ARRAY);
 
 function Cities(props) {
-  const { city, setCity } = props;
+  const { city, doSetCity } = props;
 
   return (
     <div className="tabs">
@@ -20,7 +20,7 @@ function Cities(props) {
                 style={{ cursor: 'pointer' }}
                 onClick={(evt) => {
                   evt.preventDefault();
-                  setCity(c.name);
+                  doSetCity(c.name);
                 }}
               >
                 <span>{c.name}</span>
@@ -35,7 +35,7 @@ function Cities(props) {
 
 Cities.propTypes = {
   city: PropTypes.string.isRequired,
-  setCity: PropTypes.func.isRequired,
+  doSetCity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ CITIES }) => ({
@@ -43,8 +43,8 @@ const mapStateToProps = ({ CITIES }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCity(city) {
-    dispatch(ActionCreator.setCity(city));
+  doSetCity(city) {
+    dispatch(setCity(city));
   },
 });
 

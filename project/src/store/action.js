@@ -8,32 +8,36 @@ export const ActionType = {
   UPDATE_OFFER: 'data/updateOffer',
 };
 
-export const ActionCreator = {
-  setCity: (city) => ({
-    type: ActionType.SET_CITY,
-    payload: city,
-  }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
-  }),
-  loadOffers: (offers) => ({
-    type: ActionType.LOAD_OFFERS,
-    payload: offers,
-  }),
-  redirectToRoute: (url) => ({
-    type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
-  }),
-  setUser: (user) => ({
-    type: ActionType.SET_USER,
-    payload: user,
-  }),
-  logout: () => ({
-    type: ActionType.LOGOUT,
-  }),
-  updateOffer: (offer) => ({
-    type: ActionType.UPDATE_OFFER,
-    payload: offer,
-  }),
-};
+export const setCity = (city) => ({
+  type: ActionType.SET_CITY,
+  payload: city,
+});
+
+export const requireAuthorization = (status) => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
+});
+
+export const loadOffers = (offers) => ({
+  type: ActionType.LOAD_OFFERS,
+  payload: offers,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
+});
+
+export const setUser = (user) => ({
+  type: ActionType.SET_USER,
+  payload: user,
+});
+
+export const logout = () => ({
+  type: ActionType.LOGOUT,
+});
+
+export const updateOffer = (offer) => ({
+  type: ActionType.UPDATE_OFFER,
+  payload: offer,
+});
