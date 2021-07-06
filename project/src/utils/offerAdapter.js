@@ -11,7 +11,10 @@ const OfferAdapter = {
       isPro: offer['host']['is_pro'],
     },
   }),
-  getOffers: (offers) => offers.map((offer) => OfferAdapter.getOffer(offer)),
+  getOffers: (offers) => offers.reduce((acc, offer) => {
+    acc[offer.id] = OfferAdapter.getOffer(offer);
+    return acc;
+  }, {}),
 };
 
 export default OfferAdapter;

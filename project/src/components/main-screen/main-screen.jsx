@@ -16,7 +16,7 @@ function MainScreen(props) {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const anOffersForCity = offers.filter((o) => o.city.name === city);
+    const anOffersForCity = Object.values(offers).filter((o) => o.city.name === city);
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
         anOffersForCity.sort((a, b) => a.price - b.price);

@@ -3,7 +3,7 @@ import { CITIES, EMPTY_OFFER_DATA, AuthorizationStatus } from '../const';
 
 const initialState = {
   city: CITIES['Paris'].name,
-  offers: [],
+  offers: {},
   isDataLoaded: false,
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   comments: [],
@@ -49,10 +49,12 @@ const reducer = (state = initialState, action) => {
         },
       };
     case ActionType.UPDATE_OFFER: {
-      const updatedOffers = state.offers.map((offer) => offer.id === action.payload.offer.id ? action.payload.offer : offer);
       return {
         ...state,
-        offers: updatedOffers,
+        offers: {
+          ...state.offers,
+          [action.payload.offer.id]: action.payload.offer,
+        },
       };
     }
     default:
