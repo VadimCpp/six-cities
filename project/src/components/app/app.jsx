@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import browserHistory from '../../browser-history';
 import { AppRoute } from '../../const';
 import offersProp from '../../types/offers.prop';
+import { getOffers } from '../../store/offers-data/selector';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
@@ -32,8 +33,8 @@ App.propTypes = {
   offers: offersProp.isRequired,
 };
 
-const mapStateToProps = ({ OFFERS }) => ({
-  offers: OFFERS.offers,
+const mapStateToProps = (state) => ({
+  offers: getOffers(state),
 });
 
 export { App };

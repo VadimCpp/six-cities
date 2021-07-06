@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AuthorizationStatus } from '../../const';
 import { postComment } from '../../store/api-actions';
+import { getAuthorizationStatus } from '../../store/user-data/selector';
 import Rating from '../rating/rating';
 
 function CommentForm(props) {
@@ -71,8 +72,8 @@ CommentForm.propTypes = {
   doPostComment: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ USER }) => ({
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

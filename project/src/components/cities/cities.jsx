@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { CITIES as CITIES_ARRAY } from '../../const';
+import { CITIES } from '../../const';
 import { setCity } from '../../store/action';
+import { getCity } from '../../store/cities-data/selector';
 
-const cities = Object.values(CITIES_ARRAY);
+const cities = Object.values(CITIES);
 
 function Cities(props) {
   const { city, doSetCity } = props;
@@ -38,8 +39,8 @@ Cities.propTypes = {
   doSetCity: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ CITIES }) => ({
-  city: CITIES.city,
+const mapStateToProps = (state) => ({
+  city: getCity(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

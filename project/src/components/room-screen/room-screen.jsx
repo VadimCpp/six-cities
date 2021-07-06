@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import offersProp from '../../types/offers.prop';
 import { fetchOfferData } from '../../store/api-actions';
+import { getOffers } from '../../store/offers-data/selector';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CitiesMap from '../cities-map/cities-map';
@@ -62,8 +63,8 @@ RoomScreen.propTypes = {
   doFetchOfferData: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ OFFERS }) => ({
-  offers: OFFERS.offers,
+const mapStateToProps = (state) => ({
+  offers: getOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
