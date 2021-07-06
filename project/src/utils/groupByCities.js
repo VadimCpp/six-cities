@@ -20,10 +20,10 @@
 //   ...
 // ];
 //
-function groupByCities(offers = []) {
+function groupByCities(offers = {}) {
   const cities = [];
 
-  offers.forEach((o) => {
+  Object.values(offers).forEach((o) => {
     if (o.isFavorite) {
       let city = cities.find((c) => c.name === o.city.name) ;
       if (!city) {

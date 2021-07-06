@@ -1,5 +1,5 @@
 import { ActionType } from './action';
-import { CITIES, EMPTY_OFFER_DATA, AuthorizationStatus } from '../const';
+import { CITIES, AuthorizationStatus } from '../const';
 
 const initialState = {
   city: CITIES['Paris'].name,
@@ -8,7 +8,6 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   comments: [],
   user: null,
-  offerData: EMPTY_OFFER_DATA,
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,20 +39,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-    case ActionType.SET_OFFER_DATA:
-      return {
-        ...state,
-        offerData: {
-          ...state.offerData,
-          ...action.payload,
-        },
-      };
     case ActionType.UPDATE_OFFER: {
       return {
         ...state,
         offers: {
           ...state.offers,
-          [action.payload.offer.id]: action.payload.offer,
+          [action.payload.offer.id]: {
+            ...state.offers[action.payload.offer.id],
+            ...action.payload.offer,
+          },
         },
       };
     }

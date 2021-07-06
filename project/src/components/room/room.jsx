@@ -1,14 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import offerDataProp from '../../types/offerData.prop';
+import offerProp from '../../types/offer.prop';
 import getVerboseType from '../../utils/getVerboseType';
 import { RATING_TO_PERCENT } from '../../const';
 import Reviews from '../reviews/reviews';
 import Host from '../host/host';
 
-function Room(props) {
-  const { offerData } = props;
-  const { offer, comments } = offerData;
+function Room({ offer }) {
+  const comments = offer.comments || [];
 
   return (
     <>
@@ -85,12 +83,8 @@ function Room(props) {
 }
 
 Room.propTypes = {
-  offerData: offerDataProp,
+  offer: offerProp,
 };
 
-const mapStateToProps = (state) => ({
-  offerData: state.offerData,
-});
-
 export { Room };
-export default connect(mapStateToProps)(Room);
+export default Room;

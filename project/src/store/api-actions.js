@@ -20,11 +20,12 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
       // Promise.all: Order of resolved values?
       // Shortly, the order is preserved.
       // https://stackoverflow.com/q/28066429/1775459
-      dispatch(ActionCreator.setOfferData({
-        id: Number(id),
-        offer: OfferAdapter.getOffer(values[0].data),
-        nearby: OfferAdapter.getOffers(values[1].data),
-        comments: CommentAdapter.getComments(values[2].data),
+      dispatch(ActionCreator.updateOffer({
+        offer: {
+          ...OfferAdapter.getOffer(values[0].data),
+          nearby: OfferAdapter.getOffers(values[1].data),
+          comments: CommentAdapter.getComments(values[2].data),
+        },
       })))
     .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.NOT_FOUND)))
 );
@@ -55,8 +56,11 @@ export const logout = () => (dispatch, _getState, api) => {
 export const postComment = ({ id, comment, rating }) => (dispatch, _getState, api) => (
   api.post(generatePath(APIRoute.COMMENTS, { id }), {comment, rating})
     .then(({data}) =>
-      dispatch(ActionCreator.setOfferData({
-        comments: CommentAdapter.getComments(data),
+      dispatch(ActionCreator.updateOffer({
+        offer: {
+          id,
+          comments: CommentAdapter.getComments(data),
+        },
       })))
 );
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import offerDataProp from '../../types/offerData.prop';
+import offersProp from '../../types/offers.prop';
 import { fetchOfferData } from '../../store/api-actions';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -11,25 +11,27 @@ import Offers from '../offers/offers';
 import Room from '../room/room';
 
 function RoomScreen(props) {
-  const { offerData, doFetchOfferData } = props;
-  const { offer, nearby } = offerData;
+  const { offers, doFetchOfferData } = props;
   const { id } = useParams();
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
+  const offer = offers[id];
+  const nearby = offers.nearby || [];
+
   useEffect(() => {
-    if (offerData.id !== Number(id))
+    if (!offer.nearby && !offer.comments)
     {
       doFetchOfferData(id);
     }
-  }, [doFetchOfferData, id, offerData]);
+  }, [doFetchOfferData, id, offer]);
 
-  return offerData.id === Number(id) ? (
+  return (
     <div className="page">
       <Header />
 
       <main className="page__main page__main--property">
         <section className="property">
-          <Room />
+          <Room offer={offer} />
           <CitiesMap city={offer.city} offers={nearby} className="property__map" activeOfferId={activeOfferId}/>
         </section>
         <div className="container">
@@ -48,18 +50,16 @@ function RoomScreen(props) {
 
       <Footer />
     </div>
-  ) : (
-    <span>Загружаем предложение...</span>
   );
 }
 
 RoomScreen.propTypes = {
-  offerData: offerDataProp,
+  offers: offersProp,
   doFetchOfferData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offerData: state.offerData,
+  offers: state.offers,
 });
 
 const mapDispatchToProps = (dispatch) => ({
