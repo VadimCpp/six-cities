@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { ActionCreator } from '../../store/action';
+import { useSelector, useDispatch } from 'react-redux';
+import { redirectToRoute, setCity } from '../../store/action';
 import { login } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { getAuthorizationStatus } from '../../store/user-data/selector';
 
-function LoginScreen(props) {
-  const { onSubmit, authorizationStatus, redirectToRoute } = props;
+function LoginScreen() {
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const dispatch = useDispatch();
+
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -17,17 +19,22 @@ function LoginScreen(props) {
   // выполняется перенаправление на главную страницу.
   //
   if (authorizationStatus === AuthorizationStatus.AUTH) {
-    redirectToRoute(AppRoute.ROOT);
+    dispatch(redirectToRoute(AppRoute.ROOT));
   }
 
-  const handleSubmit = (evt) => {
+  function handleSubmit(evt) {
     evt.preventDefault();
-
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
-  };
+    }));
+  }
+
+  function handleAmsterdamClick(evt) {
+    evt.preventDefault();
+    dispatch(setCity('Amsterdam'));
+    dispatch(redirectToRoute(AppRoute.ROOT));
+  }
 
   return (
     <div className="page page--gray page--login">
@@ -90,9 +97,13 @@ function LoginScreen(props) {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to={AppRoute.ROOT} className="locations__item-link">
-                <span>Amsterdam</span>
-              </Link>
+              <span
+                className="locations__item-link"
+                style={{ cursor: 'pointer' }}
+                onClick={handleAmsterdamClick}
+              >
+                Amsterdam
+              </span>
             </div>
           </section>
         </div>
@@ -101,24 +112,5 @@ function LoginScreen(props) {
   );
 }
 
-LoginScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  redirectToRoute: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-  redirectToRoute(route) {
-    dispatch(ActionCreator.redirectToRoute(route));
-  },
-});
-
 export { LoginScreen };
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default LoginScreen;

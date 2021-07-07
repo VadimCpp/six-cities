@@ -59,17 +59,6 @@ export const CITIES = {
   },
 };
 
-//
-// NOTE!
-// Структура данных объединяет все данные, которые отображаются на странице предложения.
-//
-export const EMPTY_OFFER_DATA = {
-  id: null,
-  offer: null,
-  nearby: null,
-  comments: null,
-};
-
 export const SortingTypes = {
   POPULAR: 'Popular',
   LOW_TO_HIGH: 'Price: low to high',

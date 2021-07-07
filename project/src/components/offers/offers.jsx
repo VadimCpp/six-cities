@@ -6,7 +6,7 @@ import Offer from '../offer/offer';
 function Offers({offers, placesListClass, placeCardClass = '', imageWrapperClass = '', onActiveOfferSet = () => {}}) {
   return (
     <div className={`${placesListClass} places__list`}>
-      {offers.map((offer) =>
+      {Object.values(offers).map((offer) =>
         (
           <Offer
             key={offer.id}
@@ -29,4 +29,5 @@ Offers.propTypes = {
   onActiveOfferSet: PropTypes.func,
 };
 
-export default Offers;
+export { Offers };
+export default React.memo(Offers);

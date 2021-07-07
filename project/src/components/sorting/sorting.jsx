@@ -41,4 +41,5 @@ Sorting.propTypes = {
   onSortingChange: PropTypes.func.isRequired,
 };
 
-export default Sorting;
+export { Sorting };
+export default React.memo(Sorting);

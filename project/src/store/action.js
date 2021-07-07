@@ -1,3 +1,5 @@
+import { createAction } from '@reduxjs/toolkit';
+
 export const ActionType = {
   SET_CITY: 'main/setCity',
   REDIRECT_TO_ROUTE: 'main/redirectToRoute',
@@ -5,40 +7,31 @@ export const ActionType = {
   LOAD_OFFERS: 'data/loadOffers',
   SET_USER: 'user/setUser',
   LOGOUT: 'user/logout',
-  SET_OFFER_DATA: 'data/setOfferData',
   UPDATE_OFFER: 'data/updateOffer',
 };
 
-export const ActionCreator = {
-  setCity: (city) => ({
-    type: ActionType.SET_CITY,
-    payload: city,
-  }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
-  }),
-  loadOffers: (offers) => ({
-    type: ActionType.LOAD_OFFERS,
-    payload: offers,
-  }),
-  redirectToRoute: (url) => ({
-    type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
-  }),
-  setUser: (user) => ({
-    type: ActionType.SET_USER,
-    payload: user,
-  }),
-  logout: () => ({
-    type: ActionType.LOGOUT,
-  }),
-  setOfferData: (offerData) => ({
-    type: ActionType.SET_OFFER_DATA,
-    payload: offerData,
-  }),
-  updateOffer: (offer) => ({
-    type: ActionType.UPDATE_OFFER,
-    payload: offer,
-  }),
-};
+export const setCity = createAction(ActionType.SET_CITY, (city) => ({
+  payload: city,
+}));
+
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
+  payload: status,
+}));
+
+export const loadOffers = createAction(ActionType.LOAD_OFFERS, (offers) => ({
+  payload: offers,
+}));
+
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({
+  payload: url,
+}));
+
+export const setUser = createAction(ActionType.SET_USER, (user) => ({
+  payload: user,
+}));
+
+export const logout = createAction(ActionType.LOGOUT);
+
+export const updateOffer = createAction(ActionType.UPDATE_OFFER, (offer) => ({
+  payload: offer,
+}));

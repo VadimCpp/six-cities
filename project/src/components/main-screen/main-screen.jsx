@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import offersProp from '../../types/offers.prop';
+import { useSelector } from 'react-redux';
 import { CITIES, SortingTypes } from '../../const';
+import { getOffers, getIsDataLoaded } from '../../store/offers-data/selector';
+import { getCity } from '../../store/cities-data/selector';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
@@ -10,13 +10,16 @@ import Cities from '../cities/cities';
 import Sorting from '../sorting/sorting';
 import Spinner from '../spinner/spinner';
 
-function MainScreen(props) {
-  const { city, offers, isDataLoaded } = props;
+function MainScreen() {
+  const city = useSelector(getCity);
+  const offers = useSelector(getOffers);
+  const isDataLoaded = useSelector(getIsDataLoaded);
+
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const anOffersForCity = offers.filter((o) => o.city.name === city);
+    const anOffersForCity = Object.values(offers).filter((o) => o.city.name === city);
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
         anOffersForCity.sort((a, b) => a.price - b.price);
@@ -69,17 +72,5 @@ function MainScreen(props) {
   );
 }
 
-MainScreen.propTypes = {
-  city: PropTypes.string.isRequired,
-  offers: offersProp.isRequired,
-  isDataLoaded: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  city: state.city,
-  offers: state.offers,
-  isDataLoaded: state.isDataLoaded,
-});
-
 export { MainScreen };
-export default connect(mapStateToProps)(MainScreen);
+export default MainScreen;

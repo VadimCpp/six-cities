@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { CITIES } from '../../const';
-import { ActionCreator } from '../../store/action';
+import { setCity } from '../../store/action';
+import { getCity } from '../../store/cities-data/selector';
 
 const cities = Object.values(CITIES);
 
-function Cities(props) {
-  const { city, setCity } = props;
+function Cities() {
+  const city = useSelector(getCity);
+  const dispatch = useDispatch();
 
   return (
     <div className="tabs">
@@ -18,8 +19,9 @@ function Cities(props) {
               <span
                 className={`locations__item-link tabs__item ${c.name === city ? 'tabs__item--active' : ''}`}
                 style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  setCity(c.name);
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  dispatch(setCity(c.name));
                 }}
               >
                 <span>{c.name}</span>
@@ -32,20 +34,5 @@ function Cities(props) {
   );
 }
 
-Cities.propTypes = {
-  city: PropTypes.string.isRequired,
-  setCity: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  city: state.city,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setCity(city) {
-    dispatch(ActionCreator.setCity(city));
-  },
-});
-
 export { Cities };
-export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+export default Cities;

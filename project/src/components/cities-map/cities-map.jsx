@@ -53,7 +53,7 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
   //
   useEffect(() => {
     if (map.current) {
-      offers.forEach((o) => {
+      Object.values(offers).forEach((o) => {
         const coords = [
           o.location.latitude,
           o.location.longitude,
@@ -103,4 +103,5 @@ CitiesMap.propTypes = {
   activeOfferId: PropTypes.number,
 };
 
-export default CitiesMap;
+export { CitiesMap };
+export default React.memo(CitiesMap);
