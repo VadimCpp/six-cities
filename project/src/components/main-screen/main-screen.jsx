@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CITIES, SortingTypes } from '../../const';
-import { getOffers, getIsDataLoaded } from '../../store/offers-data/selector';
+import { getIsDataLoaded, getOffersForCity } from '../../store/offers-data/selector';
 import { getCity } from '../../store/cities-data/selector';
 import Header from '../header/header';
 import Offers from '../offers/offers';
@@ -12,14 +12,14 @@ import Spinner from '../spinner/spinner';
 
 function MainScreen() {
   const city = useSelector(getCity);
-  const offers = useSelector(getOffers);
+  const theOffersForCity = useSelector(getOffersForCity);
   const isDataLoaded = useSelector(getIsDataLoaded);
 
   const [ sortType, setSortType ] = useState(SortingTypes.POPULAR);
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const anOffersForCity = Object.values(offers).filter((o) => o.city.name === city);
+    const anOffersForCity = theOffersForCity;
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
         anOffersForCity.sort((a, b) => a.price - b.price);
@@ -34,7 +34,7 @@ function MainScreen() {
         break;
     }
     return anOffersForCity;
-  }, [city, offers, sortType]);
+  }, [sortType, theOffersForCity]);
 
   return (
     <div className="page page--gray page--main">
