@@ -22,14 +22,19 @@ function LoginScreen() {
     dispatch(redirectToRoute(AppRoute.ROOT));
   }
 
-  const handleSubmit = (evt) => {
+  function handleSubmit(evt) {
     evt.preventDefault();
-
     dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
     }));
-  };
+  }
+
+  function handleAmsterdamClick(evt) {
+    evt.preventDefault();
+    dispatch(setCity('Amsterdam'));
+    dispatch(redirectToRoute(AppRoute.ROOT));
+  }
 
   return (
     <div className="page page--gray page--login">
@@ -95,11 +100,7 @@ function LoginScreen() {
               <span
                 className="locations__item-link"
                 style={{ cursor: 'pointer' }}
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  dispatch(setCity('Amsterdam'));
-                  dispatch(redirectToRoute(AppRoute.ROOT));
-                }}
+                onClick={handleAmsterdamClick}
               >
                 Amsterdam
               </span>
