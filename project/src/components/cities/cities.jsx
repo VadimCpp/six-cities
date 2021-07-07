@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { CITIES } from '../../const';
 import { setCity } from '../../store/action';
 import { getCity } from '../../store/cities-data/selector';
 
 const cities = Object.values(CITIES);
 
-function Cities(props) {
-  const { city, doSetCity } = props;
+function Cities() {
+  const city = useSelector(getCity);
+  const dispatch = useDispatch();
 
   return (
     <div className="tabs">
@@ -21,7 +21,7 @@ function Cities(props) {
                 style={{ cursor: 'pointer' }}
                 onClick={(evt) => {
                   evt.preventDefault();
-                  doSetCity(c.name);
+                  dispatch(setCity(c.name));
                 }}
               >
                 <span>{c.name}</span>
@@ -34,20 +34,5 @@ function Cities(props) {
   );
 }
 
-Cities.propTypes = {
-  city: PropTypes.string.isRequired,
-  doSetCity: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  city: getCity(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  doSetCity(city) {
-    dispatch(setCity(city));
-  },
-});
-
 export { Cities };
-export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+export default Cities;

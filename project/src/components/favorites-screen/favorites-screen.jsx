@@ -1,10 +1,13 @@
 import React from 'react';
-import offersProp from '../../types/offers.prop';
+import { useSelector } from 'react-redux';
+import { getOffers } from '../../store/offers-data/selector';
 import Header from '../header/header';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
 
-function FavoritesScreen({offers}) {
+function FavoritesScreen() {
+  const offers = useSelector(getOffers);
+
   return (
     <div className="page">
       <Header />
@@ -19,9 +22,5 @@ function FavoritesScreen({offers}) {
     </div>
   );
 }
-
-FavoritesScreen.propTypes = {
-  offers: offersProp.isRequired,
-};
 
 export default FavoritesScreen;

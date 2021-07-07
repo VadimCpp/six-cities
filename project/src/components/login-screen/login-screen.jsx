@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { redirectToRoute, setCity } from '../../store/action';
 import { login } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../store/user-data/selector';
 
-function LoginScreen(props) {
-  const { onSubmit, authorizationStatus, doRedirectToRoute, doSetCity } = props;
+function LoginScreen() {
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const dispatch = useDispatch();
+
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -18,16 +19,16 @@ function LoginScreen(props) {
   // выполняется перенаправление на главную страницу.
   //
   if (authorizationStatus === AuthorizationStatus.AUTH) {
-    doRedirectToRoute(AppRoute.ROOT);
+    dispatch(redirectToRoute(AppRoute.ROOT));
   }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
+    }));
   };
 
   return (
@@ -96,8 +97,8 @@ function LoginScreen(props) {
                 style={{ cursor: 'pointer' }}
                 onClick={(evt) => {
                   evt.preventDefault();
-                  doSetCity('Amsterdam');
-                  doRedirectToRoute(AppRoute.ROOT);
+                  dispatch(setCity('Amsterdam'));
+                  dispatch(redirectToRoute(AppRoute.ROOT));
                 }}
               >
                 Amsterdam
@@ -110,28 +111,5 @@ function LoginScreen(props) {
   );
 }
 
-LoginScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  doRedirectToRoute: PropTypes.func.isRequired,
-  doSetCity: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-  doRedirectToRoute(route) {
-    dispatch(redirectToRoute(route));
-  },
-  doSetCity(city) {
-    dispatch(setCity(city));
-  },
-});
-
 export { LoginScreen };
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default LoginScreen;

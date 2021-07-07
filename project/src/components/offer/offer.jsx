@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppRoute, RATING_TO_PERCENT } from '../../const';
 import offerProp from '../../types/offer.prop';
 import { updateFavoriteStatus } from '../../store/api-actions';
@@ -16,12 +16,12 @@ function Offer(props) {
     placeCardInfoClass = '',
     imgWidth = '260',
     imgHeight = '200',
-    doUpdateFavoriteStatus,
   } = props;
   const {id, preview, price, rating, title, type, isPremium} = offer;
+  const dispatch = useDispatch();
 
   function handleFavoriteClick() {
-    doUpdateFavoriteStatus({ id, status: offer.isFavorite ? 0 : 1 });
+    dispatch(updateFavoriteStatus({ id, status: offer.isFavorite ? 0 : 1 }));
   }
 
   return (
@@ -92,14 +92,7 @@ Offer.propTypes = {
   placeCardInfoClass: PropTypes.string,
   imgHeight: PropTypes.string,
   imgWidth: PropTypes.string,
-  doUpdateFavoriteStatus: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  doUpdateFavoriteStatus(id, status) {
-    dispatch(updateFavoriteStatus(id, status));
-  },
-});
-
 export { Offer };
-export default connect(null, mapDispatchToProps)(Offer);
+export default Offer;

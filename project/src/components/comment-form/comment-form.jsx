@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AuthorizationStatus } from '../../const';
 import { postComment } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/user-data/selector';
 import Rating from '../rating/rating';
 
-function CommentForm(props) {
-  const { authorizationStatus, offerId, doPostComment } = props;
+function CommentForm({ offerId }) {
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const dispatch = useDispatch();
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
@@ -24,10 +25,10 @@ function CommentForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    doPostComment({id: offerId, rating: rating, comment}).then(() => {
+    dispatch(postComment({id: offerId, rating: rating, comment}).then(() => {
       setComment('');
       setRating(0);
-    });
+    }));
   }
 
   function handleRatingChange(event) {
@@ -67,20 +68,8 @@ function CommentForm(props) {
 }
 
 CommentForm.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   offerId: PropTypes.number.isRequired,
-  doPostComment: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  doPostComment(id) {
-    return dispatch(postComment(id));
-  },
-});
-
 export { CommentForm };
-export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
+export default CommentForm;

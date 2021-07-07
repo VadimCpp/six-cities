@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import offersProp from '../../types/offers.prop';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchOfferData } from '../../store/api-actions';
 import { getOffers } from '../../store/offers-data/selector';
 import Header from '../header/header';
@@ -11,8 +9,10 @@ import CitiesMap from '../cities-map/cities-map';
 import Offers from '../offers/offers';
 import Room from '../room/room';
 
-function RoomScreen(props) {
-  const { offers, doFetchOfferData } = props;
+function RoomScreen() {
+  const offers = useSelector(getOffers);
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
@@ -22,9 +22,9 @@ function RoomScreen(props) {
   useEffect(() => {
     if (!offer?.nearby || !offer?.comments)
     {
-      doFetchOfferData(id);
+      dispatch(fetchOfferData(id));
     }
-  }, [doFetchOfferData, id, offer]);
+  }, [dispatch, id, offer]);
 
   if (!offer) {
     return null;
@@ -58,20 +58,5 @@ function RoomScreen(props) {
   );
 }
 
-RoomScreen.propTypes = {
-  offers: offersProp,
-  doFetchOfferData: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  offers: getOffers(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  doFetchOfferData(id) {
-    dispatch(fetchOfferData(id));
-  },
-});
-
 export { RoomScreen };
-export default connect(mapStateToProps, mapDispatchToProps)(RoomScreen);
+export default RoomScreen;
