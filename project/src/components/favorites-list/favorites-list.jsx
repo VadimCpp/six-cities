@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getOffers } from '../../store/offers-data/selector';
 import { AppRoute } from '../../const';
 import groupByCities from '../../utils/groupByCities';
-import offersProp from '../../types/offers.prop';
 import Offer from '../offer/offer';
 
-function FavoritesList({offers}) {
+function FavoritesList() {
+  const offers = useSelector(getOffers);
   //
   // TODO: реализовать
   // GET /favorite
@@ -53,9 +55,5 @@ function FavoritesList({offers}) {
     </section>
   );
 }
-
-FavoritesList.propTypes = {
-  offers: offersProp.isRequired,
-};
 
 export default FavoritesList;
