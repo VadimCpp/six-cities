@@ -4,18 +4,20 @@ import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../store/user-data/selector';
+import { getIsDataLoaded } from '../../store/offers-data/selector';
 
 function PrivateRoute({ render, path, exact }) {
   const authorizationStatus = useSelector(getAuthorizationStatus);
+  const isDataLoaded = useSelector(getIsDataLoaded);
 
   return (
     <Route
       path={path}
       exact={exact}
       render={(routeProps) => (
-        authorizationStatus === AuthorizationStatus.AUTH
-          ? render(routeProps)
-          : <Redirect to={AppRoute.LOGIN} />
+        isDataLoaded && authorizationStatus !== AuthorizationStatus.AUTH
+          ? <Redirect to={AppRoute.LOGIN} />
+          : render(routeProps)
       )}
     />
   );
