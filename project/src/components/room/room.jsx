@@ -1,11 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import offerProp from '../../types/offer.prop';
 import getVerboseType from '../../utils/getVerboseType';
 import { RATING_TO_PERCENT } from '../../const';
+import { updateFavoriteStatus } from '../../store/api-actions';
 import Reviews from '../reviews/reviews';
 import Host from '../host/host';
 
 function Room({ offer }) {
+  const dispatch = useDispatch();
+
+  function handleFavoriteClick() {
+    dispatch(updateFavoriteStatus({ id: offer.id, status: offer.isFavorite ? 0 : 1 }));
+  }
+
   return (
     <>
       <div className="property__gallery-container container">
@@ -28,11 +36,15 @@ function Room({ offer }) {
             <h1 className="property__name">
               {offer.title}
             </h1>
-            <button className="property__bookmark-button button" type="button">
+            <button
+              className={`property__bookmark-button ${offer.isFavorite ? 'property__bookmark-button--active' : ''} button`}
+              type="button"
+              onClick={handleFavoriteClick}
+            >
               <svg className="property__bookmark-icon" width="31" height="33">
-                <use xlinkto="#icon-bookmark"></use>
+                <use xlinkHref="#icon-bookmark"></use>
               </svg>
-              <span className="visually-hidden">To bookmarks</span>
+              <span className="visually-hidden">${offer.isFavorite ? 'From' : 'To '} bookmarks</span>
             </button>
           </div>
           <div className="property__rating rating">
