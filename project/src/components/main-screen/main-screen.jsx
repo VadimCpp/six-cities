@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { CITIES, SortingTypes } from '../../const';
 import { getIsDataLoaded, getOffersForCity } from '../../store/offers-data/selector';
 import { getCity } from '../../store/cities-data/selector';
+import OfferAdapter from '../../utils/offerAdapter';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
@@ -19,27 +20,27 @@ function MainScreen() {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const anOffersForCity = theOffersForCity;
+    const offersForCityArray = theOffersForCity;
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
-        anOffersForCity.sort((a, b) => a.price - b.price);
+        offersForCityArray.sort((a, b) => a.price - b.price);
         break;
       case SortingTypes.HIGH_TO_LOW:
-        anOffersForCity.sort((a, b) => b.price - a.price);
+        offersForCityArray.sort((a, b) => b.price - a.price);
         break;
       case SortingTypes.TOP_RATED:
-        anOffersForCity.sort((a, b) => b.rating - a.rating);
+        offersForCityArray.sort((a, b) => b.rating - a.rating);
         break;
       default:
         break;
     }
-    return anOffersForCity;
+    return OfferAdapter.getOffers(offersForCityArray);
   }, [sortType, theOffersForCity]);
 
   return (
     <div className="page page--gray page--main">
       <Header />
-      {isDataLoaded && offersForCity.length > 0 && (
+      {isDataLoaded && Object.keys(offersForCity).length > 0 && (
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <Cities />
