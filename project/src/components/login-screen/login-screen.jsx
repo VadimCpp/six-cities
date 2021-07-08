@@ -30,8 +30,7 @@ function LoginScreen() {
     }));
   }
 
-  function handleAmsterdamClick(evt) {
-    evt.preventDefault();
+  function handleAmsterdamClick() {
     dispatch(setCity('Amsterdam'));
     dispatch(redirectToRoute(AppRoute.ROOT));
   }
