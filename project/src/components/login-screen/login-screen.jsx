@@ -1,5 +1,6 @@
+
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { redirectToRoute, setCity } from '../../store/action';
 import { login } from '../../store/api-actions';
@@ -12,15 +13,6 @@ function LoginScreen() {
 
   const loginRef = useRef();
   const passwordRef = useRef();
-
-  //
-  // NOTE!
-  // Если пользователь авторизован, то при переходе на страницу LoginScreen
-  // выполняется перенаправление на главную страницу.
-  //
-  if (authorizationStatus === AuthorizationStatus.AUTH) {
-    dispatch(redirectToRoute(AppRoute.ROOT));
-  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -35,7 +27,9 @@ function LoginScreen() {
     dispatch(redirectToRoute(AppRoute.ROOT));
   }
 
-  return (
+  return authorizationStatus === AuthorizationStatus.AUTH ? (
+    <Redirect to={AppRoute.ROOT} />
+  ) : (
     <div className="page page--gray page--login">
       <header className="header">
         <div className="container">

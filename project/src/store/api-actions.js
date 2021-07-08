@@ -51,7 +51,6 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
       dispatch(setUser(UserAdapter.getUser(data)));
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
 
 export const logout = () => (dispatch, _getState, api) => {
