@@ -19,8 +19,7 @@ function Cities() {
               <span
                 className={`locations__item-link tabs__item ${c.name === city ? 'tabs__item--active' : ''}`}
                 style={{ cursor: 'pointer' }}
-                onClick={(evt) => {
-                  evt.preventDefault();
+                onClick={() => {
                   dispatch(setCity(c.name));
                 }}
               >

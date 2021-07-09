@@ -10,28 +10,10 @@ export const ActionType = {
   UPDATE_OFFER: 'data/updateOffer',
 };
 
-export const setCity = createAction(ActionType.SET_CITY, (city) => ({
-  payload: city,
-}));
-
-export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
-  payload: status,
-}));
-
-export const loadOffers = createAction(ActionType.LOAD_OFFERS, (offers) => ({
-  payload: offers,
-}));
-
-export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({
-  payload: url,
-}));
-
-export const setUser = createAction(ActionType.SET_USER, (user) => ({
-  payload: user,
-}));
-
+export const setCity = createAction(ActionType.SET_CITY);
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION);
+export const loadOffers = createAction(ActionType.LOAD_OFFERS);
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE);
+export const setUser = createAction(ActionType.SET_USER);
 export const logout = createAction(ActionType.LOGOUT);
-
-export const updateOffer = createAction(ActionType.UPDATE_OFFER, (offer) => ({
-  payload: offer,
-}));
+export const updateOffer = createAction(ActionType.UPDATE_OFFER);
