@@ -30,7 +30,7 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
       dispatch(updateOffer({
         offer: {
           ...OfferAdapter.getOffer(values[0].data),
-          nearby: OfferAdapter.getOffers(values[1].data),
+          nearby: values[1].data.map((o) => o.id),
           comments: CommentAdapter.getComments(values[2].data),
         },
       })))

@@ -20,7 +20,7 @@ function MainScreen() {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const offersForCityArray = theOffersForCity;
+    const offersForCityArray = [ ...theOffersForCity ];
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
         offersForCityArray.sort((a, b) => a.price - b.price);
@@ -48,7 +48,7 @@ function MainScreen() {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offersForCity.length} places to stay in {city}</b>
+                <b className="places__found">{Object.keys(offersForCity).length} places to stay in {city}</b>
                 <Sorting type={sortType} onSortingChange={setSortType}/>
                 <Offers
                   offers={offersForCity}

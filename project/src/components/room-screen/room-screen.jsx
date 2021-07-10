@@ -19,7 +19,11 @@ function RoomScreen() {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offer = offers[Number(id)];
-  const nearby = offer?.nearby || {};
+  const nearby = offer?.nearby || [];
+  const nearbyOffers = {};
+  nearby.forEach((nearbyId) => {
+    nearbyOffers[nearbyId] = offers[nearbyId];
+  });
 
   useEffect(() => {
     if (!offer?.nearby || !offer?.comments)
@@ -35,13 +39,13 @@ function RoomScreen() {
         <main className="page__main page__main--property">
           <section className="property">
             <Room offer={offer} />
-            <CitiesMap city={offer.city} offers={nearby} className="property__map" activeOfferId={activeOfferId}/>
+            <CitiesMap city={offer.city} offers={nearbyOffers} className="property__map" activeOfferId={activeOfferId}/>
           </section>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <Offers
-                offers={nearby}
+                offers={nearbyOffers}
                 placesListClass="near-places__list"
                 placeCardClass="near-places__card"
                 imageWrapperClass="near-places__image-wrapper"
