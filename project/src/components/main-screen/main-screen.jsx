@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { CITIES, SortingTypes } from '../../const';
 import { getIsDataLoaded, getOffersForCity } from '../../store/offers-data/selector';
 import { getCity } from '../../store/cities-data/selector';
-import OfferAdapter from '../../utils/offerAdapter';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
@@ -34,13 +33,13 @@ function MainScreen() {
       default:
         break;
     }
-    return OfferAdapter.getOffers(offersForCityArray);
+    return offersForCityArray;
   }, [sortType, theOffersForCity]);
 
   return (
     <div className="page page--gray page--main">
       <Header />
-      {isDataLoaded && Object.keys(offersForCity).length > 0 && (
+      {isDataLoaded && offersForCity.length > 0 && (
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <Cities />
@@ -48,7 +47,7 @@ function MainScreen() {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{Object.keys(offersForCity).length} places to stay in {city}</b>
+                <b className="places__found">{offersForCity.length} places to stay in {city}</b>
                 <Sorting type={sortType} onSortingChange={setSortType}/>
                 <Offers
                   offers={offersForCity}
@@ -65,7 +64,7 @@ function MainScreen() {
           </div>
         </main>
       )}
-      {isDataLoaded && Object.keys(offersForCity).length === 0 && (
+      {isDataLoaded && offersForCity.length === 0 && (
         <main className="page__main page__main--index page__main--index-empty">
           <h1 className="visually-hidden">Cities</h1>
           <Cities />

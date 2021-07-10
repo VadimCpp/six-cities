@@ -20,10 +20,7 @@ function RoomScreen() {
 
   const offer = offers[Number(id)];
   const nearby = offer?.nearby || [];
-  const nearbyOffers = {};
-  nearby.forEach((nearbyId) => {
-    nearbyOffers[nearbyId] = offers[nearbyId];
-  });
+  const nearbyOffers = nearby.map((nearbyId) => offers[nearbyId]);
 
   useEffect(() => {
     if (!offer?.nearby || !offer?.comments)
