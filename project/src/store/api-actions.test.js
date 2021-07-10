@@ -1,10 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
 import { createAPI } from '../services/api';
-import { ActionType } from './action';
-import { checkAuth, login, fetchOfferList } from './api-actions';
 import { APIRoute, AuthorizationStatus } from '../const';
 import UserAdapter from '../utils/userAdapter';
 import OfferAdapter from '../utils/offerAdapter';
+import { ActionType } from './action';
+import { checkAuth, login, fetchOfferList, logout } from './api-actions';
 
 const MOCK_OFFERS = [
   {
@@ -203,14 +203,21 @@ describe('Async operations', () => {
       });
   });
 
-  //
-  // TODO:
-  // fetchOfferList +
-  // fetchOfferData -
-  // checkAuth +
-  // login +
-  // logout -
-  // postComment -
-  // updateFavoriteStatus -
-  //
+  it('should make a correct API call to DELETE /logout', () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const logUserOut = logout();
+
+    apiMock
+      .onDelete(APIRoute.LOGOUT)
+      .reply(200);
+
+    return logUserOut(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOGOUT,
+        });
+      });
+  });
 });
