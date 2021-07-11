@@ -30,7 +30,7 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
       dispatch(updateOffer({
         offer: {
           ...OfferAdapter.getOffer(values[0].data),
-          nearby: OfferAdapter.getOffers(values[1].data),
+          nearby: values[1].data.map((o) => o.id),
           comments: CommentAdapter.getComments(values[2].data),
         },
       })))
@@ -53,11 +53,11 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
 );
 
-export const logout = () => (dispatch, _getState, api) => {
+export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
-    .then(() => dispatch(logUserOut()));
-};
+    .then(() => dispatch(logUserOut()))
+);
 
 export const postComment = ({ id, comment, rating }) => (dispatch, _getState, api) => (
   api.post(generatePath(APIRoute.COMMENTS, { id }), {comment, rating})

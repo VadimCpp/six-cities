@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { CITIES, SortingTypes } from '../../const';
 import { getIsDataLoaded, getOffersForCity } from '../../store/offers-data/selector';
 import { getCity } from '../../store/cities-data/selector';
-import OfferAdapter from '../../utils/offerAdapter';
 import Header from '../header/header';
 import Offers from '../offers/offers';
 import CitiesMap from '../cities-map/cities-map';
@@ -20,7 +19,7 @@ function MainScreen() {
   const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offersForCity = useMemo(() => {
-    const offersForCityArray = theOffersForCity;
+    const offersForCityArray = [ ...theOffersForCity ];
     switch (sortType) {
       case SortingTypes.LOW_TO_HIGH:
         offersForCityArray.sort((a, b) => a.price - b.price);
@@ -34,13 +33,13 @@ function MainScreen() {
       default:
         break;
     }
-    return OfferAdapter.getOffers(offersForCityArray);
+    return offersForCityArray;
   }, [sortType, theOffersForCity]);
 
   return (
     <div className="page page--gray page--main">
       <Header />
-      {isDataLoaded && Object.keys(offersForCity).length > 0 && (
+      {isDataLoaded && offersForCity.length > 0 && (
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
           <Cities />
@@ -65,7 +64,7 @@ function MainScreen() {
           </div>
         </main>
       )}
-      {isDataLoaded && Object.keys(offersForCity).length === 0 && (
+      {isDataLoaded && offersForCity.length === 0 && (
         <main className="page__main page__main--index page__main--index-empty">
           <h1 className="visually-hidden">Cities</h1>
           <Cities />
