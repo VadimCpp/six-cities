@@ -1,5 +1,5 @@
 import React from 'react';
-import commentProp from '../../types/comment.prop';
+import reviewProp from '../../types/review.prop';
 import { RATING_TO_PERCENT } from '../../const';
 
 function Review({ review }) {
@@ -31,9 +31,8 @@ function Review({ review }) {
   );
 }
 
-// TODO: переименовать commentProp до reviewProp
 Review.propTypes = {
-  review: commentProp.isRequired,
+  review: reviewProp.isRequired,
 };
 
 export default Review;

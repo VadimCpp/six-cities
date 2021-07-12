@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import commentsProp from '../../types/comments.prop';
+import reviewsProp from '../../types/reviews.prop';
 import Review from '../review/review';
 import CommentForm from '../comment-form/comment-form';
 
-function Reviews({ comments, offerId }) {
+function Reviews({ reviews, offerId }) {
   return (
     <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{comments.length}</span></h2>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
-        {comments.map((comment) => (
+        {reviews.map((comment) => (
           <li className="reviews__item" key={comment.id}>
             <Review review={comment}/>
           </li>
@@ -21,7 +21,7 @@ function Reviews({ comments, offerId }) {
 }
 
 Reviews.propTypes = {
-  comments: commentsProp.isRequired,
+  reviews: reviewsProp.isRequired,
   offerId: PropTypes.number.isRequired,
 };
 

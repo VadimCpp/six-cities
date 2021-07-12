@@ -85,7 +85,7 @@ function Room({ offer }) {
               {offer.description}
             </p>
           </div>
-          <Reviews comments={offer.comments || []} offerId={offer.id} />
+          <Reviews reviews={offer.comments || []} offerId={offer.id} />
         </div>
       </div>
     </>

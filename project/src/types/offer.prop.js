@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cityProp from './city.prop';
 import locationProp from './location.prop';
 import userProp from './user.prop';
-import commentsProp from './comments.prop';
+import reviewsProp from './reviews.prop';
 
 export default PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -21,5 +21,5 @@ export default PropTypes.shape({
   isPremium: PropTypes.bool.isRequired,
   location: locationProp.isRequired,
   nearby: PropTypes.arrayOf(PropTypes.number.isRequired),
-  comments: commentsProp,
+  comments: reviewsProp,
 });
