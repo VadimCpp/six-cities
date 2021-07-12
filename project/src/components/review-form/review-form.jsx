@@ -6,7 +6,7 @@ import { postComment } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/user-data/selector';
 import Rating from '../rating/rating';
 
-function CommentForm({ offerId }) {
+function ReviewForm({ offerId }) {
   const authorizationStatus = useSelector(getAuthorizationStatus);
   const dispatch = useDispatch();
 
@@ -67,9 +67,9 @@ function CommentForm({ offerId }) {
   );
 }
 
-CommentForm.propTypes = {
+ReviewForm.propTypes = {
   offerId: PropTypes.number.isRequired,
 };
 
-export { CommentForm };
-export default CommentForm;
+export { ReviewForm };
+export default ReviewForm;

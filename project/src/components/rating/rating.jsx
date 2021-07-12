@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CommentStar from '../comment-star/comment-star';
+import ReviewStart from '../review-star/review-star';
 
 function Rating({ onRatingChange, rating }) {
   return (
@@ -12,7 +12,7 @@ function Rating({ onRatingChange, rating }) {
         { stars: 2, title: 'badly' },
         { stars: 1, title: 'terribly' },
       ].map(({ stars, title }) => (
-        <CommentStar
+        <ReviewStart
           key={stars}
           stars={stars}
           title={title}
