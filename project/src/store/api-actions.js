@@ -10,7 +10,7 @@ import {
 import { AuthorizationStatus, APIRoute, AppRoute } from '../const';
 import OfferAdapter from '../utils/offerAdapter';
 import UserAdapter from '../utils/userAdapter';
-import CommentAdapter from '../utils/commentAdapter';
+import ReviewAdapter from '../utils/reviewAdapter';
 
 export const fetchOfferList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
@@ -31,7 +31,7 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
         offer: {
           ...OfferAdapter.getOffer(values[0].data),
           nearby: values[1].data.map((o) => o.id),
-          comments: CommentAdapter.getComments(values[2].data),
+          review: ReviewAdapter.getReviews(values[2].data),
         },
       })))
     .catch(() => dispatch(redirectToRoute(AppRoute.NOT_FOUND)))
@@ -65,7 +65,7 @@ export const postComment = ({ id, comment, rating }) => (dispatch, _getState, ap
       dispatch(updateOffer({
         offer: {
           id,
-          comments: CommentAdapter.getComments(data),
+          review: ReviewAdapter.getReviews(data),
         },
       })))
 );

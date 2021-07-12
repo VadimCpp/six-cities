@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function CommentStar({stars, title, onRatingChange, isChecked }) {
+function ReviewStar({ stars, title, onRatingChange, isChecked }) {
   return (
     <>
       <input
@@ -22,11 +22,11 @@ function CommentStar({stars, title, onRatingChange, isChecked }) {
   );
 }
 
-CommentStar.propTypes = {
+ReviewStar.propTypes = {
   stars: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   isChecked: PropTypes.bool.isRequired,
 };
 
-export default CommentStar;
+export default ReviewStar;

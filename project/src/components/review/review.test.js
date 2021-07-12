@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Review from './review';
 
-const MOCK_COMMENT = {
+const MOCK_REVIEW = {
   'comment': 'A quiet cozy and picturesque Amsterdam.',
   'date': '2019-05-08T14:13:56.569Z',
   'id': 1,
@@ -18,7 +18,7 @@ const MOCK_COMMENT = {
 describe('Component: Review', () => {
   it('should render correctly', () => {
     const { getByText } = render(
-      <Review review={MOCK_COMMENT} />,
+      <Review review={MOCK_REVIEW} />,
     );
     const userNameElement = getByText('Max');
     const commentElement = getByText('A quiet cozy and picturesque Amsterdam.');

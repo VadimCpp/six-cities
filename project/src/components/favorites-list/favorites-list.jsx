@@ -8,11 +8,6 @@ import Offer from '../offer/offer';
 
 function FavoritesList() {
   const offers = useSelector(getOffers);
-  //
-  // TODO: реализовать
-  // GET /favorite
-  // Получение списка избранных предложений.
-  //
   const cities = groupByCities(offers);
 
   return cities.length ? (
