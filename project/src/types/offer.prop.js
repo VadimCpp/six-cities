@@ -21,5 +21,5 @@ export default PropTypes.shape({
   isPremium: PropTypes.bool.isRequired,
   location: locationProp.isRequired,
   nearby: PropTypes.arrayOf(PropTypes.number.isRequired),
-  comments: reviewsProp,
+  reviews: reviewsProp,
 });

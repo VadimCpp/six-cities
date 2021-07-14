@@ -31,7 +31,7 @@ export const fetchOfferData = (id) => (dispatch, _getState, api) => (
         offer: {
           ...OfferAdapter.getOffer(values[0].data),
           nearby: values[1].data.map((o) => o.id),
-          review: ReviewAdapter.getReviews(values[2].data),
+          reviews: ReviewAdapter.getReviews(values[2].data),
         },
       })))
     .catch(() => dispatch(redirectToRoute(AppRoute.NOT_FOUND)))
@@ -65,7 +65,7 @@ export const postComment = ({ id, comment, rating }) => (dispatch, _getState, ap
       dispatch(updateOffer({
         offer: {
           id,
-          review: ReviewAdapter.getReviews(data),
+          reviews: ReviewAdapter.getReviews(data),
         },
       })))
 );

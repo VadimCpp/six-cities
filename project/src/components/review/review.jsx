@@ -1,9 +1,11 @@
 import React from 'react';
 import reviewProp from '../../types/review.prop';
 import { RATING_TO_PERCENT } from '../../const';
+import getVerboseDate from '../../utils/getVerboseDate';
 
 function Review({ review }) {
-  const { comment, rating, user: { avatarUrl, name }} = review;
+  const { comment, rating, user: { avatarUrl, name }, date} = review;
+
   return (
     <>
       <div className="reviews__user user">
@@ -24,8 +26,7 @@ function Review({ review }) {
         <p className="reviews__text">
           {comment}
         </p>
-        {/* TODO: вывести датут */}
-        <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+        <time className="reviews__time" dateTime={date}>{getVerboseDate(date)}</time>
       </div>
     </>
   );

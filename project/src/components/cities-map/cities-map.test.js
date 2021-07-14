@@ -1,11 +1,20 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Router, generatePath } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { AuthorizationStatus, AppRoute } from '../../const';
-import App from './app';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
+import { AuthorizationStatus } from '../../const';
+import CitiesMap from './cities-map';
+
+const MOCK_CITY = {
+  'name': 'Hamburg',
+  'location': {
+    'latitude': 53.550341,
+    'longitude': 10.000654,
+    'zoom': 13,
+  },
+};
 
 const MOCK_OFFERS = {
   1: {
@@ -35,7 +44,7 @@ const MOCK_OFFERS = {
       'img/offers/offer_14.jpg',
     ],
     'title': 'The house among olive',
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': false,
     'rating': 4.7,
     'type': 'house',
@@ -91,7 +100,7 @@ const MOCK_OFFERS = {
       'img/offers/offer_16.jpg',
     ],
     'title': 'Canal View Prinsengracht',
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': false,
     'rating': 3.3,
     'type': 'house',
@@ -123,14 +132,13 @@ const MOCK_OFFERS = {
   },
 };
 
-let history = null;
 let store = null;
 let fakeApp = null;
+let history = null;
 
-describe('Application Routing', () => {
+describe('Component: CitiesMap', () => {
   beforeAll(() => {
     history = createMemoryHistory();
-
     const createFakeStore = configureStore({});
     store = createFakeStore({
       OFFERS: { offers: MOCK_OFFERS, isDataLoaded: true },
@@ -141,54 +149,16 @@ describe('Application Routing', () => {
     fakeApp = (
       <Provider store={store}>
         <Router history={history}>
-          <App />
+          <CitiesMap city={MOCK_CITY} offers={MOCK_OFFERS} activeOfferId={1} />
         </Router>
       </Provider>
     );
   });
 
-  it('should render "MainScreen" when user navigate to "/"', () => {
-    history.push(AppRoute.ROOT);
+  it('should render correctly', () => {
     render(fakeApp);
 
-    expect(screen.getByText('Paris')).toBeInTheDocument();
-    expect(screen.getByText('We could not find any property available at the moment in Paris')).toBeInTheDocument();
-  });
-
-  it('should render "LoginScreen" when user navigate to "/login"', () => {
-    history.push(AppRoute.LOGIN);
-    render(fakeApp);
-
-    expect(screen.getAllByText('Sign in')).toHaveLength(3);
-    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
-  });
-
-  it('should render "RoomScreen" when user navigate to "/room/1"', () => {
-    history.push(generatePath(AppRoute.ROOM, { id: 1 }));
-    render(fakeApp);
-
-    expect(screen.getByText('The house among olive')).toBeInTheDocument();
-    expect(screen.getByText('Laptop friendly workspace')).toBeInTheDocument();
-    expect(screen.getByText('Breakfast')).toBeInTheDocument();
-    expect(screen.getByText('Washer')).toBeInTheDocument();
-    expect(screen.getByText('Air conditioning')).toBeInTheDocument();
-  });
-
-  it('should render "FavoritesScreen" when user navigate to "/favorite"', () => {
-    history.push(AppRoute.FAVORITES);
-    render(fakeApp);
-
-    expect(screen.getAllByText('Sign in')).toHaveLength(3);
-    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
-  });
-
-  it('should render "NotFoundScreen" when user navigate to "/favorite"', () => {
-    history.push('/not-existed-route');
-    render(fakeApp);
-
-    expect(screen.getByText('404')).toBeInTheDocument();
-    expect(screen.getByText('Not Found')).toBeInTheDocument();
+    expect(screen.getByText('OpenStreetMap')).toBeInTheDocument();
+    expect(screen.getByTestId('map')).toBeInTheDocument();
   });
 });
