@@ -1,11 +1,11 @@
 import UserAdapter from './userAdapter';
 
 const ReviewAdapter = {
-  getReview: (comment) => ({
-    ...comment,
-    user: UserAdapter.getUser(comment['user']),
+  getReview: (review) => ({
+    ...review,
+    user: UserAdapter.getUser(review['user']),
   }),
-  getReviews: (comments) => comments.map((comment) => ReviewAdapter.getReview(comment)),
+  getReviews: (reviews) => reviews.map((review) => ReviewAdapter.getReview(review)),
 };
 
 export default ReviewAdapter;

@@ -23,7 +23,7 @@ function RoomScreen() {
   const nearbyOffers = nearby.map((nearbyId) => offers[nearbyId]);
 
   useEffect(() => {
-    if (!offer?.nearby || !offer?.comments)
+    if (!Array.isArray(offer?.nearby) || !Array.isArray(offer?.reviews))
     {
       dispatch(fetchOfferData(id));
     }

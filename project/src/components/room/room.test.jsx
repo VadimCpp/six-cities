@@ -60,7 +60,7 @@ const MOCK_OFFERS = {
     },
     'id': 1,
     'nearby': [],
-    'comments': [],
+    'reviews': [],
   },
   2: {
     'city': {
