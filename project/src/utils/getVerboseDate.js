@@ -10,7 +10,7 @@ const getVerboseDate = (dateString) => {
   const aDate = new Date(dateString);
   const verboseDate = `${MONTH_NAMES[aDate.getMonth()]} ${aDate.getFullYear()}`;
 
-  return dateString || verboseDate;
+  return verboseDate;
 };
 
 export default getVerboseDate;
