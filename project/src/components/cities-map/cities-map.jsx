@@ -59,7 +59,7 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
           o.location.longitude,
         ];
         markers.current.push({
-          markerLayer: leaflet.marker(coords, {icon: ICON}).addTo(map.current),
+          markerLayer: leaflet.marker(coords, {icon: o.id === activeOfferId ? ICON_ACTIVE : ICON}).addTo(map.current),
           offerId: o.id,
         });
       });

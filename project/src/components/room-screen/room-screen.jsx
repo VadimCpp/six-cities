@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOfferData } from '../../store/api-actions';
@@ -16,7 +16,6 @@ function RoomScreen() {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const [ activeOfferId, setActiveOfferId ] = useState(0);
 
   const offer = offers[Number(id)];
   const nearby = offer?.nearby || [];
@@ -36,7 +35,7 @@ function RoomScreen() {
         <main className="page__main page__main--property">
           <section className="property">
             <Room offer={offer} />
-            <CitiesMap city={offer.city} offers={nearbyOffers} className="property__map" activeOfferId={activeOfferId}/>
+            <CitiesMap city={offer.city} offers={[...nearbyOffers, offer]} className="property__map" activeOfferId={offer.id}/>
           </section>
           <div className="container">
             <section className="near-places places">
@@ -46,7 +45,6 @@ function RoomScreen() {
                 placesListClass="near-places__list"
                 placeCardClass="near-places__card"
                 imageWrapperClass="near-places__image-wrapper"
-                onActiveOfferSet={setActiveOfferId}
               />
             </section>
           </div>
