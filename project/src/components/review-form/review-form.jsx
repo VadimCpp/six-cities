@@ -12,6 +12,7 @@ function ReviewForm({ offerId }) {
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
+  const [isPostingComment, setIsPostingComment] = useState(false);
 
   if (authorizationStatus !== AuthorizationStatus.AUTH) {
     return null;
@@ -20,19 +21,27 @@ function ReviewForm({ offerId }) {
   const isSubmitAvailable = rating >= 1 && rating <= 5 && comment.length >= 50 && comment.length <= 300;
 
   function handleCommentChange(event) {
-    setComment(event.target.value);
+    if (!isPostingComment) {
+      setComment(event.target.value);
+    }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(postComment({id: offerId, rating: rating, comment})).then(() => {
-      setComment('');
-      setRating(0);
-    });
+    if (!isPostingComment) {
+      setIsPostingComment(true);
+      dispatch(postComment({id: offerId, rating: rating, comment})).then(() => {
+        setComment('');
+        setRating(0);
+        setIsPostingComment(false);
+      });
+    }
   }
 
   function handleRatingChange(event) {
-    setRating(Number(event.currentTarget.value));
+    if (!isPostingComment) {
+      setRating(Number(event.currentTarget.value));
+    }
   }
 
   return (
@@ -44,6 +53,7 @@ function ReviewForm({ offerId }) {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         onChange={handleCommentChange}
+        disabled={isPostingComment}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -58,7 +68,7 @@ function ReviewForm({ offerId }) {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={isSubmitAvailable ? '' : 'disabled'}
+          disabled={!isPostingComment && isSubmitAvailable ? '' : 'disabled'}
         >
           Submit
         </button>
