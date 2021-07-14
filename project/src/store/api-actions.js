@@ -65,7 +65,7 @@ export const postComment = ({ id, comment, rating }) => (dispatch, _getState, ap
       dispatch(updateOffer({
         offer: {
           id,
-          review: ReviewAdapter.getReviews(data),
+          reviews: ReviewAdapter.getReviews(data),
         },
       })))
 );

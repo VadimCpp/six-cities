@@ -14,6 +14,9 @@ function Room({ offer }) {
     dispatch(updateFavoriteStatus({ id: offer.id, status: offer.isFavorite ? 0 : 1 }));
   }
 
+  const sortedReviews = [ ...(offer.reviews || []) ];
+  sortedReviews.sort((a, b) => a.date < b.date ? 1 : -1);
+
   return (
     <>
       <div className="property__gallery-container container">
@@ -85,7 +88,7 @@ function Room({ offer }) {
               {offer.description}
             </p>
           </div>
-          <Reviews reviews={offer.reviews || []} offerId={offer.id} />
+          <Reviews reviews={sortedReviews.slice(0,10) || []} offerId={offer.id} />
         </div>
       </div>
     </>

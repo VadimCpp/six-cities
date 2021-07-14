@@ -25,10 +25,10 @@ function ReviewForm({ offerId }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(postComment({id: offerId, rating: rating, comment}).then(() => {
+    dispatch(postComment({id: offerId, rating: rating, comment})).then(() => {
       setComment('');
       setRating(0);
-    }));
+    });
   }
 
   function handleRatingChange(event) {
