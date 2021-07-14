@@ -16,10 +16,17 @@ function LoginScreen() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    dispatch(login({
-      login: loginRef.current.value,
-      password: passwordRef.current.value,
-    }));
+    const password = passwordRef.current.value.trim();
+
+    if (password.length === 0) {
+      // eslint-disable-next-line no-alert
+      alert('No empty password allowed!');
+    } else {
+      dispatch(login({
+        login: loginRef.current.value,
+        password: passwordRef.current.value,
+      }));
+    }
   }
 
   function handleAmsterdamClick() {
