@@ -91,6 +91,7 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
         style={{
           height: '100%',
         }}
+        data-testid="map"
       />
     </section>
   );
