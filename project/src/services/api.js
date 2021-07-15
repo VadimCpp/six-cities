@@ -7,15 +7,20 @@ const HttpCode = {
   UNAUTHORIZED: 401,
 };
 
-const token = localStorage.getItem('token') ?? '';
-
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
-    headers: {
-      'x-token': token,
+    header: {
+      'Content-Type': 'application/json',
     },
+    transformRequest: [function (data, headers) {
+      //
+      // https://stackoverflow.com/a/63142745/1775459
+      //
+      headers['x-token'] = localStorage.getItem('token') ?? '';
+      return data;
+    }],
   });
 
   const onSuccess = (response) => response;
