@@ -12,6 +12,7 @@ import { createAPI } from './services/api';
 import { AuthorizationStatus } from './const';
 import browserHistory from './browser-history';
 
+// TODO: исправить ESLint ошибку no-use-before-define
 const api = createAPI(
   () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)),
 );

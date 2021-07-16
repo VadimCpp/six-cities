@@ -19,6 +19,7 @@ function LoginScreen() {
     const password = passwordRef.current.value.trim();
 
     if (password.length === 0) {
+      // TODO: сделать кастомный div
       // eslint-disable-next-line no-alert
       alert('No empty password allowed!');
     } else {
