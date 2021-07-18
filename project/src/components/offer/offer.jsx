@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { AppRoute, RATING_TO_PERCENT } from '../../const';
+import { AppRoute, RATING_TO_PERCENT, DEFAULT_IMG_WIDTH, DEFAULT_IMG_HEIGHT } from '../../const';
 import offerProp from '../../types/offer.prop';
 import { updateFavoriteStatus } from '../../store/api-actions';
 
@@ -14,8 +14,8 @@ function Offer(props) {
     placeCardClass = '',
     imageWrapperClass = '',
     placeCardInfoClass = '',
-    imgWidth = '260',
-    imgHeight = '200',
+    imgWidth = DEFAULT_IMG_WIDTH,
+    imgHeight = DEFAULT_IMG_HEIGHT,
   } = props;
   const {id, preview, price, rating, title, type, isPremium} = offer;
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { redirectToRoute, setCity } from '../../store/action';
@@ -14,13 +14,14 @@ function LoginScreen() {
   const loginRef = useRef();
   const passwordRef = useRef();
 
+  const [isError, setIsError] = useState(false);
+
   function handleSubmit(evt) {
     evt.preventDefault();
     const password = passwordRef.current.value.trim();
 
     if (password.length === 0) {
-      // eslint-disable-next-line no-alert
-      alert('No empty password allowed!');
+      setIsError(true);
     } else {
       dispatch(login({
         login: loginRef.current.value,
@@ -81,6 +82,13 @@ function LoginScreen() {
                   id="email"
                 />
               </div>
+              {isError && (
+                <div className="login__input-wrapper form__input-wrapper">
+                  <span style={{color: 'red'}}>
+                    No empty password allowed!
+                  </span>
+                </div>
+              )}
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
                 <input

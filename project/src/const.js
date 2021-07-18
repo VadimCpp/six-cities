@@ -82,3 +82,6 @@ export const APIRoute = {
   FAVORITE: '/favorite',
   FAVORITE_STATUS: '/favorite/:id/:status',
 };
+
+export const DEFAULT_IMG_WIDTH = '260';
+export const DEFAULT_IMG_HEIGHT = '200';

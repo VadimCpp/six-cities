@@ -71,7 +71,7 @@ function CitiesMap({ city, offers, className = '', activeOfferId = 0 }) {
       });
       markers.current = [];
     };
-  }, [offers]);
+  }, [offers, activeOfferId]);
 
   //
   // NOTE!
