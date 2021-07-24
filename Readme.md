@@ -4,25 +4,34 @@
 > [HTML Academy](https://htmlacademy.ru) еще не видела такого оформления Readme 😎
 >
 
+## Демо
+
+Пройти по ссылке: https://vadimcpp.github.io/six-cities/
+
+<img width="1377" alt="Screenshot 2021-07-24 at 22 00 18" src="https://user-images.githubusercontent.com/4641125/126878720-bb808aa3-6f68-47cc-81d2-e39234ed96c1.png">
+
+## Как запустить код?
+
+Открыть терминал и выполнить последовательно команды:
+
+```
+git clone https://github.com/VadimCpp/six-cities.git six-cities-demo
+cd six-cities-demo
+git checkout offline
+cd project
+npm install
+npm start
+```
+
 ## Кто здесь?
 
-* Студент: Вадим Канинский - [↗️ htmlacademy](https://up.htmlacademy.ru/react/7/user/78842) [↗️ vk](https://vk.com/vadimcpp) [↗️ tg](https://t.me/vadimcpp).
+* Студент: Вадим Канинский - [↗️ vadimcpp.ru](https://vadimcpp.ru/) [↗️ vk](https://vk.com/vadimcpp) [↗️ tg](https://t.me/vadimcpp).
 * Наставник: Антон Вахрушев - [↗️ vk](https://vk.com/antoshkajs) [↗️ tg](https://t.me/antoshkajs).
 
-## Структура проекта
+## Результат
 
-В обычном проекте:
-- сначала `create-react-app`;
-- потом `git commit -a -m "Initial commit"`;
-- потом все остальное.
+✅ Этот проект получил высшую оценку 🥇 на профессиональном онлайн‑курсе «[React. Разработка сложных клиентских приложений](https://htmlacademy.ru/intensive/react)» от [HTML Academy](https://htmlacademy.ru).
 
-Этот проект — обучающий, поэтому:
-- смотреть код в папке [project](/project);
-- начальные данные в папке [markup](/markup);
-- перед `yarn start` сначала `cd project`.
+## Благодарности
 
----
-
-<a href="https://htmlacademy.ru/intensive/react"><img align="left" width="50" height="50" title="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/react/logo-for-github.png"></a>
-
-С 31 мая по 1 августа 2021 года я учусь на профессиональном онлайн‑курсе «[React. Разработка сложных клиентских приложений](https://htmlacademy.ru/intensive/react)» от [HTML Academy](https://htmlacademy.ru).
+Спасибо наставнику за совместную работу, куратору за своевременные ответы, другим студентам за продуктивное общение в чате и конструктивную критику.
