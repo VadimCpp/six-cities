@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "https://vadimcpp.github.io/six-cities/static/js/main.007cce93.chunk.js",
-    "main.js.map": "https://vadimcpp.github.io/six-cities/static/js/main.007cce93.chunk.js.map",
+    "main.js": "https://vadimcpp.github.io/six-cities/static/js/main.6732720e.chunk.js",
+    "main.js.map": "https://vadimcpp.github.io/six-cities/static/js/main.6732720e.chunk.js.map",
     "runtime-main.js": "https://vadimcpp.github.io/six-cities/static/js/runtime-main.06459f70.js",
     "runtime-main.js.map": "https://vadimcpp.github.io/six-cities/static/js/runtime-main.06459f70.js.map",
     "static/css/2.b4ebbe46.chunk.css": "https://vadimcpp.github.io/six-cities/static/css/2.b4ebbe46.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.06459f70.js",
     "static/css/2.b4ebbe46.chunk.css",
     "static/js/2.acd39af2.chunk.js",
-    "static/js/main.007cce93.chunk.js"
+    "static/js/main.6732720e.chunk.js"
   ]
 }
