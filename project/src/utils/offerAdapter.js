@@ -1,14 +1,14 @@
 const OfferAdapter = {
   getOffer: (offer) => ({
     ...offer,
-    preview: offer['preview_image'],
-    maxAdults: offer['max_adults'],
-    isPremium: offer['is_premium'],
-    isFavorite: offer['is_favorite'],
+    preview: offer['preview_image'] || offer['preview'],
+    maxAdults: offer['max_adults'] || offer['maxAdults'],
+    isPremium: offer['is_premium'] || offer['isPremium'],
+    isFavorite: offer['is_favorite'] || offer['isFavorite'],
     host: {
       ...offer.host,
-      avatarUrl: offer['host']['avatar_url'],
-      isPro: offer['host']['is_pro'],
+      avatarUrl: offer['host']['avatar_url'] || offer['host']['avatarUrl'],
+      isPro: offer['host']['is_pro'] || offer['host']['isPro'],
     },
   }),
   getOffers: (offers) => offers.reduce((acc, offer) => {

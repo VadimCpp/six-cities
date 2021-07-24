@@ -14,14 +14,16 @@ const offersData = createReducer(initialState, (builder) => {
       state.isDataLoaded = true;
     })
     .addCase(updateOffer, (state, action) => {
-      const offerId = action.payload.offer.id;
-      state.offers = {
-        ...state.offers,
-        [offerId]: {
-          ...state.offers[offerId],
-          ...action.payload.offer,
-        },
-      };
+      const offerId = action.payload?.offer?.id;
+      if (offerId) {
+        state.offers = {
+          ...state.offers,
+          [offerId]: {
+            ...state.offers[offerId],
+            ...action.payload.offer,
+          },
+        };
+      }
     });
 });
 
